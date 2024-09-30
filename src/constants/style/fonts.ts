@@ -1,7 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 export const fonts = StyleSheet.create({
-  // #region - General font family fonts
+  body: {
+    fontSize: 18,
+  },
+
   black: {
     fontFamily: 'Raleway-Black',
   },
@@ -29,10 +32,11 @@ export const fonts = StyleSheet.create({
   thin: {
     fontFamily: 'Raleway-Thin',
   },
-  // #endregion
 });
 
 export interface FontsInterface {
+  body?: boolean;
+
   black?: boolean;
   extraBold?: boolean;
   bold?: boolean;
@@ -44,6 +48,8 @@ export interface FontsInterface {
 }
 
 export const handleFonts = (props: FontsInterface) => [
+  props.body && fonts.body,
+
   props.black && fonts.black,
   props.extraBold && fonts.extraBold,
   props.bold && fonts.bold,

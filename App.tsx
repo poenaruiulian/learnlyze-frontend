@@ -4,7 +4,7 @@ import { WithExpoFonts } from '@wrappers';
 const App = () => (
   <WithExpoFonts>
     <View flex center>
-      <Text red bold>
+      <Text red body bold>
         Hello
       </Text>
     </View>
