@@ -10,6 +10,7 @@ module.exports = function (api) {
             '@defaults': './src/components/defaults',
             '@constants': './src/constants',
             '@wrappers': './src/wrappers',
+            '@navigation': './src/navigation',
           },
         },
       ],
