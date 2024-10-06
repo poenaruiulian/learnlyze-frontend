@@ -1,13 +1,9 @@
-import { Text, View } from '@defaults';
 import { WithExpoFonts } from '@wrappers';
+import { Navigation } from '@navigation';
 
 const App = () => (
   <WithExpoFonts>
-    <View flex center>
-      <Text red body bold>
-        Hello
-      </Text>
-    </View>
+    <Navigation />
   </WithExpoFonts>
 );
 
