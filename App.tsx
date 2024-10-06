@@ -1,10 +1,12 @@
-import { WithExpoFonts } from '@wrappers';
+import { WithApolloClient, WithExpoFonts } from '@wrappers';
 import { Navigation } from '@navigation';
 
 const App = () => (
-  <WithExpoFonts>
-    <Navigation />
-  </WithExpoFonts>
+  <WithApolloClient>
+    <WithExpoFonts>
+      <Navigation />
+    </WithExpoFonts>
+  </WithApolloClient>
 );
 
 export default App;

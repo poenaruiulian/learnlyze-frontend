@@ -1,14 +1,21 @@
 import { View, Text } from '@defaults';
 import { Button } from 'react-native';
-import { useRoot } from '@hooks';
+import { useRoot, useUser } from '@hooks';
 
 export const HomeScreen = () => {
-  const { toggleIsLogged } = useRoot();
+  const { toggleIsLogged, setToken } = useRoot();
+  const { user } = useUser();
 
   return (
     <View flex center>
-      <Text>Home</Text>
-      <Button title="Log out" onPress={toggleIsLogged} />
+      <Text>{user?.email}</Text>
+      <Button
+        title="Log out"
+        onPress={() => {
+          setToken(null);
+          toggleIsLogged();
+        }}
+      />
     </View>
   );
 };
