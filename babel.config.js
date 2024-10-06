@@ -13,6 +13,7 @@ module.exports = function (api) {
             '@navigation': './src/navigation',
             '@store': './src/store',
             '@hooks': './src/hooks',
+            '@config': './src/config',
           },
         },
       ],
