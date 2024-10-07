@@ -8,20 +8,20 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { useRoot } from '@hooks';
-import { HTTPRoutes } from '@config';
+import { routes } from '@constants';
 
 const createApolloClient = (token: string | null) => {
   const httpLink = new HttpLink({
-    uri: HTTPRoutes.graphQL,
+    uri: routes.graphQL,
   });
 
   // Create an authentication link
   const authLink = setContext((_, { headers }) => ({
-      headers: {
-        ...headers,
-        Authorization: token ? `Bearer ${token}` : '',
-      },
-    }));
+    headers: {
+      ...headers,
+      Authorization: token ? `Bearer ${token}` : '',
+    },
+  }));
 
   return new ApolloClient({
     link: ApolloLink.from([authLink, httpLink]),
