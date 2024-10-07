@@ -2,6 +2,7 @@ const MAIN = 'http://localhost:3000';
 const AUTH = `${MAIN}/auth`;
 
 export const routes = {
+  emailJs: 'https://api.emailjs.com/api/v1.0/email/send',
   main: MAIN,
   graphQL: `${MAIN}/graphql`,
   auth: {

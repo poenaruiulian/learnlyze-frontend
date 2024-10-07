@@ -1,13 +1,17 @@
 import { View } from '@defaults';
-import { useRoot } from '@hooks';
 import { useState } from 'react';
-import { RegisterDtoType, verifyEmail, verifyPassword } from '@constants';
+import {
+  generateSecurityCode,
+  RegisterDtoType,
+  sendEmail,
+  verifyEmail,
+  verifyPassword,
+} from '@constants';
 import { useNavigation } from '@react-navigation/native';
 import { Button, TextInput } from 'react-native';
 import { AuthNavigationType } from '../../type';
 
 export const RegisterScreen = () => {
-  const { register } = useRoot();
   const [registerDto, setRegisterDto] = useState<RegisterDtoType>({
     email: '',
     password: '',
@@ -58,7 +62,13 @@ export const RegisterScreen = () => {
           } else if (!isPasswordValid) {
             console.log('Password not valid');
           } else {
-            register(registerDto);
+            const code = generateSecurityCode;
+            sendEmail({ email: registerDto.email, code }).then(() => {
+              navigate('ConfirmMailScreen', {
+                registerDto,
+                code,
+              });
+            });
           }
         }}
       />
