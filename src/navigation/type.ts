@@ -11,7 +11,25 @@ export type AuthStackParamList = {
   };
 };
 
+export type TabParamList = {
+  HomeScreen: undefined;
+  DiscoverScreen: undefined;
+  ProfileScreen: undefined;
+};
+
+export type AppStackParamList = {
+  Tab: TabParamList;
+  CompletedCourseScreen: undefined;
+  CourseDetailsScreen: undefined;
+  CourseScreen: undefined;
+  MoreCommentsScreen: undefined;
+  NewCourseScreen: undefined;
+  SettingsScreen: undefined;
+};
+
 export type AuthNavigationType = NativeStackNavigationProp<AuthStackParamList>;
+
+export type AppNavigationType = NativeStackNavigationProp<AppStackParamList>;
 
 export type ConfirmMailScreenRouteType = RouteProp<
   AuthStackParamList,
