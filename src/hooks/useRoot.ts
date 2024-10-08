@@ -1,36 +1,88 @@
 import { useShallow } from 'zustand/react/shallow';
-import { LoginDtoType, RootInfo } from '@constants';
+import {
+  headers,
+  LoginDtoType,
+  methods,
+  RegisterDtoType,
+  RootInfo,
+  routes,
+} from '@constants';
 import { useStore } from '@store';
-import { HTTPRoutes } from '@config';
+import { CryptoDigestAlgorithm, digestStringAsync } from 'expo-crypto';
 
 export const useRoot = () => {
-  const login = async ({
-    email,
-    password,
-  }: LoginDtoType): Promise<string | null> => {
-    const response = await fetch(HTTPRoutes.auth.login, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+  const { toggleIsLogged, setToken, token, isLogged } = useStore(
+    useShallow((rootInfo: RootInfo) => rootInfo)
+  );
+
+  const login = async (loginDto: LoginDtoType): Promise<string | null> => {
+    loginDto.password = await digestStringAsync(
+      CryptoDigestAlgorithm.SHA256,
+      loginDto.password
+    );
+
+    const response = await fetch(routes.auth.login, {
+      method: methods.POST,
+      headers: headers.default,
+      body: JSON.stringify(loginDto),
     });
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('Login failed:', errorData);
       throw new Error(errorData.message || 'Login failed');
     }
 
     const data = await response.json();
-    return data.access_token ?? null;
+    const accessToken = data.access_token ?? null;
+
+    if (accessToken) {
+      toggleIsLogged();
+      setToken(accessToken);
+    }
+
+    return accessToken;
+  };
+
+  const register = async (
+    registerDto: RegisterDtoType
+  ): Promise<string | null> => {
+    registerDto.password = await digestStringAsync(
+      CryptoDigestAlgorithm.SHA256,
+      registerDto.password
+    );
+
+    const response = await fetch(routes.auth.register, {
+      method: methods.POST,
+      headers: headers.default,
+      body: JSON.stringify(registerDto),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Login failed');
+    }
+
+    const data = await response.json();
+    const accessToken = data.access_token ?? null;
+
+    if (accessToken) {
+      toggleIsLogged();
+      setToken(accessToken);
+    }
+
+    return accessToken;
+  };
+
+  const logout = () => {
+    setToken(null);
+    toggleIsLogged();
   };
 
   return {
+    isLogged,
+    token,
     login,
-    ...useStore(useShallow((rootInfo: RootInfo) => rootInfo)),
+    register,
+    logout,
   };
 };

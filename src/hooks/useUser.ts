@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { UserModel } from '@constants';
-import { GET_CURRENT_USER } from '../constants/graphql/user.graphql';
+import { UserModel, GET_CURRENT_USER } from '@constants';
 
 export const useUser = () => {
   const { loading: isUserLoading, data } = useQuery(GET_CURRENT_USER);

@@ -1,19 +1,21 @@
-import { Text, View } from '@defaults';
+import { View } from '@defaults';
 import { Button, TextInput } from 'react-native';
 import { useRoot } from '@hooks';
 import { useState } from 'react';
 import { LoginDtoType } from '@constants';
+import { useNavigation } from '@react-navigation/native';
+import { AuthNavigationType } from '../../type';
 
 export const LoginScreen = () => {
-  const { toggleIsLogged, setToken, login } = useRoot();
+  const { login } = useRoot();
   const [loginDto, setLoginDto] = useState<LoginDtoType>({
     email: '',
     password: '',
   });
+  const { navigate } = useNavigation<AuthNavigationType>();
 
   return (
     <View flex center>
-      <Text>Login</Text>
       <TextInput
         value={loginDto.email}
         placeholder="Email"
@@ -29,14 +31,13 @@ export const LoginScreen = () => {
       <Button
         title="Login"
         onPress={() => {
-          login(loginDto).then(token => {
-            if (token) {
-              setToken(token);
-              toggleIsLogged();
-            } else {
-              throw Error('Login failed due to invalid token.');
-            }
-          });
+          login(loginDto);
+        }}
+      />
+      <Button
+        title="Signup?"
+        onPress={() => {
+          navigate('RegisterScreen');
         }}
       />
     </View>
