@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/defaults/KButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/defaults/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/defaults/text/KText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/KText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/defaults/text/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/defaults/view/KView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/KView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/defaults/view/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/style/sizes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/sizes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/components/KCarouselPage.OnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/components/KCarouselPage.OnboardingScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +72,7 @@
       <workItem from="1728248371365" duration="7000" />
       <workItem from="1728312024088" duration="9848000" />
       <workItem from="1728363577597" duration="916000" />
-      <workItem from="1728448907302" duration="5288000" />
+      <workItem from="1728448907302" duration="5371000" />
     </task>
     <servers />
   </component>
