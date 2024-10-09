@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/navigation/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/defaults/KButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/text/KText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/KText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/text/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/view/KView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/KView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/view/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/style/sizes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/sizes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/components/KCarouselPage.OnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/components/KCarouselPage.OnboardingScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="tsconfig.json" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -33,24 +44,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "9-create-the-types-for-navigation-and-screen-in-types",
-    "last_opened_file_path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;13-implement-onboarding&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/defaults" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/src/components/custom" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -62,6 +80,7 @@
       <workItem from="1728248371365" duration="7000" />
       <workItem from="1728312024088" duration="9848000" />
       <workItem from="1728363577597" duration="916000" />
+      <workItem from="1728448907302" duration="5288000" />
     </task>
     <servers />
   </component>
