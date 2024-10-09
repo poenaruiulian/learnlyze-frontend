@@ -12,6 +12,7 @@ import {
   LoginScreen,
   MoreCommentsScreen,
   NewCourseScreen,
+  OnboardingScreen,
   ProfileScreen,
   RegisterScreen,
   SettingsScreen,
@@ -22,6 +23,7 @@ const Tab = createBottomTabNavigator();
 
 const AuthStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
     <Stack.Screen name="LoginScreen" component={LoginScreen} />
     <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
     <Stack.Screen name="ConfirmMailScreen" component={ConfirmMailScreen} />

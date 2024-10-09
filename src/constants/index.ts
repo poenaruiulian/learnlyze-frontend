@@ -3,3 +3,4 @@ export * from './models';
 export * from './endpoints';
 export * from './graphql';
 export * from './helpers';
+export * from './data';

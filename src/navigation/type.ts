@@ -9,6 +9,7 @@ export type AuthStackParamList = {
     registerDto: RegisterDtoType;
     code: string;
   };
+  OnboardingScreen: undefined;
 };
 
 export type TabParamList = {
