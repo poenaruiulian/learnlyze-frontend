@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/defaults/KButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/defaults/text/KText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/text/KText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/defaults/view/KView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/view/KView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/style/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/style/viewStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/viewStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/Onboarding.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/text/KText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/KText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/text/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/view/KView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/KView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/view/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/style/sizes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/sizes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/components/KCarouselPage.OnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/components/KCarouselPage.OnboardingScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="tsconfig.json" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -68,6 +64,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/defaults" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/src/components/custom" />
     </key>
@@ -83,7 +80,7 @@
       <workItem from="1728248371365" duration="7000" />
       <workItem from="1728312024088" duration="9848000" />
       <workItem from="1728363577597" duration="916000" />
-      <workItem from="1728448907302" duration="3026000" />
+      <workItem from="1728448907302" duration="5288000" />
     </task>
     <servers />
   </component>

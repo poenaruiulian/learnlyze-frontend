@@ -3,10 +3,13 @@ import Carousel from 'react-native-reanimated-carousel';
 import { images } from '@images';
 import { colors, strings } from '@constants';
 import { View } from '@defaults';
+import { useNavigation } from '@react-navigation/native';
 import { KCarouselPageOnboardingScreen } from './components';
+import { AuthNavigationType } from '../../../type';
 
 export const OnboardingScreen = () => {
   const { width, height } = useWindowDimensions();
+  const { navigate } = useNavigation<AuthNavigationType>();
 
   const data = [
     {
@@ -22,6 +25,7 @@ export const OnboardingScreen = () => {
     {
       title: strings.onboarding.thirdSlide.title,
       buttonTitle: strings.onboarding.thirdSlide.buttonTitle,
+      onPress: () => navigate('LoginScreen'),
       image: images.onboardingThirdSlideBg,
     },
   ];

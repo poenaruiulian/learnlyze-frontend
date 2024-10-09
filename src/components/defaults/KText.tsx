@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, TextStyle } from 'react-native';
 import {
   ColorInterface,
   handleColor,
@@ -14,6 +14,7 @@ export interface TextProps
     FontsInterface,
     TextStyleInterface {
   children: string | null | undefined;
+  style?: TextStyle;
 }
 export const KText = ({ ...props }: TextProps) => (
   <Text
@@ -21,6 +22,7 @@ export const KText = ({ ...props }: TextProps) => (
       ...handleColor(props),
       ...handleFonts(props),
       ...handleTextStyle(props),
+      props.style,
     ]}>
     {props.children}
   </Text>
