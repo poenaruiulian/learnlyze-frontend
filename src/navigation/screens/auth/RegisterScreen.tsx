@@ -1,6 +1,7 @@
 import { Button, Text, View } from '@defaults';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
+  colors,
   generateSecurityCode,
   RegisterDtoType,
   sendEmail,
@@ -16,13 +17,18 @@ import { TouchableOpacity } from 'react-native';
 import { AuthNavigationType } from '../../type';
 
 export const RegisterScreen = () => {
+  const { navigate } = useNavigation<AuthNavigationType>();
   const [registerDto, setRegisterDto] = useState<RegisterDtoType>({
     email: '',
     password: '',
     firstName: '',
     lastName: '',
   });
-  const { navigate } = useNavigation<AuthNavigationType>();
+  const [code, setCode] = useState('');
+
+  useEffect(() => {
+    setCode(generateSecurityCode);
+  }, []);
 
   return (
     <KContainer isScrollable={false} backgroundImage={images.authBackground}>
@@ -92,7 +98,6 @@ export const RegisterScreen = () => {
             } else if (!isPasswordValid) {
               console.log(strings.inputWarnings.invalidPassword);
             } else {
-              const code = generateSecurityCode;
               sendEmail({ email: registerDto.email, code }).then(() => {
                 navigate('ConfirmMailScreen', {
                   registerDto,
@@ -101,6 +106,17 @@ export const RegisterScreen = () => {
               });
             }
           }}
+          titleStyle={{
+            color: colors.white80,
+          }}
+          disabled={
+            !(
+              verifyEmail(registerDto.email) &&
+              verifyPassword(registerDto.password) &&
+              registerDto.lastName.length > 0 &&
+              registerDto.firstName.length > 0
+            )
+          }
         />
         <KSpacer h={sizes.s20} />
         <View row gap={4}>
@@ -109,7 +125,7 @@ export const RegisterScreen = () => {
           </Text>
           <TouchableOpacity onPress={() => navigate('LoginScreen')}>
             <Text bodyL tulipTree80 semiBold>
-              {strings.auth.register.title}
+              {strings.auth.login.title}
             </Text>
           </TouchableOpacity>
         </View>

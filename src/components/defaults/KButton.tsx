@@ -5,21 +5,24 @@ import { KText } from './KText';
 interface KButtonProps extends ViewStyleInterface {
   title: string;
   onPress: () => void;
+  disabled?: boolean;
   titleStyle?: TextStyle;
 }
 export const KButton = ({ ...props }: KButtonProps) => (
   <TouchableOpacity
     style={[
       {
-        backgroundColor: colors.tulipTree,
+        backgroundColor: props.disabled ? colors.nevada : colors.tulipTree,
         paddingHorizontal: sizes.s60,
         paddingVertical: sizes.s15,
         borderRadius: sizes.s90,
+        alignItems: 'center',
       },
       ...handleViewStyle(props),
     ]}
     {...props}
-    onPress={props.onPress}>
+    onPress={props.onPress}
+    disabled={props.disabled}>
     <KText bold bodyXL biscay style={props.titleStyle}>
       {props.title}
     </KText>

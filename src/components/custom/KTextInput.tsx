@@ -2,7 +2,7 @@ import { View, Text } from '@defaults';
 import { TextInput, useWindowDimensions } from 'react-native';
 import { useState } from 'react';
 import { colors, fonts, sizes } from '@constants';
-import { KSpacer } from '@components';
+import { KSpacer } from './KSpacer';
 
 type KTextInputProps = {
   placeholder: string;
