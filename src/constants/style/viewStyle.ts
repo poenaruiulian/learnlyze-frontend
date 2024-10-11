@@ -20,6 +20,10 @@ export interface ViewStyleInterface {
   marginB?: number;
   marginL?: number;
   marginR?: number;
+  height?: number;
+  width?: number;
+  row?: boolean;
+  gap?: number;
 }
 
 export const handleViewStyle = (
@@ -44,4 +48,8 @@ export const handleViewStyle = (
   props.marginB ? { marginBottom: props.marginB } : undefined,
   props.marginL ? { marginLeft: props.marginL } : undefined,
   props.marginR ? { marginRight: props.marginR } : undefined,
+  props.width ? { width: props.width } : undefined,
+  props.height ? { height: props.height } : undefined,
+  props.row && { flexDirection: 'row' },
+  props.gap ? { gap: props.gap } : undefined,
 ];

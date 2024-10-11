@@ -26,8 +26,6 @@ export const sendEmail = async ({
     template_params: templateParams,
   };
 
-  console.log(data);
-
   await fetch(routes.emailJs, {
     method: methods.POST,
     headers: headers.default,
