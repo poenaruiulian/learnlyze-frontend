@@ -45,7 +45,7 @@ export const LoginScreen = () => {
           {strings.auth.description}
         </Text>
       </View>
-      <View flex centerH bottomV bottom={sizes.s40}>
+      <View flex centerH bottomV>
         <Text headingL bold tulipTree>
           {strings.auth.login.title}
         </Text>
@@ -89,7 +89,7 @@ export const LoginScreen = () => {
           </Text>
           <TouchableOpacity onPress={() => navigate('RegisterScreen')}>
             <Text bodyL tulipTree80 semiBold>
-              {strings.auth.register.title}
+              {strings.auth.login.title}
             </Text>
           </TouchableOpacity>
         </View>

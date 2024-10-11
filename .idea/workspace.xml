@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/defaults/KButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/KButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/data/strings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/strings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/helpers/handleEmailJS.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/helpers/handleEmailJS.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/style/viewStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/viewStyle.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/LoginScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/LoginScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/RegisterScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/RegisterScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +43,7 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "15-implement-the-login-screen",
+    "git-widget-placeholder": "16-implement-the-register-screen",
     "last_opened_file_path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -83,7 +79,7 @@
       <workItem from="1728459840244" duration="23000" />
       <workItem from="1728459870135" duration="1827000" />
       <workItem from="1728570443929" duration="21000" />
-      <workItem from="1728660298878" duration="4563000" />
+      <workItem from="1728660298878" duration="5444000" />
     </task>
     <servers />
   </component>
