@@ -16,7 +16,7 @@ import { images } from '@images';
 import { AuthNavigationType } from '../../type';
 
 export const LoginScreen = () => {
-  const { login } = useRoot();
+  const { login, setIsNewUser } = useRoot();
   const [loginDto, setLoginDto] = useState<LoginDtoType>({
     email: '',
     password: '',
@@ -64,7 +64,7 @@ export const LoginScreen = () => {
         <KTextInput
           placeholder={strings.inputPlaceholder.password}
           value={loginDto.password}
-          onSetValue={text => setLoginDto({ ...loginDto, password: text })}
+          onSetValue={password => setLoginDto({ ...loginDto, password })}
           error={
             !verifyPassword(loginDto.password)
               ? strings.inputWarnings.invalidPassword
@@ -76,13 +76,14 @@ export const LoginScreen = () => {
         <Button
           title={strings.auth.login.title}
           onPress={() => {
-            login(loginDto);
+            setIsNewUser(false);
+            login(loginDto).then();
           }}
           titleStyle={{
             color: colors.white80,
           }}
           disabled={
-            !(verifyEmail(loginDto.email) && verifyEmail(loginDto.password))
+            !(loginDto.email.length > 0 && loginDto.password.length > 0)
           }
         />
         <KSpacer h={sizes.s20} />

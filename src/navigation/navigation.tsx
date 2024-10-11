@@ -38,20 +38,32 @@ const BottomTab = () => (
   </Tab.Navigator>
 );
 
-const AppStack = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Tab" component={BottomTab} />
-    <Stack.Screen
-      name="CompletedCourseScreen"
-      component={CompletedCourseScreen}
-    />
-    <Stack.Screen name="CourseDetailsScreen" component={CourseDetailsScreen} />
-    <Stack.Screen name="CourseScreen" component={CourseScreen} />
-    <Stack.Screen name="MoreCommentsScreen" component={MoreCommentsScreen} />
-    <Stack.Screen name="NewCourseScreen" component={NewCourseScreen} />
-    <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
-  </Stack.Navigator>
-);
+const AppStack = () => {
+  const { isNewUser } = useRoot();
+
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {isNewUser && (
+        <Stack.Screen name="NewCourseScreen" component={NewCourseScreen} />
+      )}
+      <Stack.Screen name="Tab" component={BottomTab} />
+      <Stack.Screen
+        name="CompletedCourseScreen"
+        component={CompletedCourseScreen}
+      />
+      <Stack.Screen
+        name="CourseDetailsScreen"
+        component={CourseDetailsScreen}
+      />
+      <Stack.Screen name="CourseScreen" component={CourseScreen} />
+      {!isNewUser && (
+        <Stack.Screen name="NewCourseScreen" component={NewCourseScreen} />
+      )}
+      <Stack.Screen name="MoreCommentsScreen" component={MoreCommentsScreen} />
+      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+    </Stack.Navigator>
+  );
+};
 
 export const Navigation = () => {
   const { isLogged } = useRoot();

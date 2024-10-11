@@ -4,4 +4,7 @@ export type RootInfo = {
 
   token: string | null;
   setToken: (token: string | null) => void;
+
+  isNewUser: boolean;
+  setIsNewUser: (value: boolean) => void;
 };

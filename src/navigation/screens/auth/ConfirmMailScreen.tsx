@@ -9,7 +9,7 @@ import { OtpInput } from 'react-native-otp-entry';
 import { ConfirmMailScreenRouteType } from '../../type';
 
 export const ConfirmMailScreen = () => {
-  const { register } = useRoot();
+  const { register, setIsNewUser } = useRoot();
   const { width } = useWindowDimensions();
   const { params } = useRoute<ConfirmMailScreenRouteType>();
 
@@ -77,7 +77,7 @@ export const ConfirmMailScreen = () => {
             title="Register"
             onPress={() => {
               if (inputCode === params.code) {
-                register(params.registerDto);
+                register(params.registerDto).then(() => setIsNewUser(true));
               } else {
                 setShouldShowError(true);
               }
