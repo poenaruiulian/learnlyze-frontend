@@ -25,11 +25,14 @@ export const strings = {
     },
     register: {
       title: 'Register',
+      redirect: 'Already have an account?',
     },
   },
   inputPlaceholder: {
     email: 'Email',
     password: 'Password',
+    lastName: 'Last name',
+    firstName: 'First name',
   },
   inputWarnings: {
     invalidEmail: "The email doesn't look right.",
