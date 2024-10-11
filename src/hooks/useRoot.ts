@@ -8,19 +8,12 @@ import {
   routes,
 } from '@constants';
 import { useStore } from '@store';
-import { CryptoDigestAlgorithm, digestStringAsync } from 'expo-crypto';
 
 export const useRoot = () => {
-  const { toggleIsLogged, setToken, token, isLogged } = useStore(
-    useShallow((rootInfo: RootInfo) => rootInfo)
-  );
+  const { toggleIsLogged, setToken, token, isLogged, setIsNewUser, isNewUser } =
+    useStore(useShallow((rootInfo: RootInfo) => rootInfo));
 
   const login = async (loginDto: LoginDtoType): Promise<string | null> => {
-    loginDto.password = await digestStringAsync(
-      CryptoDigestAlgorithm.SHA256,
-      loginDto.password
-    );
-
     const response = await fetch(routes.auth.login, {
       method: methods.POST,
       headers: headers.default,
@@ -46,11 +39,6 @@ export const useRoot = () => {
   const register = async (
     registerDto: RegisterDtoType
   ): Promise<string | null> => {
-    registerDto.password = await digestStringAsync(
-      CryptoDigestAlgorithm.SHA256,
-      registerDto.password
-    );
-
     const response = await fetch(routes.auth.register, {
       method: methods.POST,
       headers: headers.default,
@@ -76,11 +64,14 @@ export const useRoot = () => {
   const logout = () => {
     setToken(null);
     toggleIsLogged();
+    setIsNewUser(true);
   };
 
   return {
     isLogged,
     token,
+    isNewUser,
+    setIsNewUser,
     login,
     register,
     logout,

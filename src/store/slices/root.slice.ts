@@ -7,4 +7,6 @@ export const createRootSlice: StateCreator<RootInfo> = set => ({
     set((state: RootInfo) => ({ isLogged: !state.isLogged })),
   token: null,
   setToken: token => set(() => ({ token })),
+  isNewUser: true,
+  setIsNewUser: value => set(() => ({ isNewUser: value })),
 });
