@@ -81,6 +81,9 @@ export const LoginScreen = () => {
           titleStyle={{
             color: colors.white80,
           }}
+          disabled={
+            !(verifyEmail(loginDto.email) && verifyEmail(loginDto.password))
+          }
         />
         <KSpacer h={sizes.s20} />
         <View row gap={4}>
@@ -89,7 +92,7 @@ export const LoginScreen = () => {
           </Text>
           <TouchableOpacity onPress={() => navigate('RegisterScreen')}>
             <Text bodyL tulipTree80 semiBold>
-              {strings.auth.login.title}
+              {strings.auth.register.title}
             </Text>
           </TouchableOpacity>
         </View>

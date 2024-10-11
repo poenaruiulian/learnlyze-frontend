@@ -27,6 +27,11 @@ export const strings = {
       title: 'Register',
       redirect: 'Already have an account?',
     },
+    confirmMail: {
+      title: 'Check your email',
+      description:
+        'Confirm your email by writing the code you received. Don’t worry, this step is required just on creating the account ',
+    },
   },
   inputPlaceholder: {
     email: 'Email',
