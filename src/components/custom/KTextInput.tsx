@@ -10,6 +10,7 @@ type KTextInputProps = {
   onSetValue: (newValue: string) => void;
   error?: string;
   isPassword?: boolean;
+  autoCapitalize?: boolean;
 };
 
 export const KTextInput = ({ ...props }: KTextInputProps) => {
@@ -37,7 +38,7 @@ export const KTextInput = ({ ...props }: KTextInputProps) => {
           props.onSetValue(text);
           setShouldShowError(false);
         }}
-        autoCapitalize="none"
+        autoCapitalize={props.autoCapitalize ? 'words' : 'none'}
         autoCorrect={false}
         onSubmitEditing={() => setShouldShowError(true)}
         onBlur={() => setShouldShowError(true)}

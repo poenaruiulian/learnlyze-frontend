@@ -1,5 +1,5 @@
 import { Button, Text, View } from '@defaults';
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   colors,
   generateSecurityCode,
@@ -10,7 +10,7 @@ import {
   verifyEmail,
   verifyPassword,
 } from '@constants';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { KContainer, KSpacer, KTextInput } from '@components';
 import { images } from '@images';
 import { TouchableOpacity } from 'react-native';
@@ -24,11 +24,14 @@ export const RegisterScreen = () => {
     firstName: '',
     lastName: '',
   });
+
   const [code, setCode] = useState('');
 
-  useEffect(() => {
-    setCode(generateSecurityCode);
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      setCode(generateSecurityCode());
+    }, [])
+  );
 
   return (
     <KContainer isScrollable={false} backgroundImage={images.authBackground}>
@@ -61,6 +64,11 @@ export const RegisterScreen = () => {
           value={registerDto.email}
           placeholder={strings.inputPlaceholder.email}
           onSetValue={text => setRegisterDto({ ...registerDto, email: text })}
+          error={
+            !verifyEmail(registerDto.email)
+              ? strings.inputWarnings.invalidEmail
+              : undefined
+          }
         />
         <KSpacer h={5} />
         <KTextInput
@@ -69,6 +77,7 @@ export const RegisterScreen = () => {
           onSetValue={text =>
             setRegisterDto({ ...registerDto, lastName: text })
           }
+          autoCapitalize
         />
         <KSpacer h={5} />
         <KTextInput
@@ -77,6 +86,7 @@ export const RegisterScreen = () => {
           onSetValue={text =>
             setRegisterDto({ ...registerDto, firstName: text })
           }
+          autoCapitalize
         />
         <KSpacer h={5} />
         <KTextInput
@@ -85,18 +95,23 @@ export const RegisterScreen = () => {
           onSetValue={text =>
             setRegisterDto({ ...registerDto, password: text })
           }
+          error={
+            !verifyPassword(registerDto.password)
+              ? strings.inputWarnings.invalidPassword
+              : undefined
+          }
           isPassword
         />
         <KSpacer h={sizes.s20} />
         <Button
-          title={strings.auth.register.title}
+          title={strings.auth.buttonTitle}
           onPress={() => {
             const isEmailValid = verifyEmail(registerDto.email);
             const isPasswordValid = verifyPassword(registerDto.password);
             if (!isEmailValid) {
-              console.log(strings.inputWarnings.invalidEmail);
+              console.log('ERROR:', strings.inputWarnings.invalidEmail);
             } else if (!isPasswordValid) {
-              console.log(strings.inputWarnings.invalidPassword);
+              console.log('ERROR:', strings.inputWarnings.invalidPassword);
             } else {
               sendEmail({ email: registerDto.email, code }).then(() => {
                 navigate('ConfirmMailScreen', {

@@ -1,14 +1,7 @@
 import { Button, Text, View } from '@defaults';
 import { useRoot } from '@hooks';
 import { useState } from 'react';
-import {
-  colors,
-  LoginDtoType,
-  sizes,
-  strings,
-  verifyEmail,
-  verifyPassword,
-} from '@constants';
+import { colors, LoginDtoType, sizes, strings } from '@constants';
 import { useNavigation } from '@react-navigation/native';
 import { KContainer, KSpacer, KTextInput } from '@components';
 import { TouchableOpacity } from 'react-native';
@@ -54,27 +47,17 @@ export const LoginScreen = () => {
           placeholder={strings.inputPlaceholder.email}
           value={loginDto.email}
           onSetValue={email => setLoginDto({ ...loginDto, email })}
-          error={
-            !verifyEmail(loginDto.email)
-              ? strings.inputWarnings.invalidEmail
-              : undefined
-          }
         />
         <KSpacer />
         <KTextInput
           placeholder={strings.inputPlaceholder.password}
           value={loginDto.password}
           onSetValue={password => setLoginDto({ ...loginDto, password })}
-          error={
-            !verifyPassword(loginDto.password)
-              ? strings.inputWarnings.invalidPassword
-              : undefined
-          }
           isPassword
         />
         <KSpacer h={sizes.s20} />
         <Button
-          title={strings.auth.login.title}
+          title={strings.auth.buttonTitle}
           onPress={() => {
             setIsNewUser(false);
             login(loginDto).then();

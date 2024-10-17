@@ -19,6 +19,7 @@ export const strings = {
     title: 'First, you’ll need an account',
     description:
       'Having a place dedicated for you and your courses without fear of losing your progress',
+    buttonTitle: 'Submit',
     login: {
       title: 'Login',
       redirect: 'Don’t have an account?',
