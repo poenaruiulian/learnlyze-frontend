@@ -5,7 +5,8 @@ const templateId = process.env.EXPO_PUBLIC_EMAIL_TEMPLATE_ID;
 const userId = process.env.EXPO_PUBLIC_EMAIL_PUBLIC_KEY;
 
 const getRandomNumber = () => Math.floor(Math.random() * (9 - 1) + 1);
-export const generateSecurityCode = `${getRandomNumber()}${getRandomNumber()}${getRandomNumber()}${getRandomNumber()}${getRandomNumber()}${getRandomNumber()}`;
+export const generateSecurityCode = () =>
+  `${getRandomNumber()}${getRandomNumber()}${getRandomNumber()}${getRandomNumber()}${getRandomNumber()}${getRandomNumber()}`;
 
 export const sendEmail = async ({
   email,
