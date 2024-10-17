@@ -13,7 +13,7 @@ export const KButton = ({ ...props }: KButtonProps) => (
     style={[
       {
         backgroundColor: props.disabled ? colors.nevada : colors.tulipTree,
-        paddingHorizontal: sizes.s60,
+        paddingHorizontal: sizes.s50,
         paddingVertical: sizes.s15,
         borderRadius: sizes.s90,
         alignItems: 'center',

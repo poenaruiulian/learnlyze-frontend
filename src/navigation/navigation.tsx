@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { useRoot } from '@hooks';
+import { ErrorHandler } from '@wrappers';
 import {
   CompletedCourseScreen,
   ConfirmMailScreen,
@@ -70,7 +71,7 @@ export const Navigation = () => {
 
   return (
     <NavigationContainer>
-      {isLogged ? <AppStack /> : <AuthStack />}
+      <ErrorHandler>{isLogged ? <AppStack /> : <AuthStack />}</ErrorHandler>
     </NavigationContainer>
   );
 };

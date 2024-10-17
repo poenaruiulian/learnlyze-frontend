@@ -60,7 +60,7 @@ export const LoginScreen = () => {
           title={strings.auth.buttonTitle}
           onPress={() => {
             setIsNewUser(false);
-            login(loginDto).then();
+            login(loginDto);
           }}
           titleStyle={{
             color: colors.white80,
