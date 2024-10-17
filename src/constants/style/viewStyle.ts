@@ -24,6 +24,7 @@ export interface ViewStyleInterface {
   width?: number;
   row?: boolean;
   gap?: number;
+  borderRadius?: number;
 }
 
 export const handleViewStyle = (
@@ -52,4 +53,5 @@ export const handleViewStyle = (
   props.height ? { height: props.height } : undefined,
   props.row && { flexDirection: 'row' },
   props.gap ? { gap: props.gap } : undefined,
+  props.borderRadius ? { borderRadius: props.borderRadius } : undefined,
 ];

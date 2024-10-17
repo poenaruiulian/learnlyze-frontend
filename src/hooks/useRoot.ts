@@ -10,8 +10,18 @@ import {
 import { useStore } from '@store';
 
 export const useRoot = () => {
-  const { toggleIsLogged, setToken, token, isLogged, setIsNewUser, isNewUser } =
-    useStore(useShallow((rootInfo: RootInfo) => rootInfo));
+  const {
+    toggleIsLogged,
+    setToken,
+    token,
+    isLogged,
+    setIsNewUser,
+    isNewUser,
+    hasError,
+    setHasError,
+    error,
+    setError,
+  } = useStore(useShallow((rootInfo: RootInfo) => rootInfo));
 
   const login = async (loginDto: LoginDtoType): Promise<string | null> => {
     const response = await fetch(routes.auth.login, {
@@ -22,7 +32,11 @@ export const useRoot = () => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || 'Login failed');
+
+      setError(errorData);
+      setHasError(true);
+
+      return null;
     }
 
     const data = await response.json();
@@ -47,7 +61,11 @@ export const useRoot = () => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || 'Login failed');
+
+      setError(errorData);
+      setHasError(true);
+
+      return null;
     }
 
     const data = await response.json();
@@ -70,8 +88,15 @@ export const useRoot = () => {
   return {
     isLogged,
     token,
+
     isNewUser,
     setIsNewUser,
+
+    hasError,
+    setHasError,
+    error,
+    setError,
+
     login,
     register,
     logout,
