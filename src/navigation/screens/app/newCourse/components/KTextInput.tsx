@@ -45,6 +45,7 @@ export const KTextInput = ({ ...props }: KTextInput) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}
+        disabled={newCourseDescription.length === 0}
         onPress={() => props.onGenerateCourse(newCourseDescription)}>
         <Icon
           icon={icons.arrowUp}

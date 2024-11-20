@@ -2,11 +2,16 @@ import { Text, View } from '@defaults';
 import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
 import { sizes, strings } from '@constants';
+import { useRoot } from '@hooks';
 import { KTextInput } from './components';
 
 export const NewCourseScreen = () => {
+  const { isNewUser } = useRoot();
+
   const handleNewCourseGeneration = (newCourseDescription: string) => {
     console.log(newCourseDescription);
+
+    // TODO Set new user boolean to false after generating the first course
   };
 
   return (
@@ -24,7 +29,9 @@ export const NewCourseScreen = () => {
         semiBold
         center
         style={{ paddingHorizontal: sizes.s50 }}>
-        {strings.addNewCourse.description}
+        {isNewUser
+          ? strings.addNewCourse.firstCourseDescription
+          : strings.addNewCourse.generalDescription}
       </Text>
       <View flex bottomV>
         <KTextInput onGenerateCourse={handleNewCourseGeneration} />

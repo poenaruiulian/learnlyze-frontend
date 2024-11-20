@@ -1,2 +1,2 @@
 export * from './strings';
-export * from './iconDefinitions';
+export * from './icons';
