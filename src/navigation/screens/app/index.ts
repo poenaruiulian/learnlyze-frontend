@@ -1,6 +1,6 @@
 export * from './tabs';
+export * from './newCourse';
 
-export * from './NewCourseScreen';
 export * from './CourseScreen';
 export * from './CompletedCourseScreen';
 
