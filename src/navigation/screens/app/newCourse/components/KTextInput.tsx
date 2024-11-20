@@ -1,7 +1,7 @@
-import { View } from '@defaults';
+import { Icon, View } from '@defaults';
 import { TextInput, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
-import { colors, fonts, sizes } from '@constants';
+import { colors, fonts, icons, sizes } from '@constants';
 
 type KTextInput = {
   onGenerateCourse: (value: string) => void;
@@ -42,10 +42,20 @@ export const KTextInput = ({ ...props }: KTextInput) => {
           height: sizes.s48,
           width: sizes.s48,
           borderRadius: sizes.s90,
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-        onPress={() =>
-          props.onGenerateCourse(newCourseDescription)
-        } />
+        onPress={() => props.onGenerateCourse(newCourseDescription)}>
+        <Icon
+          icon={icons.arrowUp}
+          size={sizes.s30}
+          color={
+            newCourseDescription.length === 0
+              ? colors.tundora80
+              : colors.white50
+          }
+        />
+      </TouchableOpacity>
     </View>
   );
 };

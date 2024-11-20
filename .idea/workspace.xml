@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/authBackground.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/backgrounds/authBackground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/generalBackground.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/backgrounds/generalBackground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/onboardingFirstSlideBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/onboardingSecondSlideBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/onboardingThirdSlideBg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/data/strings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/strings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/style/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/colors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/style/viewStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/viewStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/NewCourseScreen.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/defaults/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/data/iconDefinitions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/iconDefinitions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/data/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KTextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KTextInput.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +92,7 @@
       <workItem from="1729247217288" duration="1218000" />
       <workItem from="1729593584389" duration="101000" />
       <workItem from="1731000539087" duration="1340000" />
-      <workItem from="1732110444831" duration="3905000" />
+      <workItem from="1732110444831" duration="4714000" />
     </task>
     <servers />
   </component>
