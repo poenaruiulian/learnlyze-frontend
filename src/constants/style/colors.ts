@@ -44,6 +44,8 @@ export const colors = {
 
   black: '#000000',
   black25: '#00000040',
+
+  transparent: '#00000000',
 };
 
 export interface ColorInterface {
@@ -89,6 +91,8 @@ export interface ColorInterface {
 
   black?: boolean;
   black25?: boolean;
+
+  transparent?: boolean;
 }
 
 export const handleColor = (props: ColorInterface) => [
@@ -134,4 +138,6 @@ export const handleColor = (props: ColorInterface) => [
 
   props.black && { color: colors.black },
   props.black25 && { color: colors.black25 },
+
+  props.transparent && { color: colors.transparent },
 ];

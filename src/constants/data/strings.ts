@@ -48,4 +48,11 @@ export const strings = {
   errorModal: {
     closeButton: 'Close',
   },
+  addNewCourse: {
+    title: 'Ready to learn something new?',
+    firstCourseDescription:
+      'Start learning your first skill by describing what you would like to learn',
+    generalDescription:
+      'Start learning a new skill by describing what you would like to learn',
+  },
 };

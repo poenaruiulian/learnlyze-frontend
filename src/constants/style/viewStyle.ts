@@ -35,7 +35,6 @@ export const handleViewStyle = (
   props.centerH && { alignItems: 'center' },
   props.centerV && { justifyContent: 'center' },
   props.leftH && { alignItems: 'flex-start' },
-  props.rightH && { alignItems: 'flex-end' },
   props.topV && { justifyContent: 'flex-start' },
   props.bottomV && { justifyContent: 'flex-end' },
   props.top ? { paddingTop: props.top } : undefined,

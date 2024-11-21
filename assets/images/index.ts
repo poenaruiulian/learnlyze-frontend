@@ -1,7 +1,8 @@
 export const images = {
-  generalBackground: require('./generalBackground.png'),
-  authBackground: require('./authBackground.png'),
-  onboardingFirstSlideBg: require('./onboardingFirstSlideBg.png'),
-  onboardingSecondSlideBg: require('./onboardingSecondSlideBg.png'),
-  onboardingThirdSlideBg: require('./onboardingThirdSlideBg.png'),
+  generalBackground: require('./backgrounds/generalBackground.png'),
+  authBackground: require('./backgrounds/authBackground.png'),
+  newCourseBackground: require('./backgrounds/newCourseBackground.png'),
+  onboardingFirstSlideBg: require('./backgrounds/onboarding/onboardingFirstSlideBg.png'),
+  onboardingSecondSlideBg: require('./backgrounds/onboarding/onboardingSecondSlideBg.png'),
+  onboardingThirdSlideBg: require('./backgrounds/onboarding/onboardingThirdSlideBg.png'),
 };
