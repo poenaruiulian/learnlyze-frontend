@@ -1,5 +1,5 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RegisterDtoType } from '@constants';
+import { CourseModel, RegisterDtoType } from '@constants';
 import { RouteProp } from '@react-navigation/native';
 
 export type AuthStackParamList = {
@@ -22,7 +22,9 @@ export type AppStackParamList = {
   Tab: TabParamList;
   CompletedCourseScreen: undefined;
   CourseDetailsScreen: undefined;
-  CourseScreen: undefined;
+  CourseScreen: {
+    course: CourseModel;
+  };
   MoreCommentsScreen: undefined;
   NewCourseScreen: undefined;
   SettingsScreen: undefined;
