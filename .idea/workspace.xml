@@ -6,16 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/data/strings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/strings.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/ConfirmMailScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/ConfirmMailScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/LoginScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/LoginScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/RegisterScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/RegisterScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +90,7 @@
       <workItem from="1731000539087" duration="1340000" />
       <workItem from="1732110444831" duration="5723000" />
       <workItem from="1732207104972" duration="2189000" />
-      <workItem from="1732361596582" duration="14915000" />
+      <workItem from="1732361596582" duration="15329000" />
     </task>
     <servers />
   </component>

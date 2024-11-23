@@ -51,7 +51,7 @@ export const KStep = ({ ...props }: KStepType) => {
     <>
       <LinearGradient
         style={{
-          width: width - 32,
+          width: width - sizes.s32,
           minHeight: sizes.s70,
           borderRadius: sizes.s10,
         }}
