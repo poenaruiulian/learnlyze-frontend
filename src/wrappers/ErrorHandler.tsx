@@ -1,10 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 import { useRoot } from '@hooks';
-import Modal from 'react-native-modal';
-import { Button, Text, View } from '@defaults';
-import { colors, ErrorCodes, fonts, sizes, strings } from '@constants';
-import { KSpacer } from '@components';
 import { useNavigation } from '@react-navigation/native';
+import { ErrorCodes } from '@constants';
+import { KModal } from '@components';
 import { AuthNavigationType } from '../navigation/type';
 
 export const ErrorHandler = ({ children }: { children: React.ReactNode }) => {
@@ -46,43 +44,12 @@ export const ErrorHandler = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {children}
-      <Modal
-        isVisible={isModalVisible}
-        onBackdropPress={closeModal}
-        style={{ justifyContent: 'flex-end', bottom: sizes.s20 }}>
-        <View
-          style={{
-            backgroundColor: colors.eastBay,
-          }}
-          bottomV
-          centerH
-          padding={sizes.s20}
-          borderRadius={sizes.s10}>
-          <KSpacer />
-          <Text
-            heading
-            center
-            semiBold
-            white
-            style={{ paddingHorizontal: sizes.s10 }}>
-            {error?.message}
-          </Text>
-          <KSpacer />
-          <Text bodyM center white80 style={{ paddingHorizontal: sizes.s20 }}>
-            {error?.description}
-          </Text>
-          <KSpacer h={sizes.s30} />
-          <Button
-            title={strings.errorModal.closeButton}
-            onPress={closeModal}
-            titleStyle={{
-              ...fonts.semiBold,
-              ...fonts.bodyL,
-              color: colors.eastBay,
-            }}
-          />
-        </View>
-      </Modal>
+      <KModal
+        message={error?.message}
+        description={error?.description}
+        closeModal={closeModal}
+        isModalVisible={isModalVisible}
+      />
     </>
   );
 };

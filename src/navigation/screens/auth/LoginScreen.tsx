@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { KContainer, KSpacer, KTextInput } from '@components';
 import { TouchableOpacity } from 'react-native';
 import { images } from '@images';
+import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 import { AuthNavigationType } from '../../type';
 
 export const LoginScreen = () => {
@@ -59,8 +60,9 @@ export const LoginScreen = () => {
         <Button
           title={strings.auth.buttonTitle}
           onPress={() => {
-            setIsNewUser(false);
-            login(loginDto);
+            impactAsync(ImpactFeedbackStyle.Medium).then(() => {
+              login(loginDto).then(() => setIsNewUser(false));
+            });
           }}
           titleStyle={{
             color: colors.white80,

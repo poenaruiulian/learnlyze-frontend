@@ -15,6 +15,8 @@ export interface TextProps
     TextStyleInterface {
   children: string | null | undefined;
   style?: TextStyle;
+  numberOfLines?: number;
+  ellipsizeMode?: 'middle' | 'head' | 'tail' | 'clip';
 }
 export const KText = ({ ...props }: TextProps) => (
   <Text
@@ -23,7 +25,9 @@ export const KText = ({ ...props }: TextProps) => (
       ...handleFonts(props),
       ...handleTextStyle(props),
       props.style,
-    ]}>
+    ]}
+    numberOfLines={props.numberOfLines ?? 0}
+    ellipsizeMode={props.ellipsizeMode}>
     {props.children}
   </Text>
 );

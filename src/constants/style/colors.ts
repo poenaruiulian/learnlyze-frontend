@@ -16,6 +16,8 @@ export const colors = {
   persianGreen60: '#009EA299',
   persianGreen40: '#009EA266',
 
+  fruitSalad: '#579B5D',
+
   biscay: '#1A2C5B',
   biscay80: '#1A2C5BCC',
   biscay60: '#1A2C5B99',

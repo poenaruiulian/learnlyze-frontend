@@ -14,6 +14,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { KContainer, KSpacer, KTextInput } from '@components';
 import { images } from '@images';
 import { TouchableOpacity } from 'react-native';
+import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 import { AuthNavigationType } from '../../type';
 
 export const RegisterScreen = () => {
@@ -113,12 +114,14 @@ export const RegisterScreen = () => {
             } else if (!isPasswordValid) {
               console.log('ERROR:', strings.inputWarnings.invalidPassword);
             } else {
-              sendEmail({ email: registerDto.email, code }).then(() => {
-                navigate('ConfirmMailScreen', {
-                  registerDto,
-                  code,
-                });
-              });
+              impactAsync(ImpactFeedbackStyle.Medium).then(() =>
+                sendEmail({ email: registerDto.email, code }).then(() =>
+                  navigate('ConfirmMailScreen', {
+                    registerDto,
+                    code,
+                  })
+                )
+              );
             }
           }}
           titleStyle={{

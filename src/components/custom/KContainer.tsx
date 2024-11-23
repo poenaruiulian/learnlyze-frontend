@@ -6,7 +6,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { sizes } from '@constants';
+import { colors, sizes } from '@constants';
 import { ImageSource } from 'react-native-vector-icons/Icon';
 import { images } from '@images';
 import { View } from '@defaults';
@@ -15,21 +15,26 @@ type KContainerProps = {
   children: React.ReactNode;
   backgroundImage?: ImageSource;
   isScrollable?: boolean;
+  noBackground?: boolean;
 };
 
 export const KContainer = ({
   children,
   isScrollable = true,
   backgroundImage = images.generalBackground,
+  noBackground = false,
 }: KContainerProps) => {
   const { top, bottom } = useSafeAreaInsets();
 
   return (
     <ImageBackground
-      source={backgroundImage}
-      style={{
-        flex: 1,
-      }}
+      source={!noBackground ? backgroundImage : null}
+      style={[
+        {
+          flex: 1,
+        },
+        noBackground && { backgroundColor: colors.bunker },
+      ]}
       resizeMode="cover">
       <KeyboardAvoidingView
         style={{ flex: 1 }}

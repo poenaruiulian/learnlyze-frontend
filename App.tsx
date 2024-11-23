@@ -1,11 +1,13 @@
-import { WithApolloClient, WithExpoFonts } from '@wrappers';
+import { WithApolloClient, WithExpoFonts, WithGestureHandler } from '@wrappers';
 import { Navigation } from '@navigation';
 
 const App = () => (
   <WithApolloClient>
-    <WithExpoFonts>
-      <Navigation />
-    </WithExpoFonts>
+    <WithGestureHandler>
+      <WithExpoFonts>
+        <Navigation />
+      </WithExpoFonts>
+    </WithGestureHandler>
   </WithApolloClient>
 );
 
