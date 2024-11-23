@@ -1,7 +1,7 @@
 export * from './tabs';
 export * from './newCourse';
+export * from './course';
 
-export * from './CourseScreen';
 export * from './CompletedCourseScreen';
 
 export * from './CourseDetailsScreen';

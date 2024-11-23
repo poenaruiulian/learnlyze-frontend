@@ -7,6 +7,7 @@ import { KContainer, KSpacer, KTextInput } from '@components';
 import { TouchableOpacity } from 'react-native';
 import { images } from '@images';
 import { AuthNavigationType } from '../../type';
+import { KStep } from '../app/course/components';
 
 export const LoginScreen = () => {
   const { login, setIsNewUser } = useRoot();
@@ -18,6 +19,9 @@ export const LoginScreen = () => {
 
   return (
     <KContainer isScrollable={false} backgroundImage={images.authBackground}>
+      <View flex center>
+        <KStep title="Title" onLongPress={() => {}} />
+      </View>
       <View centerH>
         <KSpacer h={30} />
         <Text

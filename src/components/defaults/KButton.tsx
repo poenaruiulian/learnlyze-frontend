@@ -6,13 +6,16 @@ interface KButtonProps extends ViewStyleInterface {
   title: string;
   onPress: () => void;
   disabled?: boolean;
+  background?: string | null;
   titleStyle?: TextStyle;
 }
 export const KButton = ({ ...props }: KButtonProps) => (
   <TouchableOpacity
     style={[
       {
-        backgroundColor: props.disabled ? colors.nevada : colors.tulipTree,
+        backgroundColor: props.disabled
+          ? colors.nevada
+          : (props.background ?? colors.tulipTree),
         paddingHorizontal: sizes.s50,
         paddingVertical: sizes.s15,
         borderRadius: sizes.s90,
