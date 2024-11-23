@@ -94,7 +94,7 @@ export const KStep = ({ ...props }: KStepType) => {
                 key={title}
                 title={title}
                 onPress={() => {
-                  if (index) {
+                  if (index === 0) {
                     modalFunctions.handleStepCompletion();
                   } else {
                     modalFunctions.handleFeedbackGiving();
@@ -103,7 +103,7 @@ export const KStep = ({ ...props }: KStepType) => {
                 }}
                 borderRadius={sizes.s20}
                 width={width - sizes.s64}
-                background={index ? colors.fruitSalad : null}
+                background={index === 0 ? colors.fruitSalad : null}
                 titleStyle={{
                   ...fonts.bodyM,
                 }}
