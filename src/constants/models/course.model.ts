@@ -1,12 +1,14 @@
 export type CourseModel = {
-  details: {
-    id: number;
-    title: string;
-    description?: string;
-    tag?: string;
-    startedAt: string;
-    postedDate?: string;
-  };
+  id: number;
+  title: string;
+  description?: string;
+  tag?: string;
+  startedAt: string;
+  postedDate?: string;
+};
+
+export type FullCourseModel = {
+  details: CourseModel;
   steps: {
     details: {
       id: number;

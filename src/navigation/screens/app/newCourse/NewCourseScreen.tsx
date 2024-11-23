@@ -1,7 +1,7 @@
 import { Text, View } from '@defaults';
 import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
-import { CourseModel, sizes, strings } from '@constants';
+import { sizes, strings } from '@constants';
 import { useCourse, useRoot } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
 import { KTextInput } from './components';
@@ -13,15 +13,9 @@ export const NewCourseScreen = () => {
   const { navigate } = useNavigation<AppNavigationType>();
 
   const handleNewCourseGeneration = (description: string) => {
-    generateNewCourse({ variables: { description } }).then(({ data }) => {
+    generateNewCourse(description).then(fullCourse => {
       setIsNewUser(false);
-
-      const { generateCourse } = data;
-      const { details, steps } = generateCourse;
-
-      const course: CourseModel = { details, steps };
-
-      navigate('CourseScreen', { course });
+      navigate('CourseScreen', { fullCourse });
     });
   };
 

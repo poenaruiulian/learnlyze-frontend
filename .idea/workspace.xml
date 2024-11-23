@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/graphql/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/graphql/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/models/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/models/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/models/fullCourseModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/models/course.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useCourse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCourse.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/CourseScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/HomeScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +47,7 @@
     &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;35-implement-the-new-course-screen&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;34-implement-the-step-component&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/assets/images/backgrounds/onboarding&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -95,6 +95,7 @@
       <workItem from="1731000539087" duration="1340000" />
       <workItem from="1732110444831" duration="5723000" />
       <workItem from="1732207104972" duration="2189000" />
+      <workItem from="1732361596582" duration="2886000" />
     </task>
     <servers />
   </component>
