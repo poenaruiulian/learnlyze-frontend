@@ -4,6 +4,7 @@ import { images } from '@images';
 import { colors, strings } from '@constants';
 import { View } from '@defaults';
 import { useNavigation } from '@react-navigation/native';
+import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 import { KCarouselPageOnboardingScreen } from './components';
 import { AuthNavigationType } from '../../../type';
 
@@ -25,7 +26,11 @@ export const OnboardingScreen = () => {
     {
       title: strings.onboarding.thirdSlide.title,
       buttonTitle: strings.onboarding.thirdSlide.buttonTitle,
-      onPress: () => navigate('LoginScreen'),
+      onPress: () => {
+        impactAsync(ImpactFeedbackStyle.Medium).then(() =>
+          navigate('LoginScreen')
+        );
+      },
       image: images.onboardingThirdSlideBg,
     },
   ];

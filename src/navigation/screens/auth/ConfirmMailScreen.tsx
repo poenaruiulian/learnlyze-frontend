@@ -6,6 +6,12 @@ import { useRoot } from '@hooks';
 import { KContainer, KSpacer } from '@components';
 import { colors, sizes, strings } from '@constants';
 import { OtpInput } from 'react-native-otp-entry';
+import {
+  impactAsync,
+  ImpactFeedbackStyle,
+  notificationAsync,
+  NotificationFeedbackType,
+} from 'expo-haptics';
 import { ConfirmMailScreenRouteType } from '../../type';
 
 export const ConfirmMailScreen = () => {
@@ -77,9 +83,13 @@ export const ConfirmMailScreen = () => {
             title="Register"
             onPress={() => {
               if (inputCode === params.code) {
-                register(params.registerDto).then(() => setIsNewUser(true));
+                impactAsync(ImpactFeedbackStyle.Medium).then(() =>
+                  register(params.registerDto).then(() => setIsNewUser(true))
+                );
               } else {
-                setShouldShowError(true);
+                notificationAsync(NotificationFeedbackType.Error).then(() =>
+                  setShouldShowError(true)
+                );
               }
             }}
             titleStyle={{ color: colors.white80 }}

@@ -1,12 +1,14 @@
 import React, { useReducer } from 'react';
 import { Button, Text, View } from '@defaults';
 import { TouchableOpacity, useWindowDimensions } from 'react-native';
-import { colors, fonts, sizes } from '@constants';
+import { colors, fonts, sizes, strings } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { KModal } from '@components';
+import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 
 type KStepType = {
   title: string;
+  resources: number;
 };
 
 export const KStep = ({ ...props }: KStepType) => {
@@ -15,11 +17,26 @@ export const KStep = ({ ...props }: KStepType) => {
   const [isModalVisible, toggleIsModalVisible] = useReducer(s => !s, false);
 
   const onLongPress = () => {
-    toggleIsModalVisible();
+    impactAsync(ImpactFeedbackStyle.Heavy).then(toggleIsModalVisible);
   };
 
-  const closeModal = () => {
-    toggleIsModalVisible();
+  const onPress = () => {
+    console.log('Pressed');
+    impactAsync(ImpactFeedbackStyle.Light);
+  };
+
+  const modalFunctions = {
+    closeModal: () => {
+      toggleIsModalVisible();
+    },
+    handleStepCompletion: () => {
+      console.log("You've completed the step");
+      impactAsync(ImpactFeedbackStyle.Soft);
+    },
+    handleFeedbackGiving: () => {
+      console.log('You should give feedback');
+      impactAsync(ImpactFeedbackStyle.Soft);
+    },
   };
 
   const transform = {
@@ -47,7 +64,7 @@ export const KStep = ({ ...props }: KStepType) => {
             gap: sizes.s10,
           }}
           onLongPress={onLongPress}
-          onPress={() => alert('Press')}>
+          onPress={onPress}>
           <View
             width={sizes.s80}
             borderRadius={sizes.s90}
@@ -62,33 +79,37 @@ export const KStep = ({ ...props }: KStepType) => {
               {props.title}
             </Text>
             <Text body semiBold white50>
-              4 resources
+              {`${props.resources} ${strings.course.step.resources}`}
             </Text>
           </View>
         </TouchableOpacity>
       </LinearGradient>
-      <KModal closeModal={closeModal} isModalVisible={isModalVisible}>
+      <KModal
+        closeModal={modalFunctions.closeModal}
+        isModalVisible={isModalVisible}>
         <View gap={sizes.s10}>
-          {['Complete step', 'Give feedback'].map((title, index) => (
-            <Button
-              key={title}
-              title={title}
-              onPress={() => {
-                if (index) {
-                  console.log("You've completed the step");
-                } else {
-                  console.log('You should give feedback');
-                }
-                closeModal();
-              }}
-              borderRadius={sizes.s20}
-              width={width - sizes.s64}
-              background={index ? colors.fruitSalad : null}
-              titleStyle={{
-                ...fonts.bodyM,
-              }}
-            />
-          ))}
+          {[strings.course.step.complete, strings.course.step.feedback].map(
+            (title, index) => (
+              <Button
+                key={title}
+                title={title}
+                onPress={() => {
+                  if (index) {
+                    modalFunctions.handleStepCompletion();
+                  } else {
+                    modalFunctions.handleFeedbackGiving();
+                  }
+                  modalFunctions.closeModal();
+                }}
+                borderRadius={sizes.s20}
+                width={width - sizes.s64}
+                background={index ? colors.fruitSalad : null}
+                titleStyle={{
+                  ...fonts.bodyM,
+                }}
+              />
+            )
+          )}
         </View>
       </KModal>
     </>

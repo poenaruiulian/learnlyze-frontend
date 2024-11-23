@@ -16,11 +16,11 @@ export const CourseScreen = () => {
           {fullCourse.details?.title}
         </Text>
         <KSpacer />
-        <KStep title="Variables and their type" />
+        <KStep resources={4} title="Variables and their type" />
         <KSpacer />
-        <KStep title="Basic operations and how to use them" />
+        <KStep resources={4} title="Basic operations and how to use them" />
         <KSpacer />
-        <KStep title="Loops and how to not use them" />
+        <KStep resources={4} title="Loops and how to not use them" />
       </View>
     </KContainer>
   );

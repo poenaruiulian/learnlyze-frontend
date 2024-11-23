@@ -42,7 +42,7 @@ export const KModal = ({ ...props }: KModalProps) => (
           </Text>
           <KSpacer h={sizes.s30} />
           <Button
-            title={strings.errorModal.closeButton}
+            title={strings.modal.closeButton}
             onPress={props.closeModal}
             titleStyle={{
               ...fonts.semiBold,

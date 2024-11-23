@@ -45,7 +45,7 @@ export const strings = {
     invalidPassword:
       'Your password must contain at least 8 characters, one uppercase letter, one number and one of these symbols (!@#$%^&*)',
   },
-  errorModal: {
+  modal: {
     closeButton: 'Close',
   },
   addNewCourse: {
@@ -54,5 +54,12 @@ export const strings = {
       'Start learning your first skill by describing what you would like to learn',
     generalDescription:
       'Start learning a new skill by describing what you would like to learn',
+  },
+  course: {
+    step: {
+      resources: 'resources',
+      complete: 'Complete step',
+      feedback: 'Give feedback',
+    },
   },
 };
