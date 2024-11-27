@@ -20,8 +20,8 @@ export interface ViewStyleInterface {
   marginB?: number;
   marginL?: number;
   marginR?: number;
-  height?: number;
-  width?: number;
+  height?: number | false | undefined;
+  width?: number | false | undefined;
   row?: boolean;
   gap?: number;
   borderRadius?: number;
