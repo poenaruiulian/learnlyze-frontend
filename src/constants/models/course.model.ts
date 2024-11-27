@@ -7,20 +7,26 @@ export type CourseModel = {
   postedDate?: string;
 };
 
+export type StepModel = {
+  id: number;
+  parentStep?: number;
+  priority: number;
+  title: string;
+  description: string;
+};
+
+export type ResourceModel = {
+  id: number;
+  title: string;
+  external: string;
+};
+
+export type FullStep = {
+  details: StepModel;
+  resources: ResourceModel[];
+};
+
 export type FullCourseModel = {
   details: CourseModel;
-  steps: {
-    details: {
-      id: number;
-      parentStep?: number;
-      priority: number;
-      title: string;
-      description: string;
-    };
-    resources: {
-      id: number;
-      title: string;
-      external: string;
-    }[];
-  }[];
+  steps: FullStep[];
 };

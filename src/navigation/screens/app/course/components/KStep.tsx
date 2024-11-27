@@ -9,6 +9,8 @@ import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 type KStepType = {
   title: string;
   resources: number;
+  onPress: () => void;
+  isFocused?: boolean;
 };
 
 export const KStep = ({ ...props }: KStepType) => {
@@ -20,10 +22,10 @@ export const KStep = ({ ...props }: KStepType) => {
     impactAsync(ImpactFeedbackStyle.Heavy).then(toggleIsModalVisible);
   };
 
-  const onPress = () => {
-    console.log('Pressed');
-    impactAsync(ImpactFeedbackStyle.Light);
-  };
+  const onPress = () =>
+    impactAsync(ImpactFeedbackStyle.Light).then(() => {
+      props.onPress();
+    });
 
   const modalFunctions = {
     closeModal: () => {
@@ -42,7 +44,7 @@ export const KStep = ({ ...props }: KStepType) => {
   const transform = {
     transform: [
       {
-        translateX: -sizes.s30,
+        translateX: -sizes.s50,
       },
     ],
   };
@@ -58,10 +60,10 @@ export const KStep = ({ ...props }: KStepType) => {
         colors={[colors.biscay80, colors.biscay]}>
         <TouchableOpacity
           style={{
-            flex: 1,
+            flexGrow: 1,
             alignItems: 'center',
             flexDirection: 'row',
-            gap: sizes.s10,
+            gap: sizes.s20,
           }}
           onLongPress={onLongPress}
           onPress={onPress}>
@@ -74,8 +76,12 @@ export const KStep = ({ ...props }: KStepType) => {
               ...transform,
             }}
           />
-          <View style={transform} marginV={sizes.s20} flex>
-            <Text bodyL semiBold white80>
+          <View style={[transform]} paddingV={sizes.s10} flex>
+            <Text
+              bodyL
+              semiBold
+              white80={!(props.isFocused ?? false)}
+              tulipTree={props.isFocused ?? false}>
               {props.title}
             </Text>
             <Text body semiBold white50>

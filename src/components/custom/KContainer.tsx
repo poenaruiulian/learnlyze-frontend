@@ -42,7 +42,7 @@ export const KContainer = ({
         {isScrollable && (
           <ScrollView
             style={{
-              flexGrow: 1,
+              flex: 1,
               paddingTop: Math.max(top + sizes.s20, sizes.s20),
             }}>
             {children}
