@@ -4,7 +4,7 @@ import { KContainer, KSpacer } from '@components';
 import { useState } from 'react';
 import { sizes, StepModel } from '@constants';
 import { AppStackParamList } from '../../../type';
-import { KStep, KStepDescription } from './components';
+import { KResource, KStep, KStepDescription } from './components';
 
 export const CourseScreen = () => {
   const {
@@ -40,7 +40,7 @@ export const CourseScreen = () => {
             key={step.details.id}
             height={
               extendedStep.includes(step.details.id) &&
-              webViewHeights[step.details.id]
+              webViewHeights[step.details.id] + 100
             }>
             <KStep
               title={step.details.title}
@@ -49,11 +49,23 @@ export const CourseScreen = () => {
               isFocused={extendedStep.includes(step.details.id)}
             />
             {extendedStep.includes(step.details.id) && (
-              <KStepDescription
-                stepId={step.details.id}
-                description={step.details.description}
-                handleMessage={handleMessage}
-              />
+              <>
+                <KStepDescription
+                  stepId={step.details.id}
+                  description={step.details.description}
+                  handleMessage={handleMessage}
+                />
+                <KSpacer />
+                <View height={100} rightH topV>
+                  {step.resources.map((resource, index) => (
+                    <KResource
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={index}
+                      {...resource}
+                    />
+                  ))}
+                </View>
+              </>
             )}
             <KSpacer />
           </View>
