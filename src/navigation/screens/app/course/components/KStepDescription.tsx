@@ -11,11 +11,12 @@ export const KStepDescription = ({ ...props }: KStepDescription) => (
     originWhitelist={['*']}
     style={{
       height: '100%',
+      width: '90%',
       backgroundColor: colors.biscay,
       borderRadius: sizes.s10,
-      marginLeft: sizes.s20,
       marginTop: sizes.s10,
       padding: sizes.s10,
+      alignSelf: 'flex-end',
     }}
     source={{
       html: `

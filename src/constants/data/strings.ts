@@ -61,5 +61,9 @@ export const strings = {
       complete: 'Complete step',
       feedback: 'Give feedback',
     },
+    resource: {
+      useful: 'I find this useful',
+      useless: "I don't find this useful",
+    },
   },
 };

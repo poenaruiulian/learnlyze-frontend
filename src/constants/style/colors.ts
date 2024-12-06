@@ -2,6 +2,9 @@
 // https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4
 
 export const colors = {
+  auChico: '#9B5757',
+  auChico60: '#9B575799',
+
   electricViolet: '#9747FF',
   electricViolet80: '#9747FFCC',
   electricViolet60: '#9747FF99',
@@ -17,6 +20,7 @@ export const colors = {
   persianGreen40: '#009EA266',
 
   fruitSalad: '#579B5D',
+  fruitSalad60: '#579B5D99',
 
   biscay: '#1A2C5B',
   biscay80: '#1A2C5BCC',
