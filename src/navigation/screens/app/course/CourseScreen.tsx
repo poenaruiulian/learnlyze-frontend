@@ -3,6 +3,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
 import { useState } from 'react';
 import { sizes, StepModel } from '@constants';
+import { useWindowDimensions } from 'react-native';
 import { AppStackParamList } from '../../../type';
 import { KResource, KStep, KStepDescription } from './components';
 
@@ -10,6 +11,8 @@ export const CourseScreen = () => {
   const {
     params: { fullCourse },
   } = useRoute<RouteProp<AppStackParamList, 'CourseScreen'>>();
+
+  const { width } = useWindowDimensions();
 
   const [webViewHeights, setWebViewHeights] = useState<{
     [key: string]: number;
@@ -38,9 +41,11 @@ export const CourseScreen = () => {
         {fullCourse.steps.map(step => (
           <View
             key={step.details.id}
+            centerV
+            width={width - sizes.s32}
             height={
               extendedStep.includes(step.details.id) &&
-              webViewHeights[step.details.id] + 100
+              webViewHeights[step.details.id] + step.resources.length * 50
             }>
             <KStep
               title={step.details.title}
@@ -56,7 +61,7 @@ export const CourseScreen = () => {
                   handleMessage={handleMessage}
                 />
                 <KSpacer />
-                <View height={100} rightH topV>
+                <View height={step.resources.length * 50} rightH topV>
                   {step.resources.map((resource, index) => (
                     <KResource
                       // eslint-disable-next-line react/no-array-index-key
