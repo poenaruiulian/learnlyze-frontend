@@ -59,6 +59,7 @@ export const GET_COURSE_BY_ID = gql`
           parentStep
           priority
           description
+          completed
         }
         resources {
           id

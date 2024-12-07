@@ -11,6 +11,8 @@ type KStepType = {
   resources: number;
   onPress: () => void;
   isFocused?: boolean;
+  isCompleted: boolean;
+  handleStepState: () => void;
 };
 
 export const KStep = ({ ...props }: KStepType) => {
@@ -31,8 +33,8 @@ export const KStep = ({ ...props }: KStepType) => {
     closeModal: () => {
       toggleIsModalVisible();
     },
-    handleStepCompletion: () => {
-      console.log("You've completed the step");
+    handleStepState: () => {
+      props.handleStepState();
       impactAsync(ImpactFeedbackStyle.Soft);
     },
     handleFeedbackGiving: () => {
@@ -72,7 +74,9 @@ export const KStep = ({ ...props }: KStepType) => {
             borderRadius={sizes.s90}
             style={{
               height: '100%',
-              backgroundColor: colors.alto50,
+              backgroundColor: props.isCompleted
+                ? colors.tulipTree60
+                : colors.alto50,
               ...transform,
             }}
           />
@@ -80,8 +84,15 @@ export const KStep = ({ ...props }: KStepType) => {
             <Text
               bodyL
               semiBold
-              white80={!(props.isFocused ?? false)}
-              tulipTree={props.isFocused ?? false}>
+              white80={!props.isCompleted && !(props.isFocused ?? false)}
+              tulipTree={!props.isCompleted && (props.isFocused ?? false)}
+              tulipTree60={props.isCompleted}
+              style={
+                props.isCompleted && {
+                  textDecorationLine: 'line-through',
+                  textDecorationColor: colors.tulipTree60,
+                }
+              }>
               {props.title}
             </Text>
             <Text body semiBold white50>
@@ -94,28 +105,37 @@ export const KStep = ({ ...props }: KStepType) => {
         closeModal={modalFunctions.closeModal}
         isModalVisible={isModalVisible}>
         <View gap={sizes.s10}>
-          {[strings.course.step.complete, strings.course.step.feedback].map(
-            (title, index) => (
-              <Button
-                key={title}
-                title={title}
-                onPress={() => {
-                  if (index === 0) {
-                    modalFunctions.handleStepCompletion();
-                  } else {
-                    modalFunctions.handleFeedbackGiving();
-                  }
-                  modalFunctions.closeModal();
-                }}
-                borderRadius={sizes.s20}
-                width={width - sizes.s64}
-                background={index === 0 ? colors.fruitSalad : null}
-                titleStyle={{
-                  ...fonts.bodyM,
-                }}
-              />
-            )
-          )}
+          {[
+            props.isCompleted
+              ? strings.course.step.uncomplete
+              : strings.course.step.complete,
+            strings.course.step.feedback,
+          ].map((title, index) => (
+            <Button
+              key={title}
+              title={title}
+              onPress={() => {
+                if (index === 0) {
+                  modalFunctions.handleStepState();
+                } else {
+                  modalFunctions.handleFeedbackGiving();
+                }
+                modalFunctions.closeModal();
+              }}
+              borderRadius={sizes.s20}
+              width={width - sizes.s64}
+              background={
+                index === 0
+                  ? props.isCompleted
+                    ? colors.nevada
+                    : colors.fruitSalad
+                  : null
+              }
+              titleStyle={{
+                ...fonts.bodyM,
+              }}
+            />
+          ))}
         </View>
       </KModal>
     </>

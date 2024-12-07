@@ -13,6 +13,7 @@ export type StepModel = {
   priority: number;
   title: string;
   description: string;
+  completed: boolean;
 };
 
 export type ResourceModel = {
