@@ -14,7 +14,7 @@ export interface TextProps
     FontsInterface,
     TextStyleInterface {
   children: string | null | undefined;
-  style?: TextStyle;
+  style?: false | TextStyle;
   numberOfLines?: number;
   ellipsizeMode?: 'middle' | 'head' | 'tail' | 'clip';
 }

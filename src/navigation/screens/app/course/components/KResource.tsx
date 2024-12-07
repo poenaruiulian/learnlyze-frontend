@@ -52,7 +52,7 @@ export const KResource = ({ ...props }: ResourceModel) => {
       fullSwipeRight={false}
       onSwipeableWillOpen={() => setIsFeedbackOpen(true)}
       onSwipeableWillClose={() => setIsFeedbackOpen(false)}
-      style={{ borderRadius: sizes.s10, maxWidth: '90%' }}>
+      style={{ borderRadius: sizes.s10, maxWidth: '90%', minWidth: '90%' }}>
       <TouchableOpacity
         style={[
           {

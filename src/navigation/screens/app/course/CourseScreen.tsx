@@ -1,16 +1,17 @@
 import { View } from '@defaults';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { sizes, StepModel } from '@constants';
 import { useWindowDimensions } from 'react-native';
+import { useCourse } from '@hooks';
 import { AppStackParamList } from '../../../type';
 import { KResource, KStep, KStepDescription } from './components';
 
 export const CourseScreen = () => {
-  const {
-    params: { fullCourse },
-  } = useRoute<RouteProp<AppStackParamList, 'CourseScreen'>>();
+  const { params } = useRoute<RouteProp<AppStackParamList, 'CourseScreen'>>();
+
+  const { changeStepState, getCourseById } = useCourse();
 
   const { width } = useWindowDimensions();
 
@@ -18,6 +19,7 @@ export const CourseScreen = () => {
     [key: string]: number;
   }>({});
   const [extendedStep, setExtendedStep] = useState<StepModel['id'][]>([]);
+  const [fullCourse, setFullCourse] = useState(params.fullCourse);
 
   const handleMessage = (event: any, stepId: string) => {
     const data = JSON.parse(event.nativeEvent.data);
@@ -34,6 +36,13 @@ export const CourseScreen = () => {
     extendedStep.includes(stepId)
       ? setExtendedStep(prevState => prevState?.filter(el => el !== stepId))
       : setExtendedStep(prevState => [...prevState, stepId]);
+
+  useEffect(() => {
+    getCourseById(fullCourse.details.id).then(response => {
+      setFullCourse(response);
+    });
+    // eslint-disable-next-line
+  }, [changeStepState]);
 
   return (
     <KContainer noBackground isScrollable>
@@ -52,6 +61,13 @@ export const CourseScreen = () => {
               resources={step.resources.length}
               onPress={() => handleStepOnPress(step.details.id)}
               isFocused={extendedStep.includes(step.details.id)}
+              isCompleted={step.details.completed}
+              handleStepState={() =>
+                changeStepState({
+                  courseId: fullCourse.details.id,
+                  stepId: step.details.id,
+                })
+              }
             />
             {extendedStep.includes(step.details.id) && (
               <>

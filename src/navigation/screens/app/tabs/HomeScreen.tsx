@@ -18,7 +18,6 @@ export const HomeScreen = () => {
   useEffect(() => {
     if (courses && courses.length !== 0) {
       getCourseById(courses[0].id).then(response => {
-        console.log(response);
         setFullCourse(response);
       });
     }
