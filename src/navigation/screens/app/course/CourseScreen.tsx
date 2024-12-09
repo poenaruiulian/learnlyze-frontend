@@ -2,16 +2,16 @@ import { View } from '@defaults';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
 import { useEffect, useState } from 'react';
-import { sizes, StepModel } from '@constants';
+import { colors, sizes, StepModel } from '@constants';
 import { useWindowDimensions } from 'react-native';
 import { useCourse } from '@hooks';
 import { AppStackParamList } from '../../../type';
-import { KResource, KStep, KStepDescription } from './components';
+import { KHeader, KResource, KStep, KStepDescription } from './components';
 
 export const CourseScreen = () => {
   const { params } = useRoute<RouteProp<AppStackParamList, 'CourseScreen'>>();
 
-  const { changeStepState, getCourseById } = useCourse();
+  const { changeStepState, getCourseById, accessCourse } = useCourse();
 
   const { width } = useWindowDimensions();
 
@@ -38,6 +38,11 @@ export const CourseScreen = () => {
       : setExtendedStep(prevState => [...prevState, stepId]);
 
   useEffect(() => {
+    accessCourse({ courseId: fullCourse.details.id });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     getCourseById(fullCourse.details.id).then(response => {
       setFullCourse(response);
     });
@@ -45,7 +50,15 @@ export const CourseScreen = () => {
   }, [changeStepState]);
 
   return (
-    <KContainer noBackground isScrollable>
+    <KContainer
+      backgroundColor={colors.tundora}
+      isScrollable
+      hasTopInsets={false}>
+      <KHeader
+        title={fullCourse.details.title}
+        date={fullCourse.details.startedAt}
+      />
+      <KSpacer h={sizes.s30} />
       <View flex center>
         {fullCourse.steps.map(step => (
           <View
@@ -54,7 +67,8 @@ export const CourseScreen = () => {
             width={width - sizes.s32}
             height={
               extendedStep.includes(step.details.id) &&
-              webViewHeights[step.details.id] + step.resources.length * 50
+              webViewHeights[step.details.id] +
+                step.resources.length * sizes.s50
             }>
             <KStep
               title={step.details.title}
@@ -77,7 +91,7 @@ export const CourseScreen = () => {
                   handleMessage={handleMessage}
                 />
                 <KSpacer />
-                <View height={step.resources.length * 50} rightH topV>
+                <View height={step.resources.length * sizes.s50} rightH topV>
                   {step.resources.map((resource, index) => (
                     <KResource
                       // eslint-disable-next-line react/no-array-index-key

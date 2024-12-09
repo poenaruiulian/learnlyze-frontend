@@ -13,7 +13,7 @@ export interface TextProps
   extends ColorInterface,
     FontsInterface,
     TextStyleInterface {
-  children: string | null | undefined;
+  children: string | string[] | null | undefined;
   style?: false | TextStyle;
   numberOfLines?: number;
   ellipsizeMode?: 'middle' | 'head' | 'tail' | 'clip';

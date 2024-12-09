@@ -14,6 +14,10 @@ export interface ViewStyleInterface {
   padding?: number;
   paddingH?: number;
   paddingV?: number;
+  paddingT?: number;
+  paddingB?: number;
+  paddingL?: number;
+  paddingR?: number;
   marginH?: number;
   marginV?: number;
   marginT?: number;
@@ -43,6 +47,10 @@ export const handleViewStyle = (
   props.padding ? { padding: props.padding } : undefined,
   props.paddingH ? { paddingHorizontal: props.paddingH } : undefined,
   props.paddingV ? { paddingVertical: props.paddingV } : undefined,
+  props.paddingT ? { paddingTop: props.paddingT } : undefined,
+  props.paddingB ? { paddingBottom: props.paddingB } : undefined,
+  props.paddingL ? { paddingLeft: props.paddingL } : undefined,
+  props.paddingR ? { paddingRight: props.paddingR } : undefined,
   props.marginH ? { marginHorizontal: props.marginH } : undefined,
   props.marginV ? { marginVertical: props.marginV } : undefined,
   props.marginT ? { marginTop: props.marginT } : undefined,

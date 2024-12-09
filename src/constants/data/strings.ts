@@ -56,6 +56,9 @@ export const strings = {
       'Start learning a new skill by describing what you would like to learn',
   },
   course: {
+    header: {
+      date: 'started on ',
+    },
     step: {
       resources: 'resources',
       complete: 'Complete step',

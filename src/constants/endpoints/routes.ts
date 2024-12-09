@@ -1,5 +1,4 @@
-const MAIN =
-  'https://a7e5-2a02-2f0a-e316-700-9ca5-fd1d-48e5-5605.ngrok-free.app';
+const MAIN = 'http://localhost:3000';
 const AUTH = `${MAIN}/auth`;
 
 export const routes = {

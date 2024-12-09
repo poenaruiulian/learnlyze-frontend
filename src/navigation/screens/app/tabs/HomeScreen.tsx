@@ -13,16 +13,27 @@ export const HomeScreen = () => {
   const { navigate } = useNavigation<AppNavigationType>();
   const [fullCourse, setFullCourse] = useState<FullCourseModel | null>(null);
 
-  // TODO The course fetching logic should be modified in the future
-
-  useEffect(() => {
+  const getCourses = async () => {
     if (courses && courses.length !== 0) {
       getCourseById(courses[0].id).then(response => {
         setFullCourse(response);
       });
     }
+    return true;
+  };
+
+  useEffect(() => {
+    getCourses();
     // eslint-disable-next-line
-  }, [courses]);
+  }, []);
+
+  useEffect(
+    () => {
+      getCourses();
+    },
+    // eslint-disable-next-line
+    [courses]
+  );
 
   return areCoursesLoading ? (
     <ActivityIndicator />

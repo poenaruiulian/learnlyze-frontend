@@ -10,12 +10,18 @@ import { AppNavigationType } from '../../../type';
 export const NewCourseScreen = () => {
   const { isNewUser, setIsNewUser } = useRoot();
   const { generateNewCourse } = useCourse();
-  const { navigate } = useNavigation<AppNavigationType>();
+  const { reset } = useNavigation<AppNavigationType>();
 
   const handleNewCourseGeneration = (description: string) => {
     generateNewCourse(description).then(fullCourse => {
       setIsNewUser(false);
-      navigate('CourseScreen', { fullCourse });
+      reset({
+        index: 0,
+        routes: [
+          { name: 'Tab' },
+          { name: 'CourseScreen', params: { fullCourse } },
+        ],
+      });
     });
   };
 
