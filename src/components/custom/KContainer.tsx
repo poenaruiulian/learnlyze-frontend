@@ -16,6 +16,8 @@ type KContainerProps = {
   backgroundImage?: ImageSource;
   isScrollable?: boolean;
   noBackground?: boolean;
+  backgroundColor?: string;
+  hasTopInsets?: boolean;
 };
 
 export const KContainer = ({
@@ -23,8 +25,15 @@ export const KContainer = ({
   isScrollable = true,
   backgroundImage = images.generalBackground,
   noBackground = false,
+  backgroundColor = colors.bunker,
+  hasTopInsets = true,
 }: KContainerProps) => {
   const { top, bottom } = useSafeAreaInsets();
+
+  const paddingTop = hasTopInsets ? Math.max(top + sizes.s20, sizes.s20) : 0;
+  const paddingBottom = hasTopInsets
+    ? Math.max(bottom + sizes.s20, sizes.s20)
+    : 0;
 
   return (
     <ImageBackground
@@ -33,7 +42,8 @@ export const KContainer = ({
         {
           flex: 1,
         },
-        noBackground && { backgroundColor: colors.bunker },
+        noBackground && { backgroundColor },
+        backgroundColor && { backgroundColor },
       ]}
       resizeMode="cover">
       <KeyboardAvoidingView
@@ -43,16 +53,13 @@ export const KContainer = ({
           <ScrollView
             style={{
               flex: 1,
-              paddingTop: Math.max(top + sizes.s20, sizes.s20),
+              paddingTop,
             }}>
             {children}
           </ScrollView>
         )}
         {!isScrollable && (
-          <View
-            flex
-            top={Math.max(top + sizes.s20, sizes.s20)}
-            bottom={Math.max(bottom + sizes.s20, sizes.s20)}>
+          <View flex top={paddingTop} bottom={paddingBottom}>
             {children}
           </View>
         )}

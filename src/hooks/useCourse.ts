@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client';
 import {
+  ACCESS_COURSE,
   CHANGE_STEP_STATE,
   CourseModel,
   FullCourseModel,
@@ -13,6 +14,7 @@ export const useCourse = () => {
   const [generateNewCourseMutation] = useMutation(GENERATE_NEW_COURSE);
   const [getCourseByIdMutation] = useMutation(GET_COURSE_BY_ID);
   const [changeStepStateMutation] = useMutation(CHANGE_STEP_STATE);
+  const [accessCourseMutation] = useMutation(ACCESS_COURSE);
   const { loading: areCoursesLoading, data } = useQuery(GET_ALL_COURSES);
 
   const generateNewCourse = async (
@@ -41,10 +43,14 @@ export const useCourse = () => {
     stepId: StepModel['id'];
   }) => changeStepStateMutation({ variables: { courseId, stepId } });
 
+  const accessCourse = async ({ courseId }: { courseId: number }) =>
+    accessCourseMutation({ variables: { courseId } });
+
   return {
     generateNewCourse,
     getCourseById,
     changeStepState,
+    accessCourse,
     areCoursesLoading,
     courses,
   };

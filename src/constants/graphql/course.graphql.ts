@@ -70,3 +70,11 @@ export const GET_COURSE_BY_ID = gql`
     }
   }
 `;
+
+export const ACCESS_COURSE = gql`
+  mutation ($courseId: Int!) {
+    accessCourse(courseId: $courseId) {
+      title
+    }
+  }
+`;

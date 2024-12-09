@@ -6,17 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/defaults/KText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/defaults/KText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/data/icons.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/icons.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/data/strings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/strings.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/endpoints/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/endpoints/routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/graphql/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/graphql/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/models/course.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/models/course.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/style/viewStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/viewStyle.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useCourse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCourse.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useRoot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useRoot.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KResource.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KResource.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/HomeScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/LoginScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/LoginScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +56,7 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "31-handle-the-step-completion-logic",
+    "git-widget-placeholder": "29-implement-the-course-screen",
     "last_opened_file_path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/assets/images/backgrounds/onboarding",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

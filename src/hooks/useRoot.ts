@@ -33,6 +33,8 @@ export const useRoot = () => {
     if (!response.ok) {
       const errorData = await response.json();
 
+      console.log(errorData);
+
       setError(errorData);
       setHasError(true);
 

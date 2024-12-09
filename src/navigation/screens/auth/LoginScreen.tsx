@@ -61,7 +61,8 @@ export const LoginScreen = () => {
           title={strings.auth.buttonTitle}
           onPress={() => {
             impactAsync(ImpactFeedbackStyle.Medium).then(() => {
-              login(loginDto).then(() => setIsNewUser(false));
+              setIsNewUser(false);
+              login(loginDto).then();
             });
           }}
           titleStyle={{
