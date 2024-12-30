@@ -1,5 +1,5 @@
 import { Text, View } from '@defaults';
-import { KContainer, KLoading, KSpacer } from '@components';
+import { KContainer, KLoadingCourse, KSpacer } from '@components';
 import { images } from '@images';
 import { sizes, strings } from '@constants';
 import { useCourse, useRoot } from '@hooks';
@@ -53,7 +53,7 @@ export const NewCourseScreen = () => {
       <View flex bottomV>
         <KTextInput onGenerateCourse={handleNewCourseGeneration} />
       </View>
-      {isLoading && <KLoading />}
+      {isLoading && <KLoadingCourse />}
     </KContainer>
   );
 };

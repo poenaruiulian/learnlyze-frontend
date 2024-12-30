@@ -6,7 +6,7 @@ import { colors, sizes, strings } from '@constants';
 import { KSpacer } from '../KSpacer';
 import { KBubble } from './KBubble';
 
-export const KLoading = () => {
+export const KLoadingCourse = () => {
   const { width, height } = useWindowDimensions();
   const { top, bottom } = useSafeAreaInsets();
 
