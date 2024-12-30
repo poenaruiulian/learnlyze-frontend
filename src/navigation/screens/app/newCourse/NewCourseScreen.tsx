@@ -1,20 +1,26 @@
 import { Text, View } from '@defaults';
-import { KContainer, KSpacer } from '@components';
+import { KContainer, KLoading, KSpacer } from '@components';
 import { images } from '@images';
 import { sizes, strings } from '@constants';
 import { useCourse, useRoot } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import { KTextInput } from './components';
 import { AppNavigationType } from '../../../type';
 
 export const NewCourseScreen = () => {
   const { isNewUser, setIsNewUser } = useRoot();
   const { generateNewCourse } = useCourse();
+
   const { reset } = useNavigation<AppNavigationType>();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleNewCourseGeneration = (description: string) => {
+    setIsLoading(true);
     generateNewCourse(description).then(fullCourse => {
       setIsNewUser(false);
+      setIsLoading(false);
       reset({
         index: 0,
         routes: [
@@ -47,6 +53,7 @@ export const NewCourseScreen = () => {
       <View flex bottomV>
         <KTextInput onGenerateCourse={handleNewCourseGeneration} />
       </View>
+      {isLoading && <KLoading />}
     </KContainer>
   );
 };
