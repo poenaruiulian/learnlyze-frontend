@@ -23,26 +23,19 @@ export const LoginScreen = () => {
 
   return (
     <KContainer isScrollable={false} backgroundImage={images.authBackground}>
-      <View centerH>
-        <KSpacer h={30} />
-        <Text
-          headingXL
-          center
-          semiBold
-          white80
-          style={{ lineHeight: sizes.s48 }}>
-          {strings.auth.title}
-        </Text>
-        <KSpacer />
-        <Text
-          bodyM
-          center
-          semiBold
-          white50
-          style={{ paddingHorizontal: sizes.s60 }}>
-          {strings.auth.description}
-        </Text>
-      </View>
+      <KSpacer h={30} />
+      <Text headingXL center semiBold white80 style={{ lineHeight: sizes.s48 }}>
+        {strings.auth.title}
+      </Text>
+      <KSpacer />
+      <Text
+        bodyM
+        center
+        semiBold
+        white50
+        style={{ paddingHorizontal: sizes.s60 }}>
+        {strings.auth.description}
+      </Text>
       <View flex centerH bottomV>
         <Text headingL bold tulipTree>
           {strings.auth.login.title}

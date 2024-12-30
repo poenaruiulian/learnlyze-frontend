@@ -1,9 +1,11 @@
 import React from 'react';
 import {
   ImageBackground,
+  Keyboard,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, sizes } from '@constants';
@@ -45,21 +47,23 @@ export const KContainer = ({
         backgroundColor && { backgroundColor },
       ]}
       resizeMode="cover">
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        <ScrollView
-          scrollEnabled={isScrollable}
-          keyboardShouldPersistTaps="always"
-          keyboardDismissMode="on-drag"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingTop,
-            paddingBottom,
-          }}>
-          {children}
-        </ScrollView>
-      </KeyboardAvoidingView>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <KeyboardAvoidingView
+          style={{ flex: 1 }}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+          <ScrollView
+            scrollEnabled={isScrollable}
+            keyboardShouldPersistTaps="always"
+            keyboardDismissMode="on-drag"
+            contentContainerStyle={{
+              flexGrow: 1,
+              paddingTop,
+              paddingBottom,
+            }}>
+            {children}
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     </ImageBackground>
   );
 };
