@@ -70,4 +70,7 @@ export const strings = {
       useless: "I don't find this useful",
     },
   },
+  loading: {
+    message: 'We are prepping your course. Take your time and pop some bubbles',
+  },
 };

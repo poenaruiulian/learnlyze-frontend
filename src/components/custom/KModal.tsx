@@ -1,8 +1,8 @@
 import Modal from 'react-native-modal';
 import { colors, fonts, sizes, strings } from '@constants';
 import { Button, Text, View } from '@defaults';
-import { KSpacer } from '@components';
 import React from 'react';
+import { KSpacer } from './KSpacer';
 
 type KModalProps = {
   message?: string;

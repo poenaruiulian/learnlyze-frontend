@@ -50,7 +50,7 @@ export const KHeader = ({ ...props }: KHeaderProps) => {
           <Icon icon={icons.arrowLeft} color={colors.tundora80} />
         </TouchableOpacity>
       )}
-      <View center paddingH={sizes.s50}>
+      <View center paddingH={sizes.s70}>
         <Text bodyXL semiBold white center>
           {props.title}
         </Text>

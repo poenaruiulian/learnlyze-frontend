@@ -21,10 +21,7 @@ export const KTextInput = ({ ...props }: KTextInputProps) => {
   const { width } = useWindowDimensions();
 
   return (
-    <View
-      width={width * 0.8}
-      borderRadius={sizes.s10}
-      style={{ backgroundColor: colors.biscay }}>
+    <View width={width * 0.8} borderRadius={sizes.s10}>
       <TextInput
         ref={props.innerRef}
         style={{
