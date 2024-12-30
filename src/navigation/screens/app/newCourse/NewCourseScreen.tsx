@@ -1,11 +1,11 @@
 import { Text, View } from '@defaults';
-import { KContainer, KLoadingCourse, KSpacer } from '@components';
+import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
 import { sizes, strings } from '@constants';
 import { useCourse, useRoot } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { KTextInput } from './components';
+import { KTextInput, KLoadingCourse } from './components';
 import { AppNavigationType } from '../../../type';
 
 export const NewCourseScreen = () => {

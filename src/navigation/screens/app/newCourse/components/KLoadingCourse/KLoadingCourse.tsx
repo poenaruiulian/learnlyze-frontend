@@ -3,7 +3,7 @@ import { useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { colors, sizes, strings } from '@constants';
-import { KSpacer } from '../KSpacer';
+import { KSpacer } from '../../../../../../components/custom/KSpacer';
 import { KBubble } from './KBubble';
 
 export const KLoadingCourse = () => {

@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KLoading/KBubble.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KLoadingCourse/KBubble.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KLoading/KLoading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KLoadingCourse/KLoadingCourse.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KLoading/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KLoadingCourse/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/custom/KLoadingCourse/KBubble.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KLoadingCourse/KBubble.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/custom/KLoadingCourse/KLoadingCourse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KLoadingCourse/KLoadingCourse.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/custom/KLoadingCourse/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KLoadingCourse/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/custom/KModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/custom/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +65,11 @@
       <recent name="$PROJECT_DIR$/assets/images/backgrounds/onboarding" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components" />
       <recent name="$PROJECT_DIR$/src/components/custom/KLoading" />
       <recent name="$PROJECT_DIR$/src/navigation/screens/app/course" />
       <recent name="$PROJECT_DIR$/src/navigation/screens/app/newCourse" />
       <recent name="$PROJECT_DIR$/assets/images/backgrounds" />
-      <recent name="$PROJECT_DIR$/assets/images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -100,7 +103,7 @@
       <workItem from="1732907015038" duration="4000" />
       <workItem from="1733302314562" duration="15798000" />
       <workItem from="1733900903322" duration="11000" />
-      <workItem from="1735495677110" duration="19840000" />
+      <workItem from="1735495677110" duration="20012000" />
     </task>
     <servers />
   </component>
