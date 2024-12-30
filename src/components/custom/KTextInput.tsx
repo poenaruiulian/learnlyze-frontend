@@ -1,6 +1,6 @@
 import { View, Text } from '@defaults';
 import { TextInput, useWindowDimensions } from 'react-native';
-import { useState } from 'react';
+import { Ref, useState } from 'react';
 import { colors, fonts, sizes } from '@constants';
 import { KSpacer } from './KSpacer';
 
@@ -8,9 +8,12 @@ type KTextInputProps = {
   placeholder: string;
   value: string;
   onSetValue: (newValue: string) => void;
+  onSubmitEditing?: () => void;
   error?: string;
   isPassword?: boolean;
   autoCapitalize?: boolean;
+  innerRef?: Ref<TextInput>;
+  returnKey?: 'done' | 'next';
 };
 
 export const KTextInput = ({ ...props }: KTextInputProps) => {
@@ -20,6 +23,7 @@ export const KTextInput = ({ ...props }: KTextInputProps) => {
   return (
     <View width={width * 0.8}>
       <TextInput
+        ref={props.innerRef}
         style={{
           backgroundColor: colors.balticSea75,
           paddingVertical: sizes.s15,
@@ -40,9 +44,14 @@ export const KTextInput = ({ ...props }: KTextInputProps) => {
         }}
         autoCapitalize={props.autoCapitalize ? 'words' : 'none'}
         autoCorrect={false}
-        onSubmitEditing={() => setShouldShowError(true)}
+        onSubmitEditing={() => {
+          setShouldShowError(true);
+          props.onSubmitEditing?.();
+        }}
         onBlur={() => setShouldShowError(true)}
         secureTextEntry={props.isPassword}
+        returnKeyType={props.returnKey}
+        returnKeyLabel={props.returnKey}
       />
       {props.error && shouldShowError && props.value.length > 0 && (
         <>

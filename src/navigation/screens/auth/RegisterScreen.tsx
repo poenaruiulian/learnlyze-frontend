@@ -1,5 +1,5 @@
 import { Button, Text, View } from '@defaults';
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import {
   colors,
   generateSecurityCode,
@@ -13,12 +13,17 @@ import {
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { KContainer, KSpacer, KTextInput } from '@components';
 import { images } from '@images';
-import { TouchableOpacity } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native';
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 import { AuthNavigationType } from '../../type';
 
 export const RegisterScreen = () => {
   const { navigate } = useNavigation<AuthNavigationType>();
+
+  const lastNameRef = useRef<TextInput>(null);
+  const firstNameRef = useRef<TextInput>(null);
+  const passwordRef = useRef<TextInput>(null);
+
   const [registerDto, setRegisterDto] = useState<RegisterDtoType>({
     email: '',
     password: '',
@@ -65,32 +70,41 @@ export const RegisterScreen = () => {
           value={registerDto.email}
           placeholder={strings.inputPlaceholder.email}
           onSetValue={text => setRegisterDto({ ...registerDto, email: text })}
+          onSubmitEditing={() => lastNameRef.current?.focus()}
           error={
             !verifyEmail(registerDto.email)
               ? strings.inputWarnings.invalidEmail
               : undefined
           }
+          returnKey="next"
         />
         <KSpacer h={5} />
         <KTextInput
+          innerRef={lastNameRef}
           value={registerDto.lastName}
           placeholder={strings.inputPlaceholder.lastName}
           onSetValue={text =>
             setRegisterDto({ ...registerDto, lastName: text })
           }
+          onSubmitEditing={() => firstNameRef.current?.focus()}
+          returnKey="next"
           autoCapitalize
         />
         <KSpacer h={5} />
         <KTextInput
+          innerRef={firstNameRef}
           value={registerDto.firstName}
           placeholder={strings.inputPlaceholder.firstName}
           onSetValue={text =>
             setRegisterDto({ ...registerDto, firstName: text })
           }
+          onSubmitEditing={() => passwordRef.current?.focus()}
+          returnKey="next"
           autoCapitalize
         />
         <KSpacer h={5} />
         <KTextInput
+          innerRef={passwordRef}
           value={registerDto.password}
           placeholder={strings.inputPlaceholder.password}
           onSetValue={text =>
@@ -101,6 +115,7 @@ export const RegisterScreen = () => {
               ? strings.inputWarnings.invalidPassword
               : undefined
           }
+          returnKey="done"
           isPassword
         />
         <KSpacer h={sizes.s20} />

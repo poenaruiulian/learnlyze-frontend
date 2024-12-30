@@ -1,21 +1,25 @@
 import { Button, Text, View } from '@defaults';
 import { useRoot } from '@hooks';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { colors, LoginDtoType, sizes, strings } from '@constants';
 import { useNavigation } from '@react-navigation/native';
 import { KContainer, KSpacer, KTextInput } from '@components';
-import { TouchableOpacity } from 'react-native';
+import { TextInput, TouchableOpacity } from 'react-native';
 import { images } from '@images';
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 import { AuthNavigationType } from '../../type';
 
 export const LoginScreen = () => {
+  const { navigate } = useNavigation<AuthNavigationType>();
+
   const { login, setIsNewUser } = useRoot();
+
+  const passwordRef = useRef<TextInput>(null);
+
   const [loginDto, setLoginDto] = useState<LoginDtoType>({
     email: '',
     password: '',
   });
-  const { navigate } = useNavigation<AuthNavigationType>();
 
   return (
     <KContainer isScrollable={false} backgroundImage={images.authBackground}>
@@ -48,13 +52,19 @@ export const LoginScreen = () => {
           placeholder={strings.inputPlaceholder.email}
           value={loginDto.email}
           onSetValue={email => setLoginDto({ ...loginDto, email })}
+          onSubmitEditing={() => {
+            passwordRef.current?.focus();
+          }}
+          returnKey="next"
         />
         <KSpacer />
         <KTextInput
+          innerRef={passwordRef}
           placeholder={strings.inputPlaceholder.password}
           value={loginDto.password}
           onSetValue={password => setLoginDto({ ...loginDto, password })}
           isPassword
+          returnKey="done"
         />
         <KSpacer h={sizes.s20} />
         <Button

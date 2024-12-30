@@ -9,7 +9,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, sizes } from '@constants';
 import { ImageSource } from 'react-native-vector-icons/Icon';
 import { images } from '@images';
-import { View } from '@defaults';
 
 type KContainerProps = {
   children: React.ReactNode;
@@ -49,20 +48,17 @@ export const KContainer = ({
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        {isScrollable && (
-          <ScrollView
-            style={{
-              flex: 1,
-              paddingTop,
-            }}>
-            {children}
-          </ScrollView>
-        )}
-        {!isScrollable && (
-          <View flex top={paddingTop} bottom={paddingBottom}>
-            {children}
-          </View>
-        )}
+        <ScrollView
+          scrollEnabled={isScrollable}
+          keyboardShouldPersistTaps="always"
+          keyboardDismissMode="on-drag"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingTop,
+            paddingBottom,
+          }}>
+          {children}
+        </ScrollView>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
