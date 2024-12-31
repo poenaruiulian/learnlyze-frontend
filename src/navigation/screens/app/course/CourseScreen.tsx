@@ -1,5 +1,5 @@
 import { View } from '@defaults';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
 import { useEffect, useState } from 'react';
 import { colors, sizes, StepModel } from '@constants';
@@ -10,6 +10,7 @@ import { KHeader, KResource, KStep, KStepDescription } from './components';
 
 export const CourseScreen = () => {
   const { params } = useRoute<RouteProp<AppStackParamList, 'CourseScreen'>>();
+  const { goBack } = useNavigation();
 
   const { changeStepState, getCourseById, accessCourse } = useCourse();
 
@@ -44,6 +45,11 @@ export const CourseScreen = () => {
 
   useEffect(() => {
     getCourseById(fullCourse.details.id).then(response => {
+      if (!response) {
+        goBack();
+        return;
+      }
+
       setFullCourse(response);
     });
     // eslint-disable-next-line
