@@ -19,8 +19,13 @@ export const NewCourseScreen = () => {
   const handleNewCourseGeneration = (description: string) => {
     setIsLoading(true);
     generateNewCourse(description).then(fullCourse => {
-      setIsNewUser(false);
       setIsLoading(false);
+
+      if (!fullCourse) {
+        return;
+      }
+
+      setIsNewUser(false);
       reset({
         index: 0,
         routes: [

@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KLoadingCourse/KBubble.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KLoadingCourse/KBubble.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KLoadingCourse/KLoadingCourse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KLoadingCourse/KLoadingCourse.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KLoadingCourse/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KLoadingCourse/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/models/error.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/models/error.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useCourse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCourse.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +44,7 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "42-implement-a-loading-state-while-the-course-is-generating",
+    "git-widget-placeholder": "48-handle-backend-errors",
     "last_opened_file_path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/assets/images/backgrounds/onboarding",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -103,7 +100,7 @@
       <workItem from="1732907015038" duration="4000" />
       <workItem from="1733302314562" duration="15798000" />
       <workItem from="1733900903322" duration="11000" />
-      <workItem from="1735495677110" duration="20012000" />
+      <workItem from="1735495677110" duration="23214000" />
     </task>
     <servers />
   </component>
