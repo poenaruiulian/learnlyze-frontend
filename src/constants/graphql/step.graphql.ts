@@ -7,3 +7,16 @@ export const CHANGE_STEP_STATE = gql`
     }
   }
 `;
+
+export const BRAKE_STEP = gql`
+  mutation ($stepId: Int!, $feedback: String!) {
+    breakStep(stepId: $stepId, feedback: $feedback) {
+      id
+      parentStep
+      priority
+      title
+      description
+      completed
+    }
+  }
+`;

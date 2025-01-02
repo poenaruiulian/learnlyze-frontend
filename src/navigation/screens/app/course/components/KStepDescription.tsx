@@ -4,6 +4,7 @@ import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import { useReducer } from 'react';
 import { KModal, KSpacer } from '@components';
 import { View, Text, Icon } from '@defaults';
+import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 
 type KStepDescription = {
   stepId: number;
@@ -17,7 +18,9 @@ export const KStepDescription = ({ ...props }: KStepDescription) => {
   return (
     <TouchableOpacity
       style={[{ flex: 1, alignItems: 'flex-end' }]}
-      onPress={toggleFullScreen}>
+      onPress={() => {
+        impactAsync(ImpactFeedbackStyle.Soft).then(toggleFullScreen);
+      }}>
       <KSpacer />
       <View
         padding={sizes.s10}

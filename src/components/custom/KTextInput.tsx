@@ -1,5 +1,5 @@
 import { View, Text } from '@defaults';
-import { TextInput, useWindowDimensions } from 'react-native';
+import { TextInput, useWindowDimensions, ViewStyle } from 'react-native';
 import { Ref, useState } from 'react';
 import { colors, fonts, sizes } from '@constants';
 import { KSpacer } from './KSpacer';
@@ -14,6 +14,8 @@ type KTextInputProps = {
   autoCapitalize?: boolean;
   innerRef?: Ref<TextInput>;
   returnKey?: 'done' | 'next';
+  style?: ViewStyle;
+  multiline?: boolean;
 };
 
 export const KTextInput = ({ ...props }: KTextInputProps) => {
@@ -24,16 +26,19 @@ export const KTextInput = ({ ...props }: KTextInputProps) => {
     <View width={width * 0.8} borderRadius={sizes.s10}>
       <TextInput
         ref={props.innerRef}
-        style={{
-          backgroundColor: colors.balticSea75,
-          paddingVertical: sizes.s15,
-          paddingLeft: sizes.s10,
-          borderRadius: sizes.s10,
+        style={[
+          {
+            backgroundColor: colors.balticSea75,
+            paddingVertical: sizes.s15,
+            paddingLeft: sizes.s10,
+            borderRadius: sizes.s10,
 
-          ...fonts.bodyM,
-          ...fonts.bold,
-          color: colors.white80,
-        }}
+            ...fonts.bodyM,
+            ...fonts.bold,
+            color: colors.white80,
+          },
+          props.style,
+        ]}
         placeholderTextColor={colors.white50}
         placeholder={props.placeholder}
         value={props.value}
@@ -52,6 +57,7 @@ export const KTextInput = ({ ...props }: KTextInputProps) => {
         secureTextEntry={props.isPassword}
         returnKeyType={props.returnKey}
         returnKeyLabel={props.returnKey}
+        multiline={props.multiline}
       />
       {props.error && shouldShowError && props.value.length > 0 && (
         <>

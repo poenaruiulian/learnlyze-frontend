@@ -46,6 +46,7 @@ export const colors = {
   balticSea75: '#1C1B1FBF',
 
   bunker: '#0B0E15',
+  bunker80: '#0b0e15CC',
   bunker60: '#0B0E1599',
 
   black: '#000000',

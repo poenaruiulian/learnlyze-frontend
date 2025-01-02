@@ -27,7 +27,6 @@ const StepSet = ({
 
   const [extendedStep, setExtendedStep] = useState<StepModel['id'][]>([]);
 
-  // TODO This function will handle the showing more steps when that case occurs
   const handleStepOnPress = (stepId: number) =>
     extendedStep.includes(stepId)
       ? setExtendedStep(prevState => prevState?.filter(el => el !== stepId))
@@ -36,6 +35,7 @@ const StepSet = ({
   return steps.map(step => (
     <View flex key={step.details.id} width={width - sizes.s32} centerV>
       <KStep
+        stepId={step.details.id}
         title={step.details.title}
         resources={step.resources.length}
         onPress={() => handleStepOnPress(step.details.id)}
@@ -62,6 +62,7 @@ const StepSet = ({
                 <KResource
                   // eslint-disable-next-line react/no-array-index-key
                   key={index}
+                  stepId={step.details.id}
                   {...resource}
                 />
               ))}
@@ -89,7 +90,13 @@ export const CourseScreen = () => {
 
   const { width } = useWindowDimensions();
 
-  const { changeStepState, getCourseById, accessCourse } = useCourse();
+  const {
+    changeStepState,
+    replaceResource,
+    breakStep,
+    getCourseById,
+    accessCourse,
+  } = useCourse();
 
   const [fullCourse, setFullCourse] = useState(params.fullCourse);
 
@@ -108,7 +115,7 @@ export const CourseScreen = () => {
       setFullCourse(response);
     });
     // eslint-disable-next-line
-  }, [changeStepState]);
+  }, [changeStepState, replaceResource, breakStep]);
 
   return (
     <KContainer
