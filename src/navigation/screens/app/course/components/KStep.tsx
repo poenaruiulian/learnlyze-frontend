@@ -9,6 +9,7 @@ import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 type KStepType = {
   title: string;
   resources: number;
+  subSteps?: number;
   onPress: () => void;
   isFocused?: boolean;
   isCompleted: boolean;
@@ -16,9 +17,9 @@ type KStepType = {
 };
 
 export const KStep = ({ ...props }: KStepType) => {
-  const { width } = useWindowDimensions();
-
   const [isModalVisible, toggleIsModalVisible] = useReducer(s => !s, false);
+
+  const { width } = useWindowDimensions();
 
   const onLongPress = () => {
     impactAsync(ImpactFeedbackStyle.Heavy).then(toggleIsModalVisible);
@@ -55,7 +56,6 @@ export const KStep = ({ ...props }: KStepType) => {
     <>
       <LinearGradient
         style={{
-          width: width - sizes.s32,
           minHeight: sizes.s70,
           borderRadius: sizes.s10,
         }}
@@ -95,16 +95,22 @@ export const KStep = ({ ...props }: KStepType) => {
               }>
               {props.title}
             </Text>
-            <Text body semiBold white50>
-              {`${props.resources} ${strings.course.step.resources}`}
-            </Text>
+            {!props.subSteps ? (
+              <Text body semiBold white50>
+                {`${props.resources} ${strings.course.step.resources}`}
+              </Text>
+            ) : (
+              <Text body semiBold white50>
+                {`${props.subSteps} ${strings.course.step.subSteps}`}
+              </Text>
+            )}
           </View>
         </TouchableOpacity>
       </LinearGradient>
       <KModal
         closeModal={modalFunctions.closeModal}
         isModalVisible={isModalVisible}>
-        <View gap={sizes.s10}>
+        <View gap={sizes.s10} width={width - sizes.s64}>
           {[
             props.isCompleted
               ? strings.course.step.uncomplete
@@ -123,7 +129,6 @@ export const KStep = ({ ...props }: KStepType) => {
                 modalFunctions.closeModal();
               }}
               borderRadius={sizes.s20}
-              width={width - sizes.s64}
               background={
                 index === 0
                   ? props.isCompleted

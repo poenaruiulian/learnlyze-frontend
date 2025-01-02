@@ -14,6 +14,8 @@ export type StepModel = {
   title: string;
   description: string;
   completed: boolean;
+  generation?: number;
+  hasChild?: boolean;
 };
 
 export type ResourceModel = {
@@ -25,6 +27,7 @@ export type ResourceModel = {
 export type FullStep = {
   details: StepModel;
   resources: ResourceModel[];
+  subSteps: FullStep[];
 };
 
 export type FullCourseModel = {
