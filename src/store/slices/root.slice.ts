@@ -22,4 +22,10 @@ export const createRootSlice: StateCreator<RootInfo> = set => ({
     set(() => ({
       hasError: value,
     })),
+
+  isLoading: false,
+  setIsLoading: value =>
+    set(() => ({
+      isLoading: value,
+    })),
 });

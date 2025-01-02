@@ -21,6 +21,8 @@ export const useRoot = () => {
     setHasError,
     error,
     setError,
+    isLoading,
+    setIsLoading,
   } = useStore(useShallow((rootInfo: RootInfo) => rootInfo));
 
   const login = async (loginDto: LoginDtoType): Promise<string | null> => {
@@ -98,6 +100,9 @@ export const useRoot = () => {
     setHasError,
     error,
     setError,
+
+    isLoading,
+    setIsLoading,
 
     login,
     register,

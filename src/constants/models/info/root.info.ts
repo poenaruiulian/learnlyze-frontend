@@ -14,4 +14,7 @@ export type RootInfo = {
   setError: (value: ErrorModel | null) => void;
   hasError: boolean;
   setHasError: (value: boolean) => void;
+
+  isLoading: boolean;
+  setIsLoading: (value: boolean) => void;
 };

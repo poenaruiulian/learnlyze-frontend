@@ -2,8 +2,6 @@ import { View, Text } from '@defaults';
 import { ActivityIndicator, Button } from 'react-native';
 import { useCourse, useRoot, useUser } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
-import { FullCourseModel } from '@constants';
 import { AppNavigationType } from '../../../type';
 
 export const HomeScreen = () => {
@@ -11,40 +9,29 @@ export const HomeScreen = () => {
   const { user } = useUser();
   const { courses, areCoursesLoading, getCourseById } = useCourse();
   const { navigate } = useNavigation<AppNavigationType>();
-  const [fullCourse, setFullCourse] = useState<FullCourseModel | null>(null);
-
-  const getCourses = async () => {
-    if (courses && courses.length !== 0) {
-      getCourseById(courses[0].id).then(response => {
-        setFullCourse(response);
-      });
-    }
-    return true;
-  };
-
-  useEffect(() => {
-    getCourses();
-    // eslint-disable-next-line
-  }, []);
-
-  useEffect(
-    () => {
-      getCourses();
-    },
-    // eslint-disable-next-line
-    [courses]
-  );
 
   return areCoursesLoading ? (
     <ActivityIndicator />
   ) : (
     <View flex center>
       <Text>{user?.email}</Text>
-      <Button
-        title="Course"
-        disabled={!fullCourse}
-        onPress={() => fullCourse && navigate('CourseScreen', { fullCourse })}
-      />
+
+      {courses.map((course, index) => (
+        <Button
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          title={course.title}
+          onPress={() => {
+            getCourseById(course.id)
+              .then(
+                fullCourse =>
+                  fullCourse && navigate('CourseScreen', { fullCourse })
+              )
+              .catch(console.log);
+          }}
+        />
+      ))}
+
       <Button title="Log out" onPress={logout} />
     </View>
   );

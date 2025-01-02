@@ -11,23 +11,13 @@ import {
 import { Icon, Text } from '@defaults';
 import { useState } from 'react';
 import { Linking, TouchableOpacity } from 'react-native';
+import { useCourse, useRoot } from '@hooks';
 
-export const KResource = ({ ...props }: ResourceModel) => {
+export const KResource = ({ ...props }: ResourceModel & { stepId: number }) => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
-  const usefulItem = {
-    background: colors.fruitSalad60,
-    text: strings.course.resource.useful,
-    style: {
-      color: colors.white50,
-      ...fonts.bodyXS,
-      borderBottomRightRadius: sizes.s10,
-      borderTopRightRadius: sizes.s10,
-    },
-    onPress: () => {
-      console.log('I find this useful');
-    },
-  };
+  const { replaceResource } = useCourse();
+  const { setIsLoading } = useRoot();
 
   const unusefulItem = {
     background: colors.auChico60,
@@ -38,7 +28,17 @@ export const KResource = ({ ...props }: ResourceModel) => {
       borderRadius: 0,
     },
     onPress: () => {
-      console.log("I don't find this useful");
+      setIsLoading(true);
+      replaceResource({
+        resourceId: props.id,
+        feedback: strings.course.resource.useless,
+        stepId: props.stepId,
+      })
+        .then(() => setIsLoading(false))
+        .catch(err => {
+          console.log(err);
+          setIsLoading(false);
+        });
     },
   };
 
@@ -48,7 +48,7 @@ export const KResource = ({ ...props }: ResourceModel) => {
 
   return (
     <Drawer
-      rightItems={[unusefulItem, usefulItem]}
+      rightItems={[unusefulItem]}
       fullSwipeRight={false}
       onSwipeableWillOpen={() => setIsFeedbackOpen(true)}
       onSwipeableWillClose={() => setIsFeedbackOpen(false)}

@@ -1,25 +1,60 @@
-import { colors, sizes } from '@constants';
-import { WebView, WebViewMessageEvent } from 'react-native-webview';
+import { colors, icons, sizes } from '@constants';
+import { WebView } from 'react-native-webview';
+import { TouchableOpacity, useWindowDimensions } from 'react-native';
+import { useReducer } from 'react';
+import { KModal, KSpacer } from '@components';
+import { View, Text, Icon } from '@defaults';
+import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
 
 type KStepDescription = {
   stepId: number;
   description: string;
-  handleMessage: (event: WebViewMessageEvent, id: string) => void;
 };
-export const KStepDescription = ({ ...props }: KStepDescription) => (
-  <WebView
-    originWhitelist={['*']}
-    style={{
-      height: '100%',
-      width: '90%',
-      backgroundColor: colors.biscay,
-      borderRadius: sizes.s10,
-      marginTop: sizes.s10,
-      padding: sizes.s10,
-      alignSelf: 'flex-end',
-    }}
-    source={{
-      html: `
+export const KStepDescription = ({ ...props }: KStepDescription) => {
+  const [isFullScreen, toggleFullScreen] = useReducer(s => !s, false);
+
+  const { height, width } = useWindowDimensions();
+
+  return (
+    <TouchableOpacity
+      style={[{ flex: 1, alignItems: 'flex-end' }]}
+      onPress={() => {
+        impactAsync(ImpactFeedbackStyle.Soft).then(toggleFullScreen);
+      }}>
+      <KSpacer />
+      <View
+        padding={sizes.s10}
+        borderRadius={sizes.s10}
+        style={{
+          backgroundColor: colors.eastBay,
+          width: '90%',
+        }}>
+        <View row gap={5} centerH>
+          <Icon icon={icons.lesson} color={colors.white80} />
+          <Text semiBold bodyM white80>
+            Read lesson
+          </Text>
+        </View>
+        <Text semiBold bodyS white50>
+          Press to discover all the information towards this lesson
+        </Text>
+      </View>
+      <KModal
+        closeModal={toggleFullScreen}
+        isModalVisible={isFullScreen}
+        style={{
+          height: height / 1.5,
+        }}>
+        <WebView
+          originWhitelist={['*']}
+          style={{
+            height,
+            width: width - 48,
+            backgroundColor: colors.transparent,
+            alignSelf: 'flex-end',
+          }}
+          source={{
+            html: `
           <!DOCTYPE html>
           <html lang="en">
             <head>
@@ -45,8 +80,8 @@ export const KStepDescription = ({ ...props }: KStepDescription) => (
               ${props.description}
             </body>
           </html>`,
-    }}
-    injectedJavaScript={`
+          }}
+          injectedJavaScript={`
     (function() {
       const height = document.body.scrollHeight;
       window.ReactNativeWebView.postMessage(JSON.stringify({
@@ -55,9 +90,12 @@ export const KStepDescription = ({ ...props }: KStepDescription) => (
       true;
     })();
   `}
-    onMessage={event => props.handleMessage(event, props.stepId.toString())}
-    scalesPageToFit={false}
-    scrollEnabled={false}
-    showsVerticalScrollIndicator={false}
-  />
-);
+          scalesPageToFit={false}
+          pointerEvents="auto"
+          scrollEnabled={false}
+          showsVerticalScrollIndicator={false}
+        />
+      </KModal>
+    </TouchableOpacity>
+  );
+};

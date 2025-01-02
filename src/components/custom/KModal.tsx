@@ -2,6 +2,7 @@ import Modal from 'react-native-modal';
 import { colors, fonts, sizes, strings } from '@constants';
 import { Button, Text, View } from '@defaults';
 import React from 'react';
+import { ViewStyle } from 'react-native';
 import { KSpacer } from './KSpacer';
 
 type KModalProps = {
@@ -10,6 +11,7 @@ type KModalProps = {
   closeModal: () => void;
   isModalVisible: boolean;
   children?: React.ReactNode;
+  style?: ViewStyle;
 };
 
 export const KModal = ({ ...props }: KModalProps) => (
@@ -18,9 +20,12 @@ export const KModal = ({ ...props }: KModalProps) => (
     onBackdropPress={props.closeModal}
     style={{ justifyContent: 'flex-end', bottom: sizes.s20 }}>
     <View
-      style={{
-        backgroundColor: colors.eastBay,
-      }}
+      style={[
+        {
+          backgroundColor: colors.eastBay,
+        },
+        props.style,
+      ]}
       bottomV
       centerH
       padding={sizes.s20}

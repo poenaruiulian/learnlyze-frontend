@@ -61,6 +61,7 @@ export const strings = {
     },
     step: {
       resources: 'resources',
+      subSteps: 'sub-steps',
       complete: 'Complete step',
       uncomplete: 'Uncomplete step',
       feedback: 'Give feedback',

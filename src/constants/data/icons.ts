@@ -2,6 +2,7 @@ import {
   faArrowUp,
   faLink,
   faArrowLeft,
+  faBookOpen,
 } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/free-regular-svg-icons';
 
@@ -9,10 +10,12 @@ export const iconDefinitions: Record<string, IconDefinition> = {
   arrowUp: faArrowUp,
   arrowLeft: faArrowLeft,
   link: faLink,
+  lesson: faBookOpen,
 };
 
 export enum icons {
   arrowUp = 'arrowUp',
   arrowLeft = 'arrowLeft',
   link = 'link',
+  lesson = 'lesson',
 }

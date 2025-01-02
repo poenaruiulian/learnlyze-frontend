@@ -1,6 +1,7 @@
 import { FetchResult, useMutation, useQuery } from '@apollo/client';
 import {
   ACCESS_COURSE,
+  BRAKE_STEP,
   CHANGE_STEP_STATE,
   CourseModel,
   ErrorModel,
@@ -14,6 +15,7 @@ import {
 } from '@constants';
 import { useStore } from '@store';
 import { useShallow } from 'zustand/react/shallow';
+import { REPLACE_RESOURCE } from '../constants/graphql/resource.graphql';
 
 export const useCourse = () => {
   const { setHasError, setError } = useStore(
@@ -24,6 +26,9 @@ export const useCourse = () => {
   const [getCourseByIdMutation] = useMutation(GET_COURSE_BY_ID);
   const [changeStepStateMutation] = useMutation(CHANGE_STEP_STATE);
   const [accessCourseMutation] = useMutation(ACCESS_COURSE);
+  const [breakStepMutation] = useMutation(BRAKE_STEP);
+  const [replaceResourceMutation] = useMutation(REPLACE_RESOURCE);
+
   const { loading: areCoursesLoading, data } = useQuery(GET_ALL_COURSES);
 
   const isErrorFree = (response: FetchResult<any>) => {
@@ -73,6 +78,9 @@ export const useCourse = () => {
 
   const courses: CourseModel[] = data && data.getCourses;
 
+  const accessCourse = async ({ courseId }: { courseId: number }) =>
+    accessCourseMutation({ variables: { courseId } });
+
   const changeStepState = async ({
     courseId,
     stepId,
@@ -81,14 +89,32 @@ export const useCourse = () => {
     stepId: StepModel['id'];
   }) => changeStepStateMutation({ variables: { courseId, stepId } });
 
-  const accessCourse = async ({ courseId }: { courseId: number }) =>
-    accessCourseMutation({ variables: { courseId } });
+  const breakStep = async ({
+    stepId,
+    feedback,
+  }: {
+    stepId: number;
+    feedback: string;
+  }) => breakStepMutation({ variables: { stepId, feedback } });
+
+  const replaceResource = async ({
+    stepId,
+    resourceId,
+    feedback,
+  }: {
+    stepId: number;
+    resourceId: number;
+    feedback: string;
+  }) =>
+    replaceResourceMutation({ variables: { stepId, resourceId, feedback } });
 
   return {
     generateNewCourse,
     getCourseById,
     changeStepState,
     accessCourse,
+    breakStep,
+    replaceResource,
     areCoursesLoading,
     courses,
   };

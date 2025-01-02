@@ -1,14 +1,17 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import { Button, Text, View } from '@defaults';
 import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import { colors, fonts, sizes, strings } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
-import { KModal } from '@components';
+import { KModal, KSpacer, KTextInput } from '@components';
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
+import { useCourse, useRoot } from '@hooks';
 
 type KStepType = {
+  stepId: number;
   title: string;
   resources: number;
+  subSteps?: number;
   onPress: () => void;
   isFocused?: boolean;
   isCompleted: boolean;
@@ -16,9 +19,14 @@ type KStepType = {
 };
 
 export const KStep = ({ ...props }: KStepType) => {
-  const { width } = useWindowDimensions();
-
   const [isModalVisible, toggleIsModalVisible] = useReducer(s => !s, false);
+  const [givingFeedback, setGivingFeedback] = useState(false);
+  const [feedback, setFeedback] = useState('');
+
+  const { breakStep } = useCourse();
+  const { setIsLoading } = useRoot();
+
+  const { width } = useWindowDimensions();
 
   const onLongPress = () => {
     impactAsync(ImpactFeedbackStyle.Heavy).then(toggleIsModalVisible);
@@ -35,12 +43,24 @@ export const KStep = ({ ...props }: KStepType) => {
     },
     handleStepState: () => {
       props.handleStepState();
-      impactAsync(ImpactFeedbackStyle.Soft);
+      impactAsync(ImpactFeedbackStyle.Soft).then(modalFunctions.closeModal);
     },
-    handleFeedbackGiving: () => {
-      console.log('You should give feedback');
-      impactAsync(ImpactFeedbackStyle.Soft);
-    },
+    handleFeedbackGiving: () =>
+      impactAsync(ImpactFeedbackStyle.Soft).then(() => setGivingFeedback(true)),
+  };
+
+  const handleSubSteps = async () => {
+    setIsLoading(true);
+    toggleIsModalVisible();
+    setGivingFeedback(false);
+    await breakStep({ stepId: props.stepId, feedback })
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch(err => {
+        console.log(err);
+        setIsLoading(false);
+      });
   };
 
   const transform = {
@@ -55,7 +75,6 @@ export const KStep = ({ ...props }: KStepType) => {
     <>
       <LinearGradient
         style={{
-          width: width - sizes.s32,
           minHeight: sizes.s70,
           borderRadius: sizes.s10,
         }}
@@ -95,47 +114,73 @@ export const KStep = ({ ...props }: KStepType) => {
               }>
               {props.title}
             </Text>
-            <Text body semiBold white50>
-              {`${props.resources} ${strings.course.step.resources}`}
-            </Text>
+            {!props.subSteps ? (
+              <Text body semiBold white50>
+                {`${props.resources} ${strings.course.step.resources}`}
+              </Text>
+            ) : (
+              <Text body semiBold white50>
+                {`${props.subSteps} ${strings.course.step.subSteps}`}
+              </Text>
+            )}
           </View>
         </TouchableOpacity>
       </LinearGradient>
       <KModal
         closeModal={modalFunctions.closeModal}
         isModalVisible={isModalVisible}>
-        <View gap={sizes.s10}>
-          {[
-            props.isCompleted
-              ? strings.course.step.uncomplete
-              : strings.course.step.complete,
-            strings.course.step.feedback,
-          ].map((title, index) => (
-            <Button
-              key={title}
-              title={title}
-              onPress={() => {
-                if (index === 0) {
-                  modalFunctions.handleStepState();
-                } else {
-                  modalFunctions.handleFeedbackGiving();
+        <View gap={sizes.s10} width={width - sizes.s64}>
+          {givingFeedback ? (
+            <View centerH>
+              <KTextInput
+                placeholder="Give your feedback towards this step"
+                value={feedback}
+                onSetValue={setFeedback}
+                multiline
+                style={{
+                  height: sizes.s90 * 2,
+                  width: '100%',
+                }}
+              />
+              <KSpacer />
+              <Button
+                title="Create sub-steps"
+                onPress={handleSubSteps}
+                borderRadius={sizes.s10}
+                titleStyle={{ ...fonts.bodyM }}
+              />
+            </View>
+          ) : (
+            [
+              props.isCompleted
+                ? strings.course.step.uncomplete
+                : strings.course.step.complete,
+              strings.course.step.feedback,
+            ].map((title, index) => (
+              <Button
+                key={title}
+                title={title}
+                onPress={() => {
+                  if (index === 0) {
+                    modalFunctions.handleStepState();
+                  } else {
+                    modalFunctions.handleFeedbackGiving();
+                  }
+                }}
+                borderRadius={sizes.s20}
+                background={
+                  index === 0
+                    ? props.isCompleted
+                      ? colors.nevada
+                      : colors.fruitSalad
+                    : null
                 }
-                modalFunctions.closeModal();
-              }}
-              borderRadius={sizes.s20}
-              width={width - sizes.s64}
-              background={
-                index === 0
-                  ? props.isCompleted
-                    ? colors.nevada
-                    : colors.fruitSalad
-                  : null
-              }
-              titleStyle={{
-                ...fonts.bodyM,
-              }}
-            />
-          ))}
+                titleStyle={{
+                  ...fonts.bodyM,
+                }}
+              />
+            ))
+          )}
         </View>
       </KModal>
     </>

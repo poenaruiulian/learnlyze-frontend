@@ -51,6 +51,7 @@ export const GET_COURSE_BY_ID = gql`
         startedAt
         lastAccessed
         postedDate
+        completedSteps
       }
       steps {
         details {
@@ -59,12 +60,48 @@ export const GET_COURSE_BY_ID = gql`
           parentStep
           priority
           description
+          generation
+          hasChild
           completed
         }
         resources {
           id
           title
           external
+        }
+        subSteps {
+          details {
+            id
+            title
+            parentStep
+            priority
+            description
+            generation
+            hasChild
+            completed
+          }
+          resources {
+            id
+            title
+            external
+          }
+          subSteps {
+            details {
+              id
+              title
+              parentStep
+              priority
+              description
+              generation
+              hasChild
+              completed
+            }
+            resources {
+              id
+              title
+              external
+            }
+          }
         }
       }
     }
