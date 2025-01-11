@@ -8,4 +8,5 @@ export const images = {
   mainBackground: require('./backgrounds/mainBackground.png'),
   defaultCardBackground: require('./cards/defaultCardBackground.png'),
   noCoursesCardBackground: require('./cards/noCoursesCardBackground.png'),
+  newCourseCardBackground: require('./cards/newCourseCardBackground.png'),
 };
