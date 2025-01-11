@@ -35,7 +35,7 @@ export const CoursesList = ({ ...props }: CoursesListProps) => {
 
   return (
     <View>
-      <Text white80 bodyXL bold style={{ marginHorizontal: sizes.s10 }}>
+      <Text white80 bodyXL bold style={{ marginHorizontal: sizes.s16 }}>
         {props.label}
       </Text>
       <KSpacer />
@@ -49,19 +49,21 @@ export const CoursesList = ({ ...props }: CoursesListProps) => {
         onContentSizeChange={onContentSizeChange}
         renderItem={({ item, index }) => (
           <Fragment key={index}>
-            {index === 0 && <KSpacer />}
+            {index === 0 && <KSpacer w={sizes.s16} />}
             <CourseCard
               name={item.title}
               steps={item.steps.length}
               completed={item.completedSteps}
               onPress={() => handleCourseNavigation(item.id)}
             />
-            <KSpacer />
+            <KSpacer
+              w={index === props.courses.length - 1 ? sizes.s16 : sizes.s10}
+            />
           </Fragment>
         )}
         ListEmptyComponent={
           <>
-            <KSpacer />
+            <KSpacer w={sizes.s16} />
             <CourseCard noCourse onPress={handleDiscoverNavigation} />
           </>
         }

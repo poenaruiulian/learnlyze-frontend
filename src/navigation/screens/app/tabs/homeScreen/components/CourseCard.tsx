@@ -57,7 +57,7 @@ export const CourseCard = ({ ...props }: CourseCardProps) => {
                 {props.name}
               </Text>
               <View>
-                <View row gap={2} centerH>
+                <View row gap={3} centerH>
                   <Text semiBold bodyL persianGreen style={{ lineHeight: 18 }}>
                     {props?.completed?.toString()}
                   </Text>
