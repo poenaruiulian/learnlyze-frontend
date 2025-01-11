@@ -1,4 +1,10 @@
+import React, { useEffect } from 'react';
 import { Pressable, useWindowDimensions } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, sizes } from '@constants';
 import { View } from '@defaults';
@@ -13,18 +19,42 @@ export const TabBar = ({
   const { bottom } = useSafeAreaInsets();
   const { width } = useWindowDimensions();
 
+  const tabWidth = sizes.s60 + sizes.s20;
+  const translateX = useSharedValue(0);
+
+  useEffect(() => {
+    translateX.value = withTiming(state.index * tabWidth, {
+      duration: 300,
+    });
+  }, [state.index, tabWidth, translateX]);
+
   return (
     <View width={width} center>
       <View
         row
         gap={sizes.s20}
         borderRadius={sizes.s90}
-        padding={3}
         style={{
           position: 'absolute',
-          bottom: Math.max(bottom + sizes.s20, sizes.s20),
+          bottom: Math.max(bottom + sizes.s10, sizes.s10),
           backgroundColor: colors.tundora,
         }}>
+        <Animated.View
+          style={[
+            {
+              position: 'absolute',
+              height: sizes.s60,
+              width: sizes.s60,
+              backgroundColor: colors.nevada,
+              borderRadius: sizes.s90,
+              borderColor: colors.tundora,
+              borderWidth: 3,
+            },
+            useAnimatedStyle(() => ({
+              transform: [{ translateX: translateX.value }],
+            })),
+          ]}
+        />
         {state.routes.map((route: any, index: number) => {
           const { options } = descriptors[route.key];
           const isFocused = state.index === index;
@@ -43,16 +73,22 @@ export const TabBar = ({
 
           return (
             <Pressable
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
+              key={route.key}
               onPress={onPress}
               style={{
-                backgroundColor: isFocused ? colors.nevada : colors.transparent,
                 borderRadius: sizes.s90,
                 height: sizes.s60,
                 width: sizes.s60,
               }}>
-              <View flex center padding={sizes.s15}>
+              <View
+                flex
+                center
+                style={{
+                  height: sizes.s60,
+                  width: sizes.s60,
+                  borderRadius: sizes.s90,
+                  backgroundColor: colors.transparent,
+                }}>
                 <TabBarIcon
                   label={options.tabBarLabel ?? options.title ?? route.name}
                 />
