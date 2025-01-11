@@ -23,9 +23,13 @@ const StepSet = ({
   steps: FullStep[];
   width: number;
 }) => {
-  const { changeStepState } = useCourse();
+  const { changeStepState, accessCourse } = useCourse();
 
   const [extendedStep, setExtendedStep] = useState<StepModel['id'][]>([]);
+
+  useEffect(() => {
+    accessCourse({ courseId: fullCourse.details.id });
+  }, [accessCourse, fullCourse.details.id]);
 
   const handleStepOnPress = (stepId: number) =>
     extendedStep.includes(stepId)

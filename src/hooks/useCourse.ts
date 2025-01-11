@@ -30,7 +30,11 @@ export const useCourse = () => {
   const [breakStepMutation] = useMutation(BRAKE_STEP);
   const [replaceResourceMutation] = useMutation(REPLACE_RESOURCE);
 
-  const { loading: areCoursesLoading, data } = useQuery(GET_ALL_COURSES);
+  const {
+    loading: areCoursesLoading,
+    data,
+    refetch: refetchCourses,
+  } = useQuery(GET_ALL_COURSES);
 
   const isErrorFree = (response: FetchResult<any>) => {
     if (response.errors && response.errors[0]) {
@@ -118,5 +122,6 @@ export const useCourse = () => {
     replaceResource,
     areCoursesLoading,
     courses,
+    refetchCourses,
   };
 };
