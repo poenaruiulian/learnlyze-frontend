@@ -7,4 +7,5 @@ export const images = {
   onboardingThirdSlideBg: require('./backgrounds/onboarding/onboardingThirdSlideBg.png'),
   mainBackground: require('./backgrounds/mainBackground.png'),
   defaultCardBackground: require('./cards/defaultCardBackground.png'),
+  noCoursesCardBackground: require('./cards/noCoursesCardBackground.png'),
 };

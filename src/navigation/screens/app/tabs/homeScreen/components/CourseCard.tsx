@@ -6,19 +6,27 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { KSpacer } from '@components';
 
 type CourseCardProps = {
-  name: string;
-  steps: number;
-  completed: number;
+  name?: string;
+  steps?: number;
+  completed?: number;
   onPress: () => void;
+  noCourse?: boolean;
 };
 
 export const CourseCard = ({ ...props }: CourseCardProps) => {
-  const completed = Math.floor((props.completed * 100) / props.steps);
+  const completed =
+    props.completed && props.steps
+      ? Math.floor((props.completed * 100) / props.steps)
+      : 0;
   const uncompleted = 100 - completed;
 
   return (
     <ImageBackground
-      source={images.defaultCardBackground}
+      source={
+        props.noCourse
+          ? images.noCoursesCardBackground
+          : images.defaultCardBackground
+      }
       resizeMode="contain"
       style={{
         width: 255,
@@ -31,53 +39,74 @@ export const CourseCard = ({ ...props }: CourseCardProps) => {
           padding={sizes.s10}
           style={{
             backgroundColor: colors.biscay60,
-            justifyContent: 'space-between',
+            justifyContent: props.noCourse ? 'center' : 'space-between',
           }}>
-          <Text semiBold white body>
-            {props.name}
-          </Text>
-          <View>
-            <View row gap={2} centerH>
-              <Text semiBold bodyL persianGreen style={{ lineHeight: 18 }}>
-                {props.completed.toString()}
+          {props.noCourse ? (
+            <>
+              <Text bodyM semiBold white>
+                Looks that there are no community courses saved
               </Text>
-              <Text
-                semiBold
-                bodyS
-                white50
-                style={{ lineHeight: 18 }}>{`of ${props.steps} steps`}</Text>
-              <Text semiBold bodyS persianGreen style={{ lineHeight: 18 }}>
-                completed
+              <KSpacer h={5} />
+              <Text bodyXS white50 medium>
+                Check the Discover page to explore new things to learn from the
+                community
               </Text>
-            </View>
-            <KSpacer h={5} />
-            <View>
-              <Text
-                style={{ position: 'absolute', zIndex: 1, alignSelf: 'center' }}
-                white50
-                bold
-                bodyS>
-                {`${completed}%`}
+            </>
+          ) : (
+            <>
+              <Text semiBold white body>
+                {props.name}
               </Text>
-              <LinearGradient
-                colors={
-                  uncompleted === 0
-                    ? [colors.persianGreen, colors.persianGreen]
-                    : completed === 0
-                      ? [colors.tulipTree, colors.tulipTree]
-                      : [colors.tulipTree, colors.persianGreen]
-                }
-                style={{
-                  width: '100%',
-                  height: 20,
-                  borderRadius: 6,
-                }}
-                locations={[completed / 100, uncompleted / 100]}
-                start={{ x: 0, y: 0.75 }}
-                end={{ x: 1, y: 0.25 }}
-              />
-            </View>
-          </View>
+              <View>
+                <View row gap={2} centerH>
+                  <Text semiBold bodyL persianGreen style={{ lineHeight: 18 }}>
+                    {props?.completed?.toString()}
+                  </Text>
+                  <Text
+                    semiBold
+                    bodyS
+                    white50
+                    style={{
+                      lineHeight: 18,
+                    }}>{`of ${props.steps} steps`}</Text>
+                  <Text semiBold bodyS persianGreen style={{ lineHeight: 18 }}>
+                    completed
+                  </Text>
+                </View>
+                <KSpacer h={5} />
+                <View>
+                  <Text
+                    style={{
+                      position: 'absolute',
+                      zIndex: 1,
+                      alignSelf: 'center',
+                    }}
+                    white50
+                    bold
+                    bodyS>
+                    {`${completed}%`}
+                  </Text>
+                  <LinearGradient
+                    colors={
+                      uncompleted === 0
+                        ? [colors.persianGreen, colors.persianGreen]
+                        : completed === 0
+                          ? [colors.tulipTree, colors.tulipTree]
+                          : [colors.tulipTree, colors.persianGreen]
+                    }
+                    style={{
+                      width: '100%',
+                      height: 20,
+                      borderRadius: 6,
+                    }}
+                    locations={[completed / 100, uncompleted / 100]}
+                    start={{ x: 0, y: 0.75 }}
+                    end={{ x: 1, y: 0.25 }}
+                  />
+                </View>
+              </View>
+            </>
+          )}
         </View>
       </TouchableOpacity>
     </ImageBackground>

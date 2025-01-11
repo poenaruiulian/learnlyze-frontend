@@ -45,8 +45,12 @@ export const CoursesList = ({ ...props }: CoursesListProps) => {
             <KSpacer />
           </Fragment>
         )}
-        // TODO Create empty components for two types of lists
-        // ListEmptyComponent={}
+        ListEmptyComponent={
+          <>
+            <KSpacer />
+            <CourseCard noCourse onPress={() => {}} />
+          </>
+        }
       />
     </View>
   );
