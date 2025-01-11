@@ -1,3 +1,3 @@
 export * from './DiscoverScreen';
-export * from './HomeScreen';
+export * from './homeScreen';
 export * from './ProfileScreen';

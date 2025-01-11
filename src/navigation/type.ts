@@ -1,6 +1,6 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { FullCourseModel, RegisterDtoType } from '@constants';
-import { RouteProp } from '@react-navigation/native';
+import { NavigationProp, RouteProp } from '@react-navigation/native';
 
 export type AuthStackParamList = {
   LoginScreen: undefined;
@@ -33,6 +33,8 @@ export type AppStackParamList = {
 export type AuthNavigationType = NativeStackNavigationProp<AuthStackParamList>;
 
 export type AppNavigationType = NativeStackNavigationProp<AppStackParamList>;
+
+export type TabNavigationType = NavigationProp<TabParamList>;
 
 export type ConfirmMailScreenRouteType = RouteProp<
   AuthStackParamList,

@@ -1,21 +1,22 @@
 import { FetchResult, useMutation, useQuery } from '@apollo/client';
 import {
-  ACCESS_COURSE,
-  BRAKE_STEP,
-  CHANGE_STEP_STATE,
+  RootInfo,
   CourseModel,
   ErrorModel,
   FullCourseModel,
+  StepModel,
+  ACCESS_COURSE,
+  BRAKE_STEP,
+  CHANGE_STEP_STATE,
   GENERATE_NEW_COURSE,
   GenericError,
   GET_ALL_COURSES,
   GET_COURSE_BY_ID,
-  RootInfo,
-  StepModel,
+  REPLACE_RESOURCE,
 } from '@constants';
 import { useStore } from '@store';
 import { useShallow } from 'zustand/react/shallow';
-import { REPLACE_RESOURCE } from '../constants/graphql/resource.graphql';
+import { useMemo } from 'react';
 
 export const useCourse = () => {
   const { setHasError, setError } = useStore(
@@ -76,7 +77,7 @@ export const useCourse = () => {
     return response.data.getCourseById;
   };
 
-  const courses: CourseModel[] = data && data.getCourses;
+  const courses: CourseModel[] = useMemo(() => data && data.getCourses, [data]);
 
   const accessCourse = async ({ courseId }: { courseId: number }) =>
     accessCourseMutation({ variables: { courseId } });

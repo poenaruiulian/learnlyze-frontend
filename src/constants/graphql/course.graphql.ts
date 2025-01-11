@@ -36,6 +36,8 @@ export const GET_ALL_COURSES = gql`
       title
       startedAt
       lastAccessed
+      completedSteps
+      steps
     }
   }
 `;
