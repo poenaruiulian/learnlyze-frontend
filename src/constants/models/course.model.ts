@@ -7,6 +7,7 @@ export type CourseModel = {
   postedDate?: string;
   completedSteps: number;
   steps: number[];
+  lastAccessed: string;
 };
 
 export type StepModel = {

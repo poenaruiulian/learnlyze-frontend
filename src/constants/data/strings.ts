@@ -82,5 +82,6 @@ export const strings = {
     noCommunityTitle: 'Looks that there are no community courses saved',
     noCommunityDescription:
       'Check the Discover page to explore new things to learn from the community',
+    studying: 'Studying',
   },
 };
