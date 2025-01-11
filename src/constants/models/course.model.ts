@@ -5,6 +5,8 @@ export type CourseModel = {
   tag?: string;
   startedAt: string;
   postedDate?: string;
+  completedSteps: number;
+  steps: number[];
 };
 
 export type StepModel = {
