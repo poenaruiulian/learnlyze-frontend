@@ -74,4 +74,13 @@ export const strings = {
   loading: {
     message: 'We are prepping your course. Take your time and pop some bubbles',
   },
+  home: {
+    courses: 'Courses',
+    savedFromCommunity: 'Saved from community',
+    ofXSteps: (x: number) => `of ${x} steps`,
+    completed: 'completed',
+    noCommunityTitle: 'Looks that there are no community courses saved',
+    noCommunityDescription:
+      'Check the Discover page to explore new things to learn from the community',
+  },
 };

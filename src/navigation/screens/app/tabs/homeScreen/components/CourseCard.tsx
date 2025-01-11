@@ -1,7 +1,7 @@
 import { ImageBackground, TouchableOpacity } from 'react-native';
 import { Text, View } from '@defaults';
 import { images } from '@images';
-import { colors, sizes } from '@constants';
+import { colors, sizes, strings } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { KSpacer } from '@components';
 
@@ -44,12 +44,11 @@ export const CourseCard = ({ ...props }: CourseCardProps) => {
           {props.noCourse ? (
             <>
               <Text bodyM semiBold white>
-                Looks that there are no community courses saved
+                {strings.home.noCommunityTitle}
               </Text>
               <KSpacer h={5} />
               <Text bodyXS white50 medium>
-                Check the Discover page to explore new things to learn from the
-                community
+                {strings.home.noCommunityDescription}
               </Text>
             </>
           ) : (
@@ -68,9 +67,11 @@ export const CourseCard = ({ ...props }: CourseCardProps) => {
                     white50
                     style={{
                       lineHeight: 18,
-                    }}>{`of ${props.steps} steps`}</Text>
+                    }}>
+                    {strings.home.ofXSteps(props.steps ?? 0)}
+                  </Text>
                   <Text semiBold bodyS persianGreen style={{ lineHeight: 18 }}>
-                    completed
+                    {strings.home.completed}
                   </Text>
                 </View>
                 <KSpacer h={5} />
