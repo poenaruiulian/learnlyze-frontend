@@ -32,7 +32,7 @@ const AuthStack = () => (
 );
 
 const BottomTab = () => (
-  <Tab.Navigator>
+  <Tab.Navigator screenOptions={{ headerShown: false }}>
     <Tab.Screen name="HomeScreen" component={HomeScreen} />
     <Tab.Screen name="DiscoverScreen" component={DiscoverScreen} />
     <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
