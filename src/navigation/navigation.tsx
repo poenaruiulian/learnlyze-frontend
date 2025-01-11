@@ -1,5 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { useRoot } from '@hooks';
 import { ErrorHandler } from '@wrappers';
@@ -18,6 +21,7 @@ import {
   RegisterScreen,
   SettingsScreen,
 } from './screens';
+import { TabBar } from './components';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -31,13 +35,16 @@ const AuthStack = () => (
   </Stack.Navigator>
 );
 
-const BottomTab = () => (
-  <Tab.Navigator screenOptions={{ headerShown: false }}>
-    <Tab.Screen name="HomeScreen" component={HomeScreen} />
-    <Tab.Screen name="DiscoverScreen" component={DiscoverScreen} />
-    <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
-  </Tab.Navigator>
-);
+const BottomTab = () => {
+  const getTabBar = (props: BottomTabBarProps) => <TabBar {...props} />;
+  return (
+    <Tab.Navigator screenOptions={{ headerShown: false }} tabBar={getTabBar}>
+      <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      <Tab.Screen name="DiscoverScreen" component={DiscoverScreen} />
+      <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+};
 
 const AppStack = () => {
   const { isNewUser } = useRoot();
