@@ -5,4 +5,5 @@ export const images = {
   onboardingFirstSlideBg: require('./backgrounds/onboarding/onboardingFirstSlideBg.png'),
   onboardingSecondSlideBg: require('./backgrounds/onboarding/onboardingSecondSlideBg.png'),
   onboardingThirdSlideBg: require('./backgrounds/onboarding/onboardingThirdSlideBg.png'),
+  mainBackground: require('./backgrounds/mainBackground.png'),
 };
