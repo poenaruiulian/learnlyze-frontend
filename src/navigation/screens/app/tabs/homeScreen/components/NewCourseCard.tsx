@@ -33,7 +33,7 @@ export const NewCourseCard = () => {
           borderRadius: 10,
         }}
         onPress={handleNavigation}>
-        <Text heading semiBold white style={{ width: '70%' }}>
+        <Text bodyXL semiBold white style={{ width: '70%' }}>
           Ready for something new?
         </Text>
         <Text body medium white50 style={{ width: '70%' }}>

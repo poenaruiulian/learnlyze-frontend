@@ -68,11 +68,8 @@ export const KStepDescription = ({ ...props }: KStepDescription) => {
                   color: ${colors.white50};
                   background: transparent;
                 }
-                strong {
-                  color: ${colors.tulipTree80};
-                }
-                em {
-                  color: ${colors.tulipTree80};
+                h1, h2, h3, h4, h5, h6, i, b, em, strong {
+                 color: ${colors.tulipTree80};
                 }
               </style>
             </head>

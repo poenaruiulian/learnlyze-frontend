@@ -36,56 +36,58 @@ const StepSet = ({
       ? setExtendedStep(prevState => prevState?.filter(el => el !== stepId))
       : setExtendedStep(prevState => [...prevState, stepId]);
 
-  return steps.map(step => (
-    <View flex key={step.details.id} width={width - sizes.s32} centerV>
-      <KStep
-        stepId={step.details.id}
-        title={step.details.title}
-        resources={step.resources.length}
-        onPress={() => handleStepOnPress(step.details.id)}
-        isFocused={extendedStep.includes(step.details.id)}
-        isCompleted={step.details.completed}
-        handleStepState={() =>
-          changeStepState({
-            courseId: fullCourse.details.id,
-            stepId: step.details.id,
-          })
-        }
-        subSteps={step.subSteps?.length}
-      />
-      {extendedStep.includes(step.details.id) &&
-        (!step.details.hasChild ? (
-          <>
-            <KStepDescription
-              stepId={step.details.id}
-              description={step.details.description}
-            />
-            <KSpacer />
-            <View height={step.resources.length * sizes.s50} rightH topV>
-              {step.resources.map((resource, index) => (
-                <KResource
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={index}
-                  stepId={step.details.id}
-                  {...resource}
-                />
-              ))}
+  return steps
+    .sort((s1, s2) => s1.details.priority - s2.details.priority)
+    .map(step => (
+      <View flex key={step.details.id} width={width - sizes.s32} centerV>
+        <KStep
+          stepId={step.details.id}
+          title={step.details.title}
+          resources={step.resources.length}
+          onPress={() => handleStepOnPress(step.details.id)}
+          isFocused={extendedStep.includes(step.details.id)}
+          isCompleted={step.details.completed}
+          handleStepState={() =>
+            changeStepState({
+              courseId: fullCourse.details.id,
+              stepId: step.details.id,
+            })
+          }
+          subSteps={step.subSteps?.length}
+        />
+        {extendedStep.includes(step.details.id) &&
+          (!step.details.hasChild ? (
+            <>
+              <KStepDescription
+                stepId={step.details.id}
+                description={step.details.description}
+              />
+              <KSpacer />
+              <View height={step.resources.length * sizes.s50} rightH topV>
+                {step.resources.map((resource, index) => (
+                  <KResource
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index}
+                    stepId={step.details.id}
+                    {...resource}
+                  />
+                ))}
+              </View>
+            </>
+          ) : (
+            <View rightH>
+              <KSpacer />
+              <StepSet
+                fullCourse={fullCourse}
+                steps={step.subSteps}
+                width={width - sizes.s32}
+              />
             </View>
-          </>
-        ) : (
-          <View rightH>
-            <KSpacer />
-            <StepSet
-              fullCourse={fullCourse}
-              steps={step.subSteps}
-              width={width - sizes.s32}
-            />
-          </View>
-        ))}
+          ))}
 
-      <KSpacer />
-    </View>
-  ));
+        <KSpacer />
+      </View>
+    ));
 };
 
 export const CourseScreen = () => {
