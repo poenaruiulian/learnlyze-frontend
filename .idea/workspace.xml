@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStepDescription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStepDescription.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/components/NewCourseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/components/NewCourseCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/HomeScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +101,7 @@
       <workItem from="1733900903322" duration="11000" />
       <workItem from="1735495677110" duration="24085000" />
       <workItem from="1735835847622" duration="9953000" />
-      <workItem from="1737555009018" duration="3779000" />
+      <workItem from="1737555009018" duration="4600000" />
     </task>
     <servers />
   </component>

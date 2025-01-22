@@ -53,6 +53,7 @@ export const KContainer = ({
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <ScrollView
             scrollEnabled={isScrollable}
+            showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="always"
             keyboardDismissMode="on-drag"
             contentContainerStyle={{

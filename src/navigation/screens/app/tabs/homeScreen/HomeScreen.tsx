@@ -58,6 +58,7 @@ export const HomeScreen = () => {
       />
       <KSpacer h={sizes.s20} />
       <CoursesList label={strings.home.savedFromCommunity} courses={[]} />
+      <KSpacer h={sizes.s90} />
     </KContainer>
   );
 };
