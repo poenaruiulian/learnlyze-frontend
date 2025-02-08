@@ -10,7 +10,7 @@ import {
   StepModel,
 } from '@constants';
 import { useWindowDimensions } from 'react-native';
-import { useCourse } from '@hooks';
+import { useCourse, useStep, useResource } from '@hooks';
 import { AppStackParamList } from '../../../type';
 import { KHeader, KResource, KStep, KStepDescription } from './components';
 
@@ -23,7 +23,8 @@ const StepSet = ({
   steps: FullStep[];
   width: number;
 }) => {
-  const { changeStepState, accessCourse } = useCourse();
+  const { accessCourse } = useCourse();
+  const { changeStepState } = useStep();
 
   const [extendedStep, setExtendedStep] = useState<StepModel['id'][]>([]);
 
@@ -96,13 +97,11 @@ export const CourseScreen = () => {
 
   const { width } = useWindowDimensions();
 
-  const {
-    changeStepState,
-    replaceResource,
-    breakStep,
-    getCourseById,
-    accessCourse,
-  } = useCourse();
+  const { getCourseById, accessCourse } = useCourse();
+
+  const { replaceResource } = useResource();
+
+  const { changeStepState, breakStep } = useStep();
 
   const [fullCourse, setFullCourse] = useState(params.fullCourse);
 

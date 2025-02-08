@@ -5,7 +5,7 @@ import { colors, fonts, sizes, strings } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { KModal, KSpacer, KTextInput } from '@components';
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
-import { useCourse, useRoot } from '@hooks';
+import { useRoot, useStep } from '@hooks';
 
 type KStepType = {
   stepId: number;
@@ -23,7 +23,7 @@ export const KStep = ({ ...props }: KStepType) => {
   const [givingFeedback, setGivingFeedback] = useState(false);
   const [feedback, setFeedback] = useState('');
 
-  const { breakStep } = useCourse();
+  const { breakStep } = useStep();
   const { setIsLoading } = useRoot();
 
   const { width } = useWindowDimensions();

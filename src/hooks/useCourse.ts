@@ -17,7 +17,7 @@ import {
 } from '@constants';
 import { useStore } from '@store';
 import { useShallow } from 'zustand/react/shallow';
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 
 export const useCourse = () => {
   const { setHasError, setError } = useStore(
@@ -48,10 +48,10 @@ export const useCourse = () => {
     refetch: refetchCommunityCourses,
   } = useQuery(GET_ALL_COMMUNITY_COURSES);
 
-  const refetchCourses = useCallback(() => {
-    refetch();
-    refetchCommunityCourses();
-  }, [refetch, refetchCommunityCourses]);
+  const refetchCourses = async () => {
+    await refetch();
+    await refetchCommunityCourses();
+  };
 
   // Handling errors and loadings
   const isErrorFree = (response: FetchResult<any>) => {

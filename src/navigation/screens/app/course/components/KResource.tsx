@@ -11,12 +11,12 @@ import {
 import { Icon, Text } from '@defaults';
 import { useState } from 'react';
 import { Linking, TouchableOpacity } from 'react-native';
-import { useCourse, useRoot } from '@hooks';
+import { useRoot, useResource } from '@hooks';
 
 export const KResource = ({ ...props }: ResourceModel & { stepId: number }) => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
-  const { replaceResource } = useCourse();
+  const { replaceResource } = useResource();
   const { setIsLoading } = useRoot();
 
   const unusefulItem = {
