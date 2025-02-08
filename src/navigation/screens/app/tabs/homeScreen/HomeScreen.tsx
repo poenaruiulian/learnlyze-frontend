@@ -13,8 +13,7 @@ import {
 } from './components';
 
 export const HomeScreen = () => {
-  const { courses, areCoursesLoading, getCourseById, refetchCourses } =
-    useCourse();
+  const { courses, isLoading, getCourseById, refetchCourses } = useCourse();
   const { setIsLoading } = useRoot();
 
   const [lastAccessedCourse, setLastAccessedCourse] =
@@ -36,12 +35,12 @@ export const HomeScreen = () => {
 
   useFocusEffect(
     useCallback(() => {
-      setIsLoading(areCoursesLoading);
+      setIsLoading(isLoading);
       refetchCourses().then(() => {
-        setIsLoading(areCoursesLoading);
+        setIsLoading(isLoading);
         getLastAccessedCourse();
       });
-    }, [areCoursesLoading, getLastAccessedCourse, refetchCourses, setIsLoading])
+    }, [isLoading, getLastAccessedCourse, refetchCourses, setIsLoading])
   );
 
   return (
