@@ -2,12 +2,14 @@ export type CourseModel = {
   id: number;
   title: string;
   description?: string;
-  tag?: string;
+  tags?: string[];
   startedAt: string;
   postedDate?: string;
   completedSteps: number;
   steps: number[];
   lastAccessed: string;
+  complete?: boolean;
+  enrolledId?: number;
 };
 
 export type StepModel = {

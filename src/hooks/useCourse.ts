@@ -76,7 +76,7 @@ export const useCourse = () => {
   const isLoading = areCoursesLoading || areCommunityCoursesLoading;
 
   // Courses lists from queries
-  const courses: CourseModel[] = useMemo(() => data && data.getCourses, [data]);
+  const courses: CourseModel[] = useMemo(() => data && data.getAll, [data]);
   const communityCourses: CourseModel[] = useMemo(
     () => dataCommunity,
     [dataCommunity]
@@ -91,7 +91,7 @@ export const useCourse = () => {
       return null;
     }
 
-    return response.data.getCourseById;
+    return response.data.getFullById;
   };
 
   // Handle course actions
@@ -106,7 +106,7 @@ export const useCourse = () => {
       return null;
     }
 
-    return response.data.generateCourse;
+    return response.data.generate;
   };
 
   const changePublishDetails = async (variables: {

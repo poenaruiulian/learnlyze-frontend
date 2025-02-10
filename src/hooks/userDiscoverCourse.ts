@@ -1,18 +1,30 @@
 import { useQuery } from '@apollo/client';
-import { GET_DISCOVER } from '@constants';
+import { CourseModel, GET_DISCOVER } from '@constants';
+import { useMemo } from 'react';
 
 export const useDiscoverCourses = ({
   tags,
   search,
 }: {
-  tags: string[];
-  search: string;
+  tags: string[] | null;
+  search: string | null;
 }) => {
   const {
     loading: areDiscoverCoursesLoading,
     data: dataDiscover,
     refetch: refetchDiscoverCourses,
+    error,
   } = useQuery(GET_DISCOVER, { variables: { tags, search } });
 
-  return { areDiscoverCoursesLoading, dataDiscover, refetchDiscoverCourses };
+  const courses = useMemo<CourseModel[]>(
+    () => dataDiscover && dataDiscover.getDiscover,
+    [dataDiscover]
+  );
+
+  return {
+    areDiscoverCoursesLoading,
+    courses,
+    refetchDiscoverCourses,
+    error,
+  };
 };

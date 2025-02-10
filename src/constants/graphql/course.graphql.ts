@@ -10,6 +10,8 @@ const GET_ALL_COURSES = gql`
       completedSteps
       steps
       lastAccessed
+      complete
+      enrolledId
     }
   }
 `;
@@ -49,11 +51,13 @@ const GET_COURSE_BY_ID = gql`
         id
         title
         description
-        tag
+        tags
         startedAt
         lastAccessed
         postedDate
         completedSteps
+        complete
+        enrolledId
       }
       steps {
         details {
@@ -117,9 +121,12 @@ const GENERATE_NEW_COURSE = gql`
         id
         title
         description
-        tag
+        tags
         startedAt
         postedDate
+        complete
+        completedSteps
+        enrolledId
       }
       steps {
         details {
