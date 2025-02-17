@@ -1,20 +1,24 @@
-import { Text } from '@defaults';
-import { KContainer } from '@components';
+import { View } from '@defaults';
+import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
 import { useDiscoverCourses, useRoot } from '@hooks';
-import { useCallback, useEffect, useState } from 'react';
-import { FlatList } from 'react-native';
-import { ErrorCodes } from '@constants';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { FlatList, useWindowDimensions } from 'react-native';
+import { ErrorCodes, sizes, Tags } from '@constants';
 import { useFocusEffect } from '@react-navigation/native';
-import { SearchBar } from './components';
+import { DiscoverCourseCard, SearchBar, TagsList } from './components';
 
 export const DiscoverScreen = () => {
-  const [tags] = useState<string[] | null>(null);
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [search, setSearch] = useState<string | null>(null);
 
   const { courses, refetchDiscoverCourses, areDiscoverCoursesLoading, error } =
-    useDiscoverCourses({ tags, search });
+    useDiscoverCourses({
+      tags: selectedTag ? [selectedTag] : null,
+      search,
+    });
   const { setIsLoading, setError, setHasError } = useRoot();
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     setIsLoading(areDiscoverCoursesLoading);
@@ -38,13 +42,43 @@ export const DiscoverScreen = () => {
     }, [refetchDiscoverCourses])
   );
 
+  const onTagPress = useCallback(
+    (value: string) => setSelectedTag(value === Tags.all ? null : value),
+    []
+  );
+
+  const tags = useMemo(() => {
+    const filteredTags = Object.values(Tags)
+      .map(tag => (tag !== Tags.all && tag !== selectedTag ? tag : null))
+      .filter(tag => tag);
+
+    return [Tags.all, selectedTag].concat(filteredTags).filter(tag => tag);
+  }, [selectedTag]);
+
   return (
     <KContainer backgroundImage={images.mainBackground}>
       <SearchBar currentValue={search} changeCurrentValue={setSearch} />
-      <FlatList
-        data={courses}
-        renderItem={({ item }) => <Text>{item.title}</Text>}
-      />
+      <KSpacer />
+      <TagsList onTagPress={onTagPress} tags={tags} />
+      <KSpacer h={sizes.s30} />
+      <View style={{ flexShrink: 1, width }}>
+        <FlatList
+          scrollEnabled={false}
+          numColumns={2}
+          keyExtractor={item => item.id.toString()}
+          data={courses}
+          renderItem={({ item }) => (
+            <DiscoverCourseCard tags={item?.tags || []} title={item?.title} />
+          )}
+          style={{ paddingHorizontal: sizes.s20 }}
+          contentContainerStyle={{
+            gap: sizes.s10,
+          }}
+          columnWrapperStyle={{
+            gap: sizes.s10,
+          }}
+        />
+      </View>
     </KContainer>
   );
 };

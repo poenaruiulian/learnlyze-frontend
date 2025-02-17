@@ -5,6 +5,20 @@ export const colors = {
   auChico: '#9B5757',
   auChico60: '#9B575799',
 
+  ironstone: '#854836',
+
+  azalea: '#F7CFD8',
+
+  hummingBird: '#D1F8EF',
+
+  cersieRed: '#DE3163',
+
+  chelseaCucumber: '#77B254',
+
+  turbo: '#FFEB00',
+
+  cranberry: '#DA498D',
+
   electricViolet: '#9747FF',
   electricViolet80: '#9747FFCC',
   electricViolet60: '#9747FF99',

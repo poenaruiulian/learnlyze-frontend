@@ -1,0 +1,14 @@
+export const Tags = {
+  all: 'all',
+  tech: 'tech',
+  design: 'design',
+  business: 'business',
+  finance: 'finance',
+  health: 'health',
+  science: 'science',
+  music: 'music',
+  marketing: 'marketing',
+  coding: 'coding',
+  art: 'art',
+  writing: 'writing',
+};

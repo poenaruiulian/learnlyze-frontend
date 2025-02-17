@@ -4,3 +4,4 @@ export * from './endpoints';
 export * from './graphql';
 export * from './helpers';
 export * from './data';
+export * from './enums';

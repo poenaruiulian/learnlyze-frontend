@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { CourseModel, GET_DISCOVER } from '@constants';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 export const useDiscoverCourses = ({
   tags,
@@ -12,7 +12,7 @@ export const useDiscoverCourses = ({
   const {
     loading: areDiscoverCoursesLoading,
     data: dataDiscover,
-    refetch: refetchDiscoverCourses,
+    refetch,
     error,
   } = useQuery(GET_DISCOVER, { variables: { tags, search } });
 
@@ -20,6 +20,9 @@ export const useDiscoverCourses = ({
     () => dataDiscover && dataDiscover.getDiscover,
     [dataDiscover]
   );
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const refetchDiscoverCourses = useCallback(() => refetch(), [tags, search]);
 
   return {
     areDiscoverCoursesLoading,
