@@ -8,7 +8,7 @@ type TagProps = {
   isSelected: boolean;
 };
 
-export const Tag = ({ ...props }: TagProps) => (
+export const KTag = ({ ...props }: TagProps) => (
   <TouchableOpacity
     onPress={() => props.onTagPress(props.name)}
     style={{

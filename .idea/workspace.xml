@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/components/NoCourses.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/Variant4.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/DiscoverScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/DiscoverScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/components/DiscoverCourseCard/DiscoverCourseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/components/DiscoverCourseCard/DiscoverCourseCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/components/SearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/components/SearchBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/components/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/HomeScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +118,7 @@
       <workItem from="1739350193590" duration="601000" />
       <workItem from="1739805882598" duration="8628000" />
       <workItem from="1739884212727" duration="22000" />
-      <workItem from="1740309209258" duration="3668000" />
+      <workItem from="1740309209258" duration="4083000" />
     </task>
     <servers />
   </component>

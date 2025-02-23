@@ -13,8 +13,8 @@ import { useFocusEffect } from '@react-navigation/native';
 import {
   DiscoverCourseCard,
   NoCoursesFound,
-  SearchBar,
-  TagsList,
+  KSearchBar,
+  KTagsList,
 } from './components';
 
 export const DiscoverScreen = () => {
@@ -66,9 +66,9 @@ export const DiscoverScreen = () => {
 
   return (
     <KContainer backgroundImage={images.mainBackground}>
-      <SearchBar currentValue={search} changeCurrentValue={setSearch} />
+      <KSearchBar currentValue={search} changeCurrentValue={setSearch} />
       <KSpacer />
-      <TagsList onTagPress={onTagPress} tags={tags} />
+      <KTagsList onTagPress={onTagPress} tags={tags} />
       <KSpacer h={sizes.s30} />
       {/* FlatList won't work inside a TouchableWithoutFeedback on which onPress is defined. */}
       {/* The KContainer has a TouchableWithoutFeedback to dismiss the keyboard on background press. */}

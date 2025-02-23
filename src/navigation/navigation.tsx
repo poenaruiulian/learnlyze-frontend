@@ -21,7 +21,7 @@ import {
   RegisterScreen,
   SettingsScreen,
 } from './screens';
-import { TabBar } from './components';
+import { KTabBar } from './components';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -36,7 +36,7 @@ const AuthStack = () => (
 );
 
 const BottomTab = () => {
-  const getTabBar = (props: BottomTabBarProps) => <TabBar {...props} />;
+  const getTabBar = (props: BottomTabBarProps) => <KTabBar {...props} />;
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }} tabBar={getTabBar}>
       <Tab.Screen name="HomeScreen" component={HomeScreen} />

@@ -1,3 +1,3 @@
-export * from './CoursesList';
-export * from './LastAccessedCourseCard';
-export * from './NewCourseCard';
+export * from './KCoursesList';
+export * from './KLastAccessedCourseCard';
+export * from './KNewCourseCard';

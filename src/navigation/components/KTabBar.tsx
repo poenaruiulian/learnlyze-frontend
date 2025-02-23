@@ -9,9 +9,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, sizes } from '@constants';
 import { View } from '@defaults';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { TabBarIcon } from './TabBarIcon';
+import { KTabBarIcon } from './KTabBarIcon';
 
-export const TabBar = ({
+export const KTabBar = ({
   state,
   descriptors,
   navigation,
@@ -89,7 +89,7 @@ export const TabBar = ({
                   borderRadius: sizes.s90,
                   backgroundColor: colors.transparent,
                 }}>
-                <TabBarIcon
+                <KTabBarIcon
                   label={options.tabBarLabel ?? options.title ?? route.name}
                 />
               </View>

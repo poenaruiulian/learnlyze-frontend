@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { View } from '@defaults';
 import { KSpacer } from '@components';
 import { sizes } from '@constants';
-import { Tag } from './Tag';
+import { KTag } from './KTag';
 
 type TagsListProps = {
   onTagPress: (value: string) => void;
   tags: (string | null)[];
 };
 
-export const TagsList = ({ onTagPress, tags }: TagsListProps) => {
+export const KTagsList = ({ onTagPress, tags }: TagsListProps) => {
   const { width } = useWindowDimensions();
 
   const [selectedTag, setSelectedTag] = useState('all');
@@ -33,7 +33,7 @@ export const TagsList = ({ onTagPress, tags }: TagsListProps) => {
           data={tags}
           renderItem={({ item }) =>
             item ? (
-              <Tag
+              <KTag
                 name={item}
                 onTagPress={handleTagPress}
                 isSelected={selectedTag === item}

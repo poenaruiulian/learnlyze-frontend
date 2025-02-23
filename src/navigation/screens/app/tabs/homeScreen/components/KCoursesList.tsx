@@ -5,14 +5,14 @@ import { useNavigation } from '@react-navigation/native';
 import { View, Text } from '@defaults';
 import { KSpacer } from '@components';
 import { Fragment, useRef, useState } from 'react';
-import { CourseCard } from './CourseCard';
+import { KCourseCard } from './KCourseCard';
 import { AppNavigationType, TabNavigationType } from '../../../../../type';
 
 type CoursesListProps = {
   label: string;
   courses: CourseModel[];
 };
-export const CoursesList = ({ ...props }: CoursesListProps) => {
+export const KCoursesList = ({ ...props }: CoursesListProps) => {
   const { getCourseById } = useCourse();
   const { navigate: appNavigate } = useNavigation<AppNavigationType>();
   const { navigate: tabNavigate } = useNavigation<TabNavigationType>();
@@ -50,7 +50,7 @@ export const CoursesList = ({ ...props }: CoursesListProps) => {
         renderItem={({ item, index }) => (
           <Fragment key={index}>
             {index === 0 && <KSpacer w={sizes.s16} />}
-            <CourseCard
+            <KCourseCard
               name={item.title}
               steps={item.steps.length}
               completed={item.completedSteps}
@@ -64,7 +64,7 @@ export const CoursesList = ({ ...props }: CoursesListProps) => {
         ListEmptyComponent={
           <>
             <KSpacer w={sizes.s16} />
-            <CourseCard noCourse onPress={handleDiscoverNavigation} />
+            <KCourseCard noCourse onPress={handleDiscoverNavigation} />
           </>
         }
       />

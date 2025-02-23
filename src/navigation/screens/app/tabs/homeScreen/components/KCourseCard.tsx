@@ -13,7 +13,7 @@ type CourseCardProps = {
   noCourse?: boolean;
 };
 
-export const CourseCard = ({ ...props }: CourseCardProps) => {
+export const KCourseCard = ({ ...props }: CourseCardProps) => {
   const completed =
     props.completed && props.steps
       ? Math.floor((props.completed * 100) / props.steps)

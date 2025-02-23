@@ -9,7 +9,7 @@ import { colors, sizes } from '@constants';
 import { useNavigation } from '@react-navigation/native';
 import { AppNavigationType } from '../../../../../type';
 
-export const NewCourseCard = () => {
+export const KNewCourseCard = () => {
   const { width } = useWindowDimensions();
   const { navigate } = useNavigation<AppNavigationType>();
 

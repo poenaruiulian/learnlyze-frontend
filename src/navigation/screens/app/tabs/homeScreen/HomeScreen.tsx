@@ -7,9 +7,9 @@ import moment from 'moment/moment';
 import { useFocusEffect } from '@react-navigation/native';
 import { reverse, sortBy } from 'lodash-es';
 import {
-  CoursesList,
-  LastAccessedCourseCard,
-  NewCourseCard,
+  KCoursesList,
+  KLastAccessedCourseCard,
+  KNewCourseCard,
 } from './components';
 
 export const HomeScreen = () => {
@@ -45,18 +45,18 @@ export const HomeScreen = () => {
 
   return (
     <KContainer backgroundImage={images.mainBackground}>
-      <NewCourseCard />
+      <KNewCourseCard />
       <KSpacer h={sizes.s20} />
       {lastAccessedCourse && (
-        <LastAccessedCourseCard course={lastAccessedCourse} />
+        <KLastAccessedCourseCard course={lastAccessedCourse} />
       )}
       <KSpacer h={sizes.s20} />
-      <CoursesList
+      <KCoursesList
         label={strings.home.courses}
         courses={reverse(sortBy(courses?.slice(), course => course.id))}
       />
       <KSpacer h={sizes.s20} />
-      <CoursesList label={strings.home.savedFromCommunity} courses={[]} />
+      <KCoursesList label={strings.home.savedFromCommunity} courses={[]} />
     </KContainer>
   );
 };

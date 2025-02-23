@@ -8,7 +8,7 @@ type SearchBarProps = {
   changeCurrentValue: (value: string | null) => void;
 };
 
-export const SearchBar = (props: SearchBarProps) => {
+export const KSearchBar = (props: SearchBarProps) => {
   const { width } = useWindowDimensions();
 
   const [search, setSearch] = useState(props?.currentValue);

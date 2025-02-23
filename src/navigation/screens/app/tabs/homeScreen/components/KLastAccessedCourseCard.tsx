@@ -10,7 +10,7 @@ type LastAccessedCourseCardProps = {
   course: FullCourseModel;
 };
 
-export const LastAccessedCourseCard = ({
+export const KLastAccessedCourseCard = ({
   course,
 }: LastAccessedCourseCardProps) => {
   const { width } = useWindowDimensions();

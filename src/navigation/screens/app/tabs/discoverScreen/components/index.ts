@@ -1,4 +1,4 @@
-export * from './SearchBar';
-export * from './TagsList';
+export * from './KSearchBar';
+export * from './KTagsList';
 export * from './DiscoverCourseCard';
-export * from './NoCourses';
+export * from './KNoCourses';
