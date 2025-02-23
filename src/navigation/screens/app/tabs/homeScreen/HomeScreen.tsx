@@ -1,27 +1,35 @@
 import { useCourse, useRoot } from '@hooks';
 import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
-import { FullCourseModel, sizes, strings } from '@constants';
-import { useCallback, useState } from 'react';
+import { CourseModel, FullCourseModel, sizes, strings } from '@constants';
+import React, { useCallback, useEffect, useState } from 'react';
 import moment from 'moment/moment';
 import { useFocusEffect } from '@react-navigation/native';
 import { reverse, sortBy } from 'lodash-es';
 import {
-  CoursesList,
-  LastAccessedCourseCard,
-  NewCourseCard,
+  KCoursesList,
+  KLastAccessedCourseCard,
+  KNewCourseCard,
 } from './components';
 
 export const HomeScreen = () => {
-  const { courses, areCoursesLoading, getCourseById, refetchCourses } =
-    useCourse();
+  const {
+    courses: fetchedCourses,
+    communityCourses,
+    isLoading,
+    getCourseById,
+    refetchCourses,
+  } = useCourse();
   const { setIsLoading } = useRoot();
 
   const [lastAccessedCourse, setLastAccessedCourse] =
     useState<FullCourseModel | null>(null);
+  const [courses, setCourse] = useState<CourseModel[]>([]);
+  const [completedCourses, setCompletedCourses] = useState<CourseModel[]>([]);
 
   const getLastAccessedCourse = useCallback(() => {
     const sortedCourse = courses
+      ?.concat(communityCourses)
       ?.slice()
       .sort((course1, course2) =>
         moment(course1.lastAccessed).isBefore(course2.lastAccessed) ? 1 : -1
@@ -32,33 +40,43 @@ export const HomeScreen = () => {
     getCourseById(lastAccessed?.id).then(course =>
       setLastAccessedCourse(course)
     );
-  }, [courses, getCourseById]);
+  }, [communityCourses, courses, getCourseById]);
 
   useFocusEffect(
     useCallback(() => {
-      setIsLoading(areCoursesLoading);
+      setIsLoading(isLoading);
       refetchCourses().then(() => {
-        setIsLoading(areCoursesLoading);
+        setIsLoading(isLoading);
         getLastAccessedCourse();
       });
-    }, [areCoursesLoading, getLastAccessedCourse, refetchCourses, setIsLoading])
+    }, [isLoading, getLastAccessedCourse, refetchCourses, setIsLoading])
   );
+
+  useEffect(() => {
+    setCourse(fetchedCourses?.filter(course => !course.completed));
+    setCompletedCourses(fetchedCourses?.filter(course => course.completed));
+  }, [fetchedCourses]);
 
   return (
     <KContainer backgroundImage={images.mainBackground}>
-      <NewCourseCard />
+      <KNewCourseCard />
       <KSpacer h={sizes.s20} />
       {lastAccessedCourse && (
-        <LastAccessedCourseCard course={lastAccessedCourse} />
+        <KLastAccessedCourseCard course={lastAccessedCourse} />
       )}
       <KSpacer h={sizes.s20} />
-      <CoursesList
+      <KCoursesList
         label={strings.home.courses}
         courses={reverse(sortBy(courses?.slice(), course => course.id))}
       />
       <KSpacer h={sizes.s20} />
-      <CoursesList label={strings.home.savedFromCommunity} courses={[]} />
-      <KSpacer h={sizes.s90} />
+      <KCoursesList
+        label={strings.home.savedFromCommunity}
+        courses={communityCourses}
+      />
+      <KSpacer h={sizes.s20} />
+      <KCoursesList label="Completed courses" courses={completedCourses} />
+      <KSpacer h={sizes.s70} />
     </KContainer>
   );
 };

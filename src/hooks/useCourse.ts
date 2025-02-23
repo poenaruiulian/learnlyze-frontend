@@ -4,15 +4,16 @@ import {
   CourseModel,
   ErrorModel,
   FullCourseModel,
-  StepModel,
   ACCESS_COURSE,
-  BRAKE_STEP,
-  CHANGE_STEP_STATE,
   GENERATE_NEW_COURSE,
   GenericError,
   GET_ALL_COURSES,
   GET_COURSE_BY_ID,
-  REPLACE_RESOURCE,
+  GET_ALL_COMMUNITY_COURSES,
+  CHANGE_PUBLISH_DETAILS,
+  COMPLETE_COURSE,
+  PUBLISH_COURSE,
+  ENROLL_COURSE,
 } from '@constants';
 import { useStore } from '@store';
 import { useShallow } from 'zustand/react/shallow';
@@ -23,19 +24,36 @@ export const useCourse = () => {
     useShallow((rootInfo: RootInfo) => rootInfo)
   );
 
-  const [generateNewCourseMutation] = useMutation(GENERATE_NEW_COURSE);
+  // Courses mutations
   const [getCourseByIdMutation] = useMutation(GET_COURSE_BY_ID);
-  const [changeStepStateMutation] = useMutation(CHANGE_STEP_STATE);
+  const [generateNewCourseMutation] = useMutation(GENERATE_NEW_COURSE);
   const [accessCourseMutation] = useMutation(ACCESS_COURSE);
-  const [breakStepMutation] = useMutation(BRAKE_STEP);
-  const [replaceResourceMutation] = useMutation(REPLACE_RESOURCE);
+  const [changePublishDetailsMutation] = useMutation(CHANGE_PUBLISH_DETAILS);
+  const [completeCourseMutation] = useMutation(COMPLETE_COURSE);
+  const [publishCourseMutation] = useMutation(PUBLISH_COURSE);
+  const [enrollCourseMutation] = useMutation(ENROLL_COURSE);
 
+  // Resources mutations
+
+  // Course queries
   const {
     loading: areCoursesLoading,
     data,
-    refetch: refetchCourses,
+    refetch,
   } = useQuery(GET_ALL_COURSES);
 
+  const {
+    loading: areCommunityCoursesLoading,
+    data: dataCommunity,
+    refetch: refetchCommunityCourses,
+  } = useQuery(GET_ALL_COMMUNITY_COURSES);
+
+  const refetchCourses = async () => {
+    await refetch();
+    await refetchCommunityCourses();
+  };
+
+  // Handling errors and loadings
   const isErrorFree = (response: FetchResult<any>) => {
     if (response.errors && response.errors[0]) {
       let errorData = response.errors[0].extensions;
@@ -55,6 +73,29 @@ export const useCourse = () => {
     return true;
   };
 
+  const isLoading = areCoursesLoading || areCommunityCoursesLoading;
+
+  // Courses lists from queries
+  const courses: CourseModel[] = useMemo(() => data && data.getAll, [data]);
+
+  const communityCourses: CourseModel[] = useMemo(
+    () => dataCommunity && dataCommunity.getAllCommunity,
+    [dataCommunity]
+  );
+
+  const getCourseById = async (
+    courseId: CourseModel['id']
+  ): Promise<FullCourseModel | null> => {
+    const response = await getCourseByIdMutation({ variables: { courseId } });
+
+    if (!isErrorFree(response)) {
+      return null;
+    }
+
+    return response.data.getFullById;
+  };
+
+  // Handle course actions
   const generateNewCourse = async (
     description: string
   ): Promise<FullCourseModel | null> => {
@@ -66,62 +107,50 @@ export const useCourse = () => {
       return null;
     }
 
-    return response.data.generateCourse;
+    return response.data.generate;
   };
 
-  const getCourseById = async (
-    courseId: CourseModel['id']
-  ): Promise<FullCourseModel | null> => {
-    const response = await getCourseByIdMutation({ variables: { courseId } });
+  const changePublishDetails = async (variables: {
+    courseId: number;
+    title?: string;
+    description?: string;
+    tags?: string[];
+  }) => {
+    const response = await changePublishDetailsMutation({ variables });
 
     if (!isErrorFree(response)) {
       return null;
     }
 
-    return response.data.getCourseById;
+    return response;
   };
-
-  const courses: CourseModel[] = useMemo(() => data && data.getCourses, [data]);
 
   const accessCourse = async ({ courseId }: { courseId: number }) =>
     accessCourseMutation({ variables: { courseId } });
 
-  const changeStepState = async ({
-    courseId,
-    stepId,
-  }: {
-    courseId: CourseModel['id'];
-    stepId: StepModel['id'];
-  }) => changeStepStateMutation({ variables: { courseId, stepId } });
+  const completeCourse = async ({ courseId }: { courseId: number }) =>
+    completeCourseMutation({ variables: { courseId } });
 
-  const breakStep = async ({
-    stepId,
-    feedback,
-  }: {
-    stepId: number;
-    feedback: string;
-  }) => breakStepMutation({ variables: { stepId, feedback } });
+  const publishCourse = async ({ courseId }: { courseId: number }) =>
+    publishCourseMutation({ variables: { courseId } });
 
-  const replaceResource = async ({
-    stepId,
-    resourceId,
-    feedback,
-  }: {
-    stepId: number;
-    resourceId: number;
-    feedback: string;
-  }) =>
-    replaceResourceMutation({ variables: { stepId, resourceId, feedback } });
+  const enrollCourse = async ({ courseId }: { courseId: number }) =>
+    enrollCourseMutation({ variables: { courseId } });
 
   return {
-    generateNewCourse,
-    getCourseById,
-    changeStepState,
-    accessCourse,
-    breakStep,
-    replaceResource,
-    areCoursesLoading,
     courses,
+    communityCourses,
+
+    isLoading,
+
+    getCourseById,
     refetchCourses,
+
+    generateNewCourse,
+    accessCourse,
+    changePublishDetails,
+    completeCourse,
+    publishCourse,
+    enrollCourse,
   };
 };

@@ -1,39 +1,42 @@
 import { gql } from '@apollo/client';
 
-export const GENERATE_NEW_COURSE = gql`
-  mutation GenerateCourse($description: String) {
-    generateCourse(description: $description) {
-      details {
-        id
-        title
-        description
-        tag
-        startedAt
-        postedDate
-      }
-      steps {
-        details {
-          id
-          parentStep
-          priority
-          title
-          description
-        }
-        resources {
-          id
-          title
-          external
-        }
-      }
+const GET_ALL_COURSES = gql`
+  query {
+    getAll {
+      id
+      title
+      startedAt
+      lastAccessed
+      completedSteps
+      steps
+      lastAccessed
+      completed
+      enrolledId
     }
   }
 `;
 
-export const GET_ALL_COURSES = gql`
+const GET_ALL_COMMUNITY_COURSES = gql`
   query {
-    getCourses {
+    getAllCommunity {
       id
       title
+      startedAt
+      lastAccessed
+      completedSteps
+      steps
+      lastAccessed
+      enrolledId
+    }
+  }
+`;
+
+const GET_DISCOVER = gql`
+  query ($tags: [String], $search: String) {
+    getDiscover(tags: $tags, search: $search) {
+      id
+      title
+      tags
       startedAt
       lastAccessed
       completedSteps
@@ -43,18 +46,21 @@ export const GET_ALL_COURSES = gql`
   }
 `;
 
-export const GET_COURSE_BY_ID = gql`
+const GET_COURSE_BY_ID = gql`
   mutation ($courseId: Int!) {
-    getCourseById(courseId: $courseId) {
+    getFullById(courseId: $courseId) {
       details {
         id
+        user
         title
         description
-        tag
+        tags
         startedAt
         lastAccessed
         postedDate
         completedSteps
+        completed
+        enrolledId
       }
       steps {
         details {
@@ -111,10 +117,121 @@ export const GET_COURSE_BY_ID = gql`
   }
 `;
 
-export const ACCESS_COURSE = gql`
+const GENERATE_NEW_COURSE = gql`
+  mutation ($description: String) {
+    generate(description: $description) {
+      details {
+        id
+        title
+        description
+        tags
+        startedAt
+        postedDate
+        completed
+        completedSteps
+        enrolledId
+      }
+      steps {
+        details {
+          id
+          parentStep
+          priority
+          title
+          description
+        }
+        resources {
+          id
+          title
+          external
+        }
+      }
+    }
+  }
+`;
+
+const ACCESS_COURSE = gql`
   mutation ($courseId: Int!) {
-    accessCourse(courseId: $courseId) {
+    access(courseId: $courseId) {
       title
     }
   }
 `;
+
+const CHANGE_PUBLISH_DETAILS = gql`
+  mutation (
+    $courseId: Int!
+    $title: String
+    $description: String
+    $tags: [String]
+  ) {
+    changePublishDetails(
+      courseId: $courseId
+      title: $title
+      description: $description
+      tags: $tags
+    ) {
+      id
+      title
+      startedAt
+      lastAccessed
+      completedSteps
+      steps
+      lastAccessed
+    }
+  }
+`;
+
+const COMPLETE_COURSE = gql`
+  mutation ($courseId: Int!) {
+    complete(courseId: $courseId) {
+      id
+      title
+      startedAt
+      lastAccessed
+      completedSteps
+      steps
+      lastAccessed
+    }
+  }
+`;
+
+const PUBLISH_COURSE = gql`
+  mutation ($courseId: Int!) {
+    publish(courseId: $courseId) {
+      id
+      title
+      startedAt
+      lastAccessed
+      completedSteps
+      steps
+      lastAccessed
+    }
+  }
+`;
+
+const ENROLL_COURSE = gql`
+  mutation ($courseId: Int!) {
+    enroll(courseId: $courseId) {
+      id
+      title
+      startedAt
+      lastAccessed
+      completedSteps
+      steps
+      lastAccessed
+    }
+  }
+`;
+
+export {
+  GET_COURSE_BY_ID,
+  GET_ALL_COURSES,
+  GET_ALL_COMMUNITY_COURSES,
+  GET_DISCOVER,
+  GENERATE_NEW_COURSE,
+  ACCESS_COURSE,
+  PUBLISH_COURSE,
+  ENROLL_COURSE,
+  COMPLETE_COURSE,
+  CHANGE_PUBLISH_DETAILS,
+};

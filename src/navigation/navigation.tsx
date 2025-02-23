@@ -7,21 +7,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useRoot } from '@hooks';
 import { ErrorHandler } from '@wrappers';
 import {
-  CompletedCourseScreen,
   ConfirmMailScreen,
   CourseDetailsScreen,
   CourseScreen,
   DiscoverScreen,
   HomeScreen,
   LoginScreen,
-  MoreCommentsScreen,
   NewCourseScreen,
   OnboardingScreen,
   ProfileScreen,
+  PublishCourseScreen,
   RegisterScreen,
-  SettingsScreen,
 } from './screens';
-import { TabBar } from './components';
+import { KTabBar } from './components';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -36,7 +34,7 @@ const AuthStack = () => (
 );
 
 const BottomTab = () => {
-  const getTabBar = (props: BottomTabBarProps) => <TabBar {...props} />;
+  const getTabBar = (props: BottomTabBarProps) => <KTabBar {...props} />;
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }} tabBar={getTabBar}>
       <Tab.Screen name="HomeScreen" component={HomeScreen} />
@@ -56,10 +54,6 @@ const AppStack = () => {
       )}
       <Stack.Screen name="Tab" component={BottomTab} />
       <Stack.Screen
-        name="CompletedCourseScreen"
-        component={CompletedCourseScreen}
-      />
-      <Stack.Screen
         name="CourseDetailsScreen"
         component={CourseDetailsScreen}
       />
@@ -67,8 +61,7 @@ const AppStack = () => {
       {!isNewUser && (
         <Stack.Screen name="NewCourseScreen" component={NewCourseScreen} />
       )}
-      <Stack.Screen name="MoreCommentsScreen" component={MoreCommentsScreen} />
-      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+      <Stack.Screen name="PublishCourse" component={PublishCourseScreen} />
     </Stack.Navigator>
   );
 };

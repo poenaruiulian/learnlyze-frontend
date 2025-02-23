@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/custom/KBackButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/HomeScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/custom/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/CourseDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/CourseDetailsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/NewCourseScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/PublishCourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/PublishCourseScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,36 +40,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/assets/images/tabIcons",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;65-handle-ui-for-the-backend-changes&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/src/navigation/screens/app/courseDetails&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/navigation/screens/app/courseDetails" />
+      <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets/images/tabIcons" />
       <recent name="$PROJECT_DIR$/assets/images/backgrounds/onboarding" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/navigation/screens/app/courseDetails" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/components/DiscoverCourseCard" />
+      <recent name="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen" />
       <recent name="$PROJECT_DIR$/assets/images/cards" />
-      <recent name="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen" />
-      <recent name="$PROJECT_DIR$/assets/images/tabIcons" />
-      <recent name="$PROJECT_DIR$/assets/images/backgrounds" />
-      <recent name="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-985749b364ce-JavaScript-WS-233.15619.15" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -101,7 +113,16 @@
       <workItem from="1733900903322" duration="11000" />
       <workItem from="1735495677110" duration="24085000" />
       <workItem from="1735835847622" duration="9953000" />
-      <workItem from="1737555009018" duration="4600000" />
+      <workItem from="1737555009018" duration="7930000" />
+      <workItem from="1738156101541" duration="639000" />
+      <workItem from="1738306746000" duration="9000" />
+      <workItem from="1738328483032" duration="523000" />
+      <workItem from="1739022845772" duration="2898000" />
+      <workItem from="1739350132384" duration="44000" />
+      <workItem from="1739350193590" duration="601000" />
+      <workItem from="1739805882598" duration="8628000" />
+      <workItem from="1739884212727" duration="22000" />
+      <workItem from="1740309209258" duration="18496000" />
     </task>
     <servers />
   </component>

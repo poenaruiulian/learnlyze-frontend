@@ -57,7 +57,7 @@ export const strings = {
   },
   course: {
     header: {
-      date: 'started on ',
+      date: 'Started on ',
     },
     step: {
       resources: 'resources',

@@ -20,14 +20,16 @@ export type TabParamList = {
 
 export type AppStackParamList = {
   Tab: TabParamList;
-  CompletedCourseScreen: undefined;
-  CourseDetailsScreen: undefined;
+  CourseDetailsScreen: {
+    fullCourse: FullCourseModel;
+  };
   CourseScreen: {
     fullCourse: FullCourseModel;
   };
-  MoreCommentsScreen: undefined;
   NewCourseScreen: undefined;
-  SettingsScreen: undefined;
+  PublishCourse: {
+    fullCourse: FullCourseModel;
+  };
 };
 
 export type AuthNavigationType = NativeStackNavigationProp<AuthStackParamList>;

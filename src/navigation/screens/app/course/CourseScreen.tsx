@@ -1,110 +1,28 @@
-import { View } from '@defaults';
+import { Button, View } from '@defaults';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
-import { useEffect, useState } from 'react';
-import {
-  colors,
-  FullCourseModel,
-  FullStep,
-  sizes,
-  StepModel,
-} from '@constants';
+import React, { useEffect, useState } from 'react';
+import { colors, sizes } from '@constants';
 import { useWindowDimensions } from 'react-native';
-import { useCourse } from '@hooks';
-import { AppStackParamList } from '../../../type';
-import { KHeader, KResource, KStep, KStepDescription } from './components';
-
-const StepSet = ({
-  fullCourse,
-  steps,
-  width,
-}: {
-  fullCourse: FullCourseModel;
-  steps: FullStep[];
-  width: number;
-}) => {
-  const { changeStepState, accessCourse } = useCourse();
-
-  const [extendedStep, setExtendedStep] = useState<StepModel['id'][]>([]);
-
-  useEffect(() => {
-    accessCourse({ courseId: fullCourse.details.id });
-  }, [accessCourse, fullCourse.details.id]);
-
-  const handleStepOnPress = (stepId: number) =>
-    extendedStep.includes(stepId)
-      ? setExtendedStep(prevState => prevState?.filter(el => el !== stepId))
-      : setExtendedStep(prevState => [...prevState, stepId]);
-
-  return steps
-    .sort((s1, s2) => s1.details.priority - s2.details.priority)
-    .map(step => (
-      <View flex key={step.details.id} width={width - sizes.s32} centerV>
-        <KStep
-          stepId={step.details.id}
-          title={step.details.title}
-          resources={step.resources.length}
-          onPress={() => handleStepOnPress(step.details.id)}
-          isFocused={extendedStep.includes(step.details.id)}
-          isCompleted={step.details.completed}
-          handleStepState={() =>
-            changeStepState({
-              courseId: fullCourse.details.id,
-              stepId: step.details.id,
-            })
-          }
-          subSteps={step.subSteps?.length}
-        />
-        {extendedStep.includes(step.details.id) &&
-          (!step.details.hasChild ? (
-            <>
-              <KStepDescription
-                stepId={step.details.id}
-                description={step.details.description}
-              />
-              <KSpacer />
-              <View height={step.resources.length * sizes.s50} rightH topV>
-                {step.resources.map((resource, index) => (
-                  <KResource
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={index}
-                    stepId={step.details.id}
-                    {...resource}
-                  />
-                ))}
-              </View>
-            </>
-          ) : (
-            <View rightH>
-              <KSpacer />
-              <StepSet
-                fullCourse={fullCourse}
-                steps={step.subSteps}
-                width={width - sizes.s32}
-              />
-            </View>
-          ))}
-
-        <KSpacer />
-      </View>
-    ));
-};
+import { useCourse, useStep, useResource } from '@hooks';
+import { AppNavigationType, AppStackParamList } from '../../../type';
+import { KHeader, KPublishCourseModal, KStepSet } from './components';
 
 export const CourseScreen = () => {
   const { params } = useRoute<RouteProp<AppStackParamList, 'CourseScreen'>>();
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation<AppNavigationType>();
 
   const { width } = useWindowDimensions();
 
-  const {
-    changeStepState,
-    replaceResource,
-    breakStep,
-    getCourseById,
-    accessCourse,
-  } = useCourse();
+  const { getCourseById, accessCourse, completeCourse, publishCourse } =
+    useCourse();
+
+  const { replaceResource } = useResource();
+
+  const { changeStepState, breakStep } = useStep();
 
   const [fullCourse, setFullCourse] = useState(params.fullCourse);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     accessCourse({ courseId: fullCourse.details.id });
@@ -121,7 +39,41 @@ export const CourseScreen = () => {
       setFullCourse(response);
     });
     // eslint-disable-next-line
-  }, [changeStepState, replaceResource, breakStep]);
+  }, [
+    changeStepState,
+    replaceResource,
+    breakStep,
+    completeCourse,
+    publishCourse,
+  ]);
+
+  useEffect(() => {
+    setIsVisible(
+      fullCourse.details.completedSteps === fullCourse.steps?.length &&
+        !fullCourse.details.postedDate
+    );
+  }, [
+    fullCourse.details.completedSteps,
+    fullCourse.details.postedDate,
+    fullCourse.steps?.length,
+  ]);
+
+  const isCourseCompletable =
+    fullCourse.details.completedSteps === fullCourse.steps?.length;
+
+  const isCoursePublished = !!fullCourse.details.postedDate;
+
+  const handleCompleteCourse = () =>
+    completeCourse({ courseId: fullCourse.details.id }).then(() =>
+      setIsVisible(false)
+    );
+
+  const handlePublishCourse = () => {
+    completeCourse({ courseId: fullCourse.details.id }).then(() => {
+      navigate('PublishCourse', { fullCourse });
+      setIsVisible(false);
+    });
+  };
 
   return (
     <KContainer
@@ -131,16 +83,52 @@ export const CourseScreen = () => {
       <KHeader
         title={fullCourse.details.title}
         date={fullCourse.details.startedAt}
+        publishDate={fullCourse.details.postedDate}
       />
       <KSpacer h={sizes.s30} />
       <View flex center>
-        <StepSet
+        <KStepSet
           fullCourse={fullCourse}
           steps={fullCourse.steps}
           width={width}
         />
       </View>
-      <KSpacer h={sizes.s50} />
+      {!fullCourse.details.completed && isCourseCompletable && (
+        <>
+          <KSpacer />
+          <View width={width} center>
+            <Button
+              title="Complete"
+              onPress={() => setIsVisible(true)}
+              center
+            />
+          </View>
+        </>
+      )}
+      {!isCoursePublished && fullCourse.details.completed && (
+        <>
+          <KSpacer />
+          <View width={width} center>
+            <Button
+              title="Publish"
+              onPress={() => setIsVisible(true)}
+              background={colors.fruitSalad}
+              center
+            />
+          </View>
+        </>
+      )}
+      <KSpacer h={sizes.s20} />
+      <KPublishCourseModal
+        courseId={fullCourse.details.id}
+        isVisible={isVisible}
+        onClose={() => setIsVisible(false)}
+        onComplete={
+          !fullCourse.details.completed ? handleCompleteCourse : undefined
+        }
+        onPublish={!isCoursePublished ? handlePublishCourse : undefined}
+      />
+      <KSpacer h={sizes.s60} />
     </KContainer>
   );
 };

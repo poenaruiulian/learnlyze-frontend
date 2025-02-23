@@ -1,13 +1,16 @@
 export type CourseModel = {
   id: number;
+  user?: number;
   title: string;
   description?: string;
-  tag?: string;
+  tags?: string[];
   startedAt: string;
   postedDate?: string;
   completedSteps: number;
   steps: number[];
   lastAccessed: string;
+  completed?: boolean;
+  enrolledId?: number;
 };
 
 export type StepModel = {

@@ -5,7 +5,7 @@ import { colors, fonts, sizes, strings } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { KModal, KSpacer, KTextInput } from '@components';
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
-import { useCourse, useRoot } from '@hooks';
+import { useRoot, useStep } from '@hooks';
 
 type KStepType = {
   stepId: number;
@@ -16,6 +16,7 @@ type KStepType = {
   isFocused?: boolean;
   isCompleted: boolean;
   handleStepState: () => void;
+  isCourseCompleted?: boolean;
 };
 
 export const KStep = ({ ...props }: KStepType) => {
@@ -23,13 +24,15 @@ export const KStep = ({ ...props }: KStepType) => {
   const [givingFeedback, setGivingFeedback] = useState(false);
   const [feedback, setFeedback] = useState('');
 
-  const { breakStep } = useCourse();
+  const { breakStep } = useStep();
   const { setIsLoading } = useRoot();
 
   const { width } = useWindowDimensions();
 
   const onLongPress = () => {
-    impactAsync(ImpactFeedbackStyle.Heavy).then(toggleIsModalVisible);
+    if (!props.isCourseCompleted) {
+      impactAsync(ImpactFeedbackStyle.Heavy).then(toggleIsModalVisible);
+    }
   };
 
   const onPress = () =>
