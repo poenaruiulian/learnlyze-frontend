@@ -26,6 +26,7 @@ const GET_ALL_COMMUNITY_COURSES = gql`
       completedSteps
       steps
       lastAccessed
+      enrolledId
     }
   }
 `;
@@ -50,6 +51,7 @@ const GET_COURSE_BY_ID = gql`
     getFullById(courseId: $courseId) {
       details {
         id
+        user
         title
         description
         tags

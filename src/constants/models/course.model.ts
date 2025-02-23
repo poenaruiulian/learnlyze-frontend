@@ -1,5 +1,6 @@
 export type CourseModel = {
   id: number;
+  user?: number;
   title: string;
   description?: string;
   tags?: string[];

@@ -1,7 +1,7 @@
 import { Button, View } from '@defaults';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { colors, sizes } from '@constants';
 import { useWindowDimensions } from 'react-native';
 import { useCourse, useStep, useResource } from '@hooks';
@@ -98,7 +98,7 @@ export const CourseScreen = () => {
           <KSpacer />
           <View width={width} center>
             <Button
-              title="Complete course"
+              title="Complete"
               onPress={() => setIsVisible(true)}
               center
             />
@@ -110,7 +110,7 @@ export const CourseScreen = () => {
           <KSpacer />
           <View width={width} center>
             <Button
-              title="Publish course"
+              title="Publish"
               onPress={() => setIsVisible(true)}
               background={colors.fruitSalad}
               center
@@ -128,6 +128,7 @@ export const CourseScreen = () => {
         }
         onPublish={!isCoursePublished ? handlePublishCourse : undefined}
       />
+      <KSpacer h={sizes.s60} />
     </KContainer>
   );
 };

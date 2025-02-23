@@ -9,51 +9,22 @@ import {
 import { colors, fonts, FullCourseModel, icons, sizes, Tags } from '@constants';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { useCourse } from '@hooks';
+import { useCourse, useUser } from '@hooks';
 import { AppStackParamList } from '../../../type';
 import { KSectionDescription } from './components';
+import { KStepDetails } from './components/KStepDetails';
 
-export const PublishCourseScreen = () => {
+export const CourseDetailsScreen = () => {
   const { params } = useRoute<RouteProp<AppStackParamList, 'PublishCourse'>>();
   const { goBack, canGoBack } = useNavigation();
   const { width } = useWindowDimensions();
-  const { publishCourse, changePublishDetails } = useCourse();
+  const { enrollCourse, communityCourses } = useCourse();
+  const { user } = useUser();
 
-  const [fullCourse, setFullCourse] = useState<FullCourseModel>(
-    params.fullCourse
-  );
+  const [fullCourse] = useState<FullCourseModel>(params.fullCourse);
 
   const iconSize = sizes.s32;
   const borderRadiusRound = sizes.s90;
-
-  const handleEditTitle = (text: string) =>
-    setFullCourse({
-      ...fullCourse,
-      details: { ...fullCourse.details, title: text },
-    });
-
-  const handleEditDescription = (text: string) =>
-    setFullCourse({
-      ...fullCourse,
-      details: { ...fullCourse.details, description: text },
-    });
-
-  const handleEditTags = (tag: string) => {
-    let fullCourseTags = fullCourse.details.tags ?? [];
-
-    if (fullCourseTags) {
-      if (fullCourseTags.includes(tag)) {
-        fullCourseTags = fullCourseTags.filter(t => t !== tag);
-      } else {
-        fullCourseTags = [...fullCourseTags, tag];
-      }
-    }
-
-    setFullCourse(prev => ({
-      ...prev,
-      details: { ...prev.details, tags: fullCourseTags },
-    }));
-  };
 
   return (
     <KContainer>
@@ -75,34 +46,14 @@ export const PublishCourseScreen = () => {
         </TouchableOpacity>
       )}
       <KSpacer h={sizes.s20} />
-      <Text center bodyL medium white50>
-        Publishing course
-      </Text>
       <KSpacer />
-      <TextInput
-        value={fullCourse.details.title}
-        onChangeText={handleEditTitle}
-        style={{
-          width: width - sizes.s32,
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          color: colors.tulipTree,
-          ...fonts.heading,
-          flexWrap: 'wrap',
-          marginHorizontal: sizes.s16,
-          backgroundColor: colors.biscay30,
-          borderRadius: sizes.s10,
-        }}
-        numberOfLines={3}
-        multiline
-      />
-      <KSpacer h={5} />
-      <KSectionDescription description="Customize the course title using the above input. After publishing you won't be able to change it again." />
+      <Text center heading tulipTree style={{ paddingHorizontal: sizes.s16 }}>
+        {fullCourse.details.title}
+      </Text>
       <KSpacer h={sizes.s20} />
       <KSectionDescription
         title="Steps:"
-        description="These are the main steps of the course, the sub-steps are not included here"
+        description="These are the main steps of the course, press to reveal the sub-steps of the course"
         isEditable={false}
       />
       <KSpacer h={5} />
@@ -111,31 +62,19 @@ export const PublishCourseScreen = () => {
           scrollEnabled={false}
           data={fullCourse.steps}
           keyExtractor={item => item.details.id.toString()}
-          renderItem={({ item }) => (
-            <View
-              width={width - sizes.s32}
-              borderRadius={sizes.s10}
-              padding={sizes.s10}
-              style={{ backgroundColor: colors.biscay80 }}>
-              <Text bodyL medium white80 center>
-                {item.details.title}
-              </Text>
-            </View>
-          )}
+          renderItem={({ item }) => <KStepDetails step={item} />}
           // eslint-disable-next-line react/no-unstable-nested-components
           ItemSeparatorComponent={() => <KSpacer h={5} />}
+          contentContainerStyle={{ width }}
         />
       </View>
       <KSpacer h={sizes.s20} />
-      <KSectionDescription
-        title="Description:"
-        description="Give a short description about the course. After publishing you won't be able to change it again."
-      />
+      <KSectionDescription title="Description:" />
       <KSpacer h={5} />
       <TextInput
         value={fullCourse.details.description}
-        onChangeText={handleEditDescription}
         scrollEnabled={false}
+        editable={false}
         style={{
           width: width - sizes.s32,
           marginHorizontal: sizes.s16,
@@ -149,10 +88,7 @@ export const PublishCourseScreen = () => {
         multiline
       />
       <KSpacer h={sizes.s20} />
-      <KSectionDescription
-        title="Tags:"
-        description="Select at least one tag that suits this course. After publishing you won't be able to change it again."
-      />
+      <KSectionDescription title="Tags:" />
       <KSpacer h={5} />
       <View
         width={width}
@@ -165,7 +101,6 @@ export const PublishCourseScreen = () => {
           .map(tag => (
             <TouchableOpacity
               key={tag}
-              onPress={() => handleEditTags(tag)}
               style={{
                 paddingHorizontal: sizes.s10,
                 paddingVertical: 5,
@@ -188,56 +123,39 @@ export const PublishCourseScreen = () => {
       <View width={width} center>
         <Button
           disabled={
-            !fullCourse.details.tags ||
-            fullCourse.details.tags?.length === 0 ||
-            !fullCourse.details.description ||
-            fullCourse.details.description?.length === 0 ||
-            fullCourse.details.title?.length === 0
+            fullCourse.details.user === user?.id ||
+            communityCourses
+              ?.map(course => course.enrolledId)
+              .includes(fullCourse.details.id)
           }
-          title="Publish"
+          title="Enroll"
           onPress={() => {
-            changePublishDetails({
-              courseId: fullCourse.details.id,
-              description: fullCourse.details.description,
-              title: fullCourse.details.title,
-              tags: fullCourse.details.tags,
-            }).then(() =>
-              publishCourse({ courseId: fullCourse.details.id }).then(goBack)
-            );
+            enrollCourse({ courseId: fullCourse.details.id }).then(goBack);
           }}
           center
         />
       </View>
       <KSpacer />
-      {(!fullCourse.details.description ||
-        fullCourse.details.description?.length === 0) && (
+      {fullCourse.details.user === user?.id && (
         <Text
           bodyXS
           light
           white50
           style={{ paddingHorizontal: sizes.s16 }}
           center>
-          You need to provide a description for the course
+          You can&#39;t enroll to a course you&#39;ve published.
         </Text>
       )}
-      {(!fullCourse.details.tags || fullCourse.details.tags?.length === 0) && (
+      {communityCourses
+        ?.map(course => course.enrolledId)
+        .includes(fullCourse.details.id) && (
         <Text
           bodyXS
           light
           white50
           style={{ paddingHorizontal: sizes.s16 }}
           center>
-          You need to select at least one tag suiting this course
-        </Text>
-      )}
-      {fullCourse.details.title.length === 0 && (
-        <Text
-          bodyXS
-          light
-          white50
-          style={{ paddingHorizontal: sizes.s16 }}
-          center>
-          You can&#39;t leave the title empty.
+          You can&#39;t enroll to a course you&#39;ve already enrolled.
         </Text>
       )}
       <KSpacer h={sizes.s60} />

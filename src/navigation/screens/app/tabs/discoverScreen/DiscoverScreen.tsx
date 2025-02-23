@@ -1,21 +1,23 @@
 import { View } from '@defaults';
 import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
-import { useDiscoverCourses, useRoot } from '@hooks';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCourse, useDiscoverCourses, useRoot } from '@hooks';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { FlatList, useWindowDimensions } from 'react-native';
 import { ErrorCodes, sizes, Tags } from '@constants';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import {
-  DiscoverCourseCard,
+  KDiscoverCourseCard,
   NoCoursesFound,
   KSearchBar,
   KTagsList,
 } from './components';
+import { AppNavigationType } from '../../../../type';
 
 export const DiscoverScreen = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [search, setSearch] = useState<string | null>(null);
+  const { navigate } = useNavigation<AppNavigationType>();
 
   const { courses, refetchDiscoverCourses, areDiscoverCoursesLoading, error } =
     useDiscoverCourses({
@@ -24,6 +26,7 @@ export const DiscoverScreen = () => {
     });
   const { setIsLoading, setError, setHasError } = useRoot();
   const { width } = useWindowDimensions();
+  const { getCourseById } = useCourse();
 
   useEffect(() => {
     setIsLoading(areDiscoverCoursesLoading);
@@ -74,12 +77,18 @@ export const DiscoverScreen = () => {
             keyExtractor={item => item.id.toString()}
             data={courses}
             renderItem={({ item }) => (
-              <DiscoverCourseCard
+              <KDiscoverCourseCard
                 tags={item?.tags || []}
                 title={item?.title}
                 numberOfSteps={item?.steps.length}
                 description={item.description}
-                onPress={() => {}}
+                onPress={() =>
+                  getCourseById(item.id).then(
+                    fullCourse =>
+                      fullCourse &&
+                      navigate('CourseDetailsScreen', { fullCourse })
+                  )
+                }
               />
             )}
             style={{ paddingHorizontal: sizes.s20 }}
@@ -96,6 +105,7 @@ export const DiscoverScreen = () => {
           <NoCoursesFound />
         </View>
       )}
+      <KSpacer h={sizes.s60} />
     </KContainer>
   );
 };

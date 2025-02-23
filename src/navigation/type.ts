@@ -20,8 +20,9 @@ export type TabParamList = {
 
 export type AppStackParamList = {
   Tab: TabParamList;
-  CompletedCourseScreen: undefined;
-  CourseDetailsScreen: undefined;
+  CourseDetailsScreen: {
+    fullCourse: FullCourseModel;
+  };
   CourseScreen: {
     fullCourse: FullCourseModel;
   };

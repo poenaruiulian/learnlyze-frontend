@@ -79,7 +79,7 @@ export const useCourse = () => {
   const courses: CourseModel[] = useMemo(() => data && data.getAll, [data]);
 
   const communityCourses: CourseModel[] = useMemo(
-    () => dataCommunity,
+    () => dataCommunity && dataCommunity.getAllCommunity,
     [dataCommunity]
   );
 

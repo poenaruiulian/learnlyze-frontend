@@ -7,7 +7,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useRoot } from '@hooks';
 import { ErrorHandler } from '@wrappers';
 import {
-  CompletedCourseScreen,
   ConfirmMailScreen,
   CourseDetailsScreen,
   CourseScreen,
@@ -54,10 +53,6 @@ const AppStack = () => {
         <Stack.Screen name="NewCourseScreen" component={NewCourseScreen} />
       )}
       <Stack.Screen name="Tab" component={BottomTab} />
-      <Stack.Screen
-        name="CompletedCourseScreen"
-        component={CompletedCourseScreen}
-      />
       <Stack.Screen
         name="CourseDetailsScreen"
         component={CourseDetailsScreen}

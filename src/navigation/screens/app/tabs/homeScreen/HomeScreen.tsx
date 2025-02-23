@@ -2,7 +2,7 @@ import { useCourse, useRoot } from '@hooks';
 import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
 import { CourseModel, FullCourseModel, sizes, strings } from '@constants';
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import moment from 'moment/moment';
 import { useFocusEffect } from '@react-navigation/native';
 import { reverse, sortBy } from 'lodash-es';
@@ -15,6 +15,7 @@ import {
 export const HomeScreen = () => {
   const {
     courses: fetchedCourses,
+    communityCourses,
     isLoading,
     getCourseById,
     refetchCourses,
@@ -28,6 +29,7 @@ export const HomeScreen = () => {
 
   const getLastAccessedCourse = useCallback(() => {
     const sortedCourse = courses
+      ?.concat(communityCourses)
       ?.slice()
       .sort((course1, course2) =>
         moment(course1.lastAccessed).isBefore(course2.lastAccessed) ? 1 : -1
@@ -38,7 +40,7 @@ export const HomeScreen = () => {
     getCourseById(lastAccessed?.id).then(course =>
       setLastAccessedCourse(course)
     );
-  }, [courses, getCourseById]);
+  }, [communityCourses, courses, getCourseById]);
 
   useFocusEffect(
     useCallback(() => {
@@ -68,9 +70,13 @@ export const HomeScreen = () => {
         courses={reverse(sortBy(courses?.slice(), course => course.id))}
       />
       <KSpacer h={sizes.s20} />
-      <KCoursesList label={strings.home.savedFromCommunity} courses={[]} />
+      <KCoursesList
+        label={strings.home.savedFromCommunity}
+        courses={communityCourses}
+      />
       <KSpacer h={sizes.s20} />
       <KCoursesList label="Completed courses" courses={completedCourses} />
+      <KSpacer h={sizes.s70} />
     </KContainer>
   );
 };

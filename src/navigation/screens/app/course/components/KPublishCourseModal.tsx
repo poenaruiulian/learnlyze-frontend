@@ -29,7 +29,7 @@ export const KPublishCourseModal = ({ ...props }: KPublishCourseModalProps) => {
               information, but the course will be un-changeable.
             </Text>
             <Button
-              title="Complete course"
+              title="Complete"
               onPress={props.onComplete}
               borderRadius={sizes.s20}
               titleStyle={{
@@ -46,7 +46,7 @@ export const KPublishCourseModal = ({ ...props }: KPublishCourseModalProps) => {
               un-changeable.
             </Text>
             <Button
-              title="Publish course"
+              title="Publish"
               onPress={props.onPublish}
               borderRadius={sizes.s20}
               background={colors.fruitSalad}

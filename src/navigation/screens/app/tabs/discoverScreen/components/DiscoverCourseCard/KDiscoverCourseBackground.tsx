@@ -11,7 +11,7 @@ import Svg, {
   Rect,
 } from 'react-native-svg';
 
-export const DiscoverCourseBackground = (
+export const KDiscoverCourseBackground = (
   props: SvgProps & { firstColor: string; secondColor?: string }
 ) => (
   <Svg

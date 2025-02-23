@@ -1,1 +1,1 @@
-export * from './DiscoverCourseCard';
+export * from './KDiscoverCourseCard';

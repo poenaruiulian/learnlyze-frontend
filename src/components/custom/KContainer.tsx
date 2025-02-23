@@ -9,7 +9,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, sizes } from '@constants';
 import { ImageSource } from 'react-native-vector-icons/Icon';
 import { images } from '@images';
-import { KSpacer } from './KSpacer';
 
 type KContainerProps = {
   children: React.ReactNode;
@@ -61,7 +60,6 @@ export const KContainer = ({
             paddingBottom,
           }}>
           {children}
-          <KSpacer h={sizes.s60} />
         </ScrollView>
       </KeyboardAvoidingView>
     </ImageBackground>

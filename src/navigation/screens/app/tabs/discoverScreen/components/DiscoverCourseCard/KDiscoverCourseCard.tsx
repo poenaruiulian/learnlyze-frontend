@@ -2,7 +2,7 @@ import { View, Text } from '@defaults';
 import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import { colors, sizes, Tags } from '@constants';
 import { KSpacer } from '@components';
-import { DiscoverCourseBackground } from './DiscoverCourseBackground';
+import { KDiscoverCourseBackground } from './KDiscoverCourseBackground';
 
 export type DiscoverCourseCardType = {
   title: string;
@@ -41,7 +41,7 @@ const getColorBasedOnTag = (tag: string) => {
   }
 };
 
-export const DiscoverCourseCard = ({ ...props }: DiscoverCourseCardType) => {
+export const KDiscoverCourseCard = ({ ...props }: DiscoverCourseCardType) => {
   const { width: windowWidth } = useWindowDimensions();
 
   const width = (windowWidth - sizes.s50) / 2;
@@ -52,14 +52,13 @@ export const DiscoverCourseCard = ({ ...props }: DiscoverCourseCardType) => {
     : props.tags[0] && getColorBasedOnTag(props.tags[0]);
 
   return (
-    <View width={width}>
-      <DiscoverCourseBackground
+    <TouchableOpacity onPress={props.onPress} style={{ width }}>
+      <KDiscoverCourseBackground
         firstColor={firstColor}
         secondColor={secondColor}
         width={width}
       />
-      <TouchableOpacity
-        onPress={props.onPress}
+      <View
         style={{
           flexWrap: 'wrap',
           position: 'absolute',
@@ -97,7 +96,7 @@ export const DiscoverCourseCard = ({ ...props }: DiscoverCourseCardType) => {
             steps
           </Text>
         </View>
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 };
