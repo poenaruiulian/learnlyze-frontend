@@ -40,7 +40,7 @@ export const KStepSet = ({
           resources={step.resources.length}
           onPress={() => handleStepOnPress(step.details.id)}
           isFocused={extendedStep.includes(step.details.id)}
-          isCompleted={step.details.completed}
+          isCompleted={step.details.completed && !fullCourse.details.completed}
           handleStepState={() =>
             changeStepState({
               courseId: fullCourse.details.id,
@@ -48,6 +48,7 @@ export const KStepSet = ({
             })
           }
           subSteps={step.subSteps?.length}
+          isCourseCompleted={fullCourse.details.completed}
         />
         {extendedStep.includes(step.details.id) &&
           (!step.details.hasChild ? (

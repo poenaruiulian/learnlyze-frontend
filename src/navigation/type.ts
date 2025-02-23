@@ -25,9 +25,10 @@ export type AppStackParamList = {
   CourseScreen: {
     fullCourse: FullCourseModel;
   };
-  MoreCommentsScreen: undefined;
   NewCourseScreen: undefined;
-  SettingsScreen: undefined;
+  PublishCourse: {
+    fullCourse: FullCourseModel;
+  };
 };
 
 export type AuthNavigationType = NativeStackNavigationProp<AuthStackParamList>;

@@ -8,7 +8,7 @@ export type CourseModel = {
   completedSteps: number;
   steps: number[];
   lastAccessed: string;
-  complete?: boolean;
+  completed?: boolean;
   enrolledId?: number;
 };
 

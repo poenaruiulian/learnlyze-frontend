@@ -77,6 +77,7 @@ export const useCourse = () => {
 
   // Courses lists from queries
   const courses: CourseModel[] = useMemo(() => data && data.getAll, [data]);
+
   const communityCourses: CourseModel[] = useMemo(
     () => dataCommunity,
     [dataCommunity]
@@ -129,8 +130,10 @@ export const useCourse = () => {
 
   const completeCourse = async ({ courseId }: { courseId: number }) =>
     completeCourseMutation({ variables: { courseId } });
+
   const publishCourse = async ({ courseId }: { courseId: number }) =>
     publishCourseMutation({ variables: { courseId } });
+
   const enrollCourse = async ({ courseId }: { courseId: number }) =>
     enrollCourseMutation({ variables: { courseId } });
 

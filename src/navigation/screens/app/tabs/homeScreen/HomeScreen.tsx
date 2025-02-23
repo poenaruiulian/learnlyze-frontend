@@ -1,8 +1,8 @@
 import { useCourse, useRoot } from '@hooks';
 import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
-import { FullCourseModel, sizes, strings } from '@constants';
-import { useCallback, useState } from 'react';
+import { CourseModel, FullCourseModel, sizes, strings } from '@constants';
+import { useCallback, useEffect, useState } from 'react';
 import moment from 'moment/moment';
 import { useFocusEffect } from '@react-navigation/native';
 import { reverse, sortBy } from 'lodash-es';
@@ -13,11 +13,18 @@ import {
 } from './components';
 
 export const HomeScreen = () => {
-  const { courses, isLoading, getCourseById, refetchCourses } = useCourse();
+  const {
+    courses: fetchedCourses,
+    isLoading,
+    getCourseById,
+    refetchCourses,
+  } = useCourse();
   const { setIsLoading } = useRoot();
 
   const [lastAccessedCourse, setLastAccessedCourse] =
     useState<FullCourseModel | null>(null);
+  const [courses, setCourse] = useState<CourseModel[]>([]);
+  const [completedCourses, setCompletedCourses] = useState<CourseModel[]>([]);
 
   const getLastAccessedCourse = useCallback(() => {
     const sortedCourse = courses
@@ -43,6 +50,11 @@ export const HomeScreen = () => {
     }, [isLoading, getLastAccessedCourse, refetchCourses, setIsLoading])
   );
 
+  useEffect(() => {
+    setCourse(fetchedCourses?.filter(course => !course.completed));
+    setCompletedCourses(fetchedCourses?.filter(course => course.completed));
+  }, [fetchedCourses]);
+
   return (
     <KContainer backgroundImage={images.mainBackground}>
       <KNewCourseCard />
@@ -57,6 +69,8 @@ export const HomeScreen = () => {
       />
       <KSpacer h={sizes.s20} />
       <KCoursesList label={strings.home.savedFromCommunity} courses={[]} />
+      <KSpacer h={sizes.s20} />
+      <KCoursesList label="Completed courses" courses={completedCourses} />
     </KContainer>
   );
 };

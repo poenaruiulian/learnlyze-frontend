@@ -10,7 +10,7 @@ const GET_ALL_COURSES = gql`
       completedSteps
       steps
       lastAccessed
-      complete
+      completed
       enrolledId
     }
   }
@@ -57,7 +57,7 @@ const GET_COURSE_BY_ID = gql`
         lastAccessed
         postedDate
         completedSteps
-        complete
+        completed
         enrolledId
       }
       steps {
@@ -125,7 +125,7 @@ const GENERATE_NEW_COURSE = gql`
         tags
         startedAt
         postedDate
-        complete
+        completed
         completedSteps
         enrolledId
       }

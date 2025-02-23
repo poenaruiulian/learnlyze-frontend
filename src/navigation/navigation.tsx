@@ -14,12 +14,11 @@ import {
   DiscoverScreen,
   HomeScreen,
   LoginScreen,
-  MoreCommentsScreen,
   NewCourseScreen,
   OnboardingScreen,
   ProfileScreen,
+  PublishCourseScreen,
   RegisterScreen,
-  SettingsScreen,
 } from './screens';
 import { KTabBar } from './components';
 
@@ -67,8 +66,7 @@ const AppStack = () => {
       {!isNewUser && (
         <Stack.Screen name="NewCourseScreen" component={NewCourseScreen} />
       )}
-      <Stack.Screen name="MoreCommentsScreen" component={MoreCommentsScreen} />
-      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+      <Stack.Screen name="PublishCourse" component={PublishCourseScreen} />
     </Stack.Navigator>
   );
 };

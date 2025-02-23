@@ -16,6 +16,7 @@ type KStepType = {
   isFocused?: boolean;
   isCompleted: boolean;
   handleStepState: () => void;
+  isCourseCompleted?: boolean;
 };
 
 export const KStep = ({ ...props }: KStepType) => {
@@ -29,7 +30,9 @@ export const KStep = ({ ...props }: KStepType) => {
   const { width } = useWindowDimensions();
 
   const onLongPress = () => {
-    impactAsync(ImpactFeedbackStyle.Heavy).then(toggleIsModalVisible);
+    if (!props.isCourseCompleted) {
+      impactAsync(ImpactFeedbackStyle.Heavy).then(toggleIsModalVisible);
+    }
   };
 
   const onPress = () =>
