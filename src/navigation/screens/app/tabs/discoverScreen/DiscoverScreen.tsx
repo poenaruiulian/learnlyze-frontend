@@ -3,11 +3,7 @@ import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
 import { useDiscoverCourses, useRoot } from '@hooks';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import {
-  FlatList,
-  TouchableWithoutFeedback,
-  useWindowDimensions,
-} from 'react-native';
+import { FlatList, useWindowDimensions } from 'react-native';
 import { ErrorCodes, sizes, Tags } from '@constants';
 import { useFocusEffect } from '@react-navigation/native';
 import {
@@ -70,13 +66,8 @@ export const DiscoverScreen = () => {
       <KSpacer />
       <KTagsList onTagPress={onTagPress} tags={tags} />
       <KSpacer h={sizes.s30} />
-      {/* FlatList won't work inside a TouchableWithoutFeedback on which onPress is defined. */}
-      {/* The KContainer has a TouchableWithoutFeedback to dismiss the keyboard on background press. */}
-      {/* This workaround is used, so we can scroll the FlatList. */}
       {courses?.length !== 0 ? (
-        <TouchableWithoutFeedback
-          onPress={undefined}
-          style={{ flexShrink: 1, width }}>
+        <View style={{ flexShrink: 1, width }}>
           <FlatList
             scrollEnabled={false}
             numColumns={2}
@@ -99,7 +90,7 @@ export const DiscoverScreen = () => {
               gap: sizes.s10,
             }}
           />
-        </TouchableWithoutFeedback>
+        </View>
       ) : (
         <View flex center>
           <NoCoursesFound />

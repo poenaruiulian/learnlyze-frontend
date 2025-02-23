@@ -1,11 +1,9 @@
 import React from 'react';
 import {
   ImageBackground,
-  Keyboard,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  TouchableWithoutFeedback,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, sizes } from '@constants';
@@ -48,26 +46,24 @@ export const KContainer = ({
         backgroundColor && { backgroundColor },
       ]}
       resizeMode="cover">
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <KeyboardAvoidingView
-          style={{ flex: 1 }}
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-          <ScrollView
-            scrollEnabled={isScrollable}
-            nestedScrollEnabled
-            showsVerticalScrollIndicator={false}
-            keyboardShouldPersistTaps="always"
-            keyboardDismissMode="on-drag"
-            contentContainerStyle={{
-              flexGrow: 1,
-              paddingTop,
-              paddingBottom,
-            }}>
-            {children}
-            <KSpacer h={sizes.s90} />
-          </ScrollView>
-        </KeyboardAvoidingView>
-      </TouchableWithoutFeedback>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <ScrollView
+          scrollEnabled={isScrollable}
+          nestedScrollEnabled
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="always"
+          keyboardDismissMode="on-drag"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingTop,
+            paddingBottom,
+          }}>
+          {children}
+          <KSpacer h={sizes.s60} />
+        </ScrollView>
+      </KeyboardAvoidingView>
     </ImageBackground>
   );
 };

@@ -49,9 +49,14 @@ export const CourseScreen = () => {
 
   useEffect(() => {
     setIsVisible(
-      fullCourse.details.completedSteps === fullCourse.steps?.length
+      fullCourse.details.completedSteps === fullCourse.steps?.length &&
+        !fullCourse.details.postedDate
     );
-  }, [fullCourse.details.completedSteps, fullCourse.steps?.length]);
+  }, [
+    fullCourse.details.completedSteps,
+    fullCourse.details.postedDate,
+    fullCourse.steps?.length,
+  ]);
 
   const isCourseCompletable =
     fullCourse.details.completedSteps === fullCourse.steps?.length;

@@ -46,6 +46,7 @@ export const colors = {
   white: '#FFFFFF',
   white80: '#FFFFFFCC',
   white50: '#FFFFFF80',
+  white20: '#FFFFFF33',
 
   alto: '#D9D9D9',
   alto50: '#D9D9D980',

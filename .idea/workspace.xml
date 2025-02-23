@@ -5,25 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KPublishCourseModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/PublishCourseScreen.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/components/KSectionDescription.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/components/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/data/strings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/strings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/models/course.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/models/course.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useCourse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCourse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/MoreCommentsScreen.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/SettingsScreen.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/data/icons.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/icons.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/style/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/style/colors.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStepSet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStepSet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/homeScreen/HomeScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/PublishCourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/PublishCourseScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/DiscoverScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/DiscoverScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +124,7 @@
       <workItem from="1739350193590" duration="601000" />
       <workItem from="1739805882598" duration="8628000" />
       <workItem from="1739884212727" duration="22000" />
-      <workItem from="1740309209258" duration="7302000" />
+      <workItem from="1740309209258" duration="13345000" />
     </task>
     <servers />
   </component>
