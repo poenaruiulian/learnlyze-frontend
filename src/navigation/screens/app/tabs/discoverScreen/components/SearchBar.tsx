@@ -1,6 +1,6 @@
 import { Icon, View } from '@defaults';
 import { TextInput, useWindowDimensions } from 'react-native';
-import { colors, icons, sizes } from '@constants';
+import { colors, fonts, icons, sizes } from '@constants';
 import { useEffect, useState } from 'react';
 
 type SearchBarProps = {
@@ -32,6 +32,8 @@ export const SearchBar = (props: SearchBarProps) => {
           style={{
             width: '80%',
             paddingHorizontal: sizes.s10,
+            color: colors.white,
+            ...fonts.semiBold,
           }}
           onChange={e => setSearch(e.nativeEvent.text)}
         />

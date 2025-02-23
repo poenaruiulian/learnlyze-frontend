@@ -1,11 +1,15 @@
 import { View, Text } from '@defaults';
-import { useWindowDimensions } from 'react-native';
+import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import { colors, sizes, Tags } from '@constants';
+import { KSpacer } from '@components';
 import { DiscoverCourseBackground } from './DiscoverCourseBackground';
 
 export type DiscoverCourseCardType = {
   title: string;
   tags: string[];
+  numberOfSteps: number;
+  description?: string;
+  onPress: () => void;
 };
 
 const getColorBasedOnTag = (tag: string) => {
@@ -54,7 +58,8 @@ export const DiscoverCourseCard = ({ ...props }: DiscoverCourseCardType) => {
         secondColor={secondColor}
         width={width}
       />
-      <View
+      <TouchableOpacity
+        onPress={props.onPress}
         style={{
           flexWrap: 'wrap',
           position: 'absolute',
@@ -63,15 +68,36 @@ export const DiscoverCourseCard = ({ ...props }: DiscoverCourseCardType) => {
         }}>
         <Text
           white
-          bodyXS
-          semiBold
+          bodyS
+          bold
           style={{
             width,
-            padding: sizes.s10,
+            paddingHorizontal: sizes.s10,
+            paddingTop: sizes.s10,
           }}>
           {props.title}
         </Text>
-      </View>
+        <KSpacer h={4} />
+        <Text
+          white80
+          bodyXS
+          light
+          style={{
+            width,
+            paddingHorizontal: sizes.s10,
+          }}>
+          {props.description || 'No description provided.'}
+        </Text>
+        <KSpacer h={10} />
+        <View row paddingH={sizes.s10} gap={2} centerH>
+          <Text bodyXS persianGreen medium>
+            {props.numberOfSteps.toString()}
+          </Text>
+          <Text bodyXS white80 medium>
+            steps
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -11,6 +11,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, sizes } from '@constants';
 import { ImageSource } from 'react-native-vector-icons/Icon';
 import { images } from '@images';
+import { KSpacer } from './KSpacer';
 
 type KContainerProps = {
   children: React.ReactNode;
@@ -53,6 +54,7 @@ export const KContainer = ({
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <ScrollView
             scrollEnabled={isScrollable}
+            nestedScrollEnabled
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="always"
             keyboardDismissMode="on-drag"
@@ -62,6 +64,7 @@ export const KContainer = ({
               paddingBottom,
             }}>
             {children}
+            <KSpacer h={sizes.s90} />
           </ScrollView>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>

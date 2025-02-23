@@ -3,10 +3,19 @@ import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
 import { useDiscoverCourses, useRoot } from '@hooks';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { FlatList, useWindowDimensions } from 'react-native';
+import {
+  FlatList,
+  TouchableWithoutFeedback,
+  useWindowDimensions,
+} from 'react-native';
 import { ErrorCodes, sizes, Tags } from '@constants';
 import { useFocusEffect } from '@react-navigation/native';
-import { DiscoverCourseCard, SearchBar, TagsList } from './components';
+import {
+  DiscoverCourseCard,
+  NoCoursesFound,
+  SearchBar,
+  TagsList,
+} from './components';
 
 export const DiscoverScreen = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -61,24 +70,41 @@ export const DiscoverScreen = () => {
       <KSpacer />
       <TagsList onTagPress={onTagPress} tags={tags} />
       <KSpacer h={sizes.s30} />
-      <View style={{ flexShrink: 1, width }}>
-        <FlatList
-          scrollEnabled={false}
-          numColumns={2}
-          keyExtractor={item => item.id.toString()}
-          data={courses}
-          renderItem={({ item }) => (
-            <DiscoverCourseCard tags={item?.tags || []} title={item?.title} />
-          )}
-          style={{ paddingHorizontal: sizes.s20 }}
-          contentContainerStyle={{
-            gap: sizes.s10,
-          }}
-          columnWrapperStyle={{
-            gap: sizes.s10,
-          }}
-        />
-      </View>
+      {/* FlatList won't work inside a TouchableWithoutFeedback on which onPress is defined. */}
+      {/* The KContainer has a TouchableWithoutFeedback to dismiss the keyboard on background press. */}
+      {/* This workaround is used, so we can scroll the FlatList. */}
+      {courses?.length !== 0 ? (
+        <TouchableWithoutFeedback
+          onPress={undefined}
+          style={{ flexShrink: 1, width }}>
+          <FlatList
+            scrollEnabled={false}
+            numColumns={2}
+            keyExtractor={item => item.id.toString()}
+            data={courses}
+            renderItem={({ item }) => (
+              <DiscoverCourseCard
+                tags={item?.tags || []}
+                title={item?.title}
+                numberOfSteps={item?.steps.length}
+                description={item.description}
+                onPress={() => {}}
+              />
+            )}
+            style={{ paddingHorizontal: sizes.s20 }}
+            contentContainerStyle={{
+              gap: sizes.s10,
+            }}
+            columnWrapperStyle={{
+              gap: sizes.s10,
+            }}
+          />
+        </TouchableWithoutFeedback>
+      ) : (
+        <View flex center>
+          <NoCoursesFound />
+        </View>
+      )}
     </KContainer>
   );
 };
