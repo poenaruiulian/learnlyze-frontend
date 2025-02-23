@@ -1,12 +1,12 @@
-import { KContainer, KSpacer } from '@components';
-import { Button, Icon, Text, View } from '@defaults';
+import { KBackButton, KContainer, KSpacer } from '@components';
+import { Button, Text, View } from '@defaults';
 import {
   FlatList,
   TextInput,
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
-import { colors, fonts, FullCourseModel, icons, sizes, Tags } from '@constants';
+import { colors, fonts, FullCourseModel, sizes, Tags } from '@constants';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { useCourse, useUser } from '@hooks';
@@ -16,35 +16,16 @@ import { KStepDetails } from './components/KStepDetails';
 
 export const CourseDetailsScreen = () => {
   const { params } = useRoute<RouteProp<AppStackParamList, 'PublishCourse'>>();
-  const { goBack, canGoBack } = useNavigation();
+  const { goBack } = useNavigation();
   const { width } = useWindowDimensions();
   const { enrollCourse, communityCourses } = useCourse();
   const { user } = useUser();
 
   const [fullCourse] = useState<FullCourseModel>(params.fullCourse);
 
-  const iconSize = sizes.s32;
-  const borderRadiusRound = sizes.s90;
-
   return (
     <KContainer>
-      {canGoBack() && (
-        <TouchableOpacity
-          style={{
-            height: iconSize,
-            width: iconSize,
-            borderRadius: borderRadiusRound,
-            backgroundColor: colors.nevada,
-            borderColor: colors.tundora60,
-            borderWidth: 2,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginLeft: 16,
-          }}
-          onPress={goBack}>
-          <Icon icon={icons.arrowLeft} color={colors.tundora80} />
-        </TouchableOpacity>
-      )}
+      <KBackButton />
       <KSpacer h={sizes.s20} />
       <KSpacer />
       <Text center heading tulipTree style={{ paddingHorizontal: sizes.s16 }}>

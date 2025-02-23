@@ -1,10 +1,10 @@
 import { Text, View } from '@defaults';
-import { KContainer, KSpacer } from '@components';
+import { KBackButton, KContainer, KSpacer } from '@components';
 import { images } from '@images';
 import { sizes, strings } from '@constants';
 import { useCourse, useRoot } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { KTextInput, KLoadingCourse } from './components';
 import { AppNavigationType } from '../../../type';
 
@@ -40,6 +40,7 @@ export const NewCourseScreen = () => {
     <KContainer
       isScrollable={false}
       backgroundImage={images.newCourseBackground}>
+      {!isNewUser && <KBackButton />}
       <KSpacer h={sizes.s40} />
       <Text white80 headingL semiBold center>
         {strings.addNewCourse.title}
