@@ -6,13 +6,19 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
-import { colors, fonts, FullCourseModel, sizes, Tags } from '@constants';
+import {
+  colors,
+  fonts,
+  FullCourseModel,
+  sizes,
+  strings,
+  Tags,
+} from '@constants';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { useCourse, useUser } from '@hooks';
 import { AppStackParamList } from '../../../type';
-import { KSectionDescription } from './components';
-import { KStepDetails } from './components/KStepDetails';
+import { KSectionDescription, KStepDetails } from './components';
 
 export const CourseDetailsScreen = () => {
   const { params } = useRoute<RouteProp<AppStackParamList, 'PublishCourse'>>();
@@ -33,8 +39,8 @@ export const CourseDetailsScreen = () => {
       </Text>
       <KSpacer h={sizes.s20} />
       <KSectionDescription
-        title="Steps:"
-        description="These are the main steps of the course, press to reveal the sub-steps of the course"
+        title={strings.courseDetails.stepsTitle}
+        description={strings.courseDetails.stepsDescription}
         isEditable={false}
       />
       <KSpacer h={5} />
@@ -50,7 +56,7 @@ export const CourseDetailsScreen = () => {
         />
       </View>
       <KSpacer h={sizes.s20} />
-      <KSectionDescription title="Description:" />
+      <KSectionDescription title={strings.courseDetails.descriptionTitle} />
       <KSpacer h={5} />
       <TextInput
         value={fullCourse.details.description}
@@ -69,7 +75,7 @@ export const CourseDetailsScreen = () => {
         multiline
       />
       <KSpacer h={sizes.s20} />
-      <KSectionDescription title="Tags:" />
+      <KSectionDescription title={strings.courseDetails.tagsTitle} />
       <KSpacer h={5} />
       <View
         width={width}
@@ -109,7 +115,7 @@ export const CourseDetailsScreen = () => {
               ?.map(course => course.enrolledId)
               .includes(fullCourse.details.id)
           }
-          title="Enroll"
+          title={strings.courseDetails.enroll}
           onPress={() => {
             enrollCourse({ courseId: fullCourse.details.id }).then(goBack);
           }}
@@ -124,7 +130,7 @@ export const CourseDetailsScreen = () => {
           white50
           style={{ paddingHorizontal: sizes.s16 }}
           center>
-          You can&#39;t enroll to a course you&#39;ve published.
+          {strings.courseDetails.cantEnrollToPublished}
         </Text>
       )}
       {communityCourses
@@ -136,7 +142,7 @@ export const CourseDetailsScreen = () => {
           white50
           style={{ paddingHorizontal: sizes.s16 }}
           center>
-          You can&#39;t enroll to a course you&#39;ve already enrolled.
+          {strings.courseDetails.cantEnrollToEnrolled}
         </Text>
       )}
       <KSpacer h={sizes.s60} />

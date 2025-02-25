@@ -136,7 +136,7 @@ export const KStep = ({ ...props }: KStepType) => {
           {givingFeedback ? (
             <View centerH>
               <KTextInput
-                placeholder="Give your feedback towards this step"
+                placeholder={strings.course.step.giveFeedback}
                 value={feedback}
                 onSetValue={setFeedback}
                 multiline
@@ -147,7 +147,7 @@ export const KStep = ({ ...props }: KStepType) => {
               />
               <KSpacer />
               <Button
-                title="Create sub-steps"
+                title={strings.course.step.createSubSteps}
                 onPress={handleSubSteps}
                 borderRadius={sizes.s10}
                 titleStyle={{ ...fonts.bodyM }}

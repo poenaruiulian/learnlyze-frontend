@@ -6,7 +6,14 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
-import { colors, fonts, FullCourseModel, sizes, Tags } from '@constants';
+import {
+  colors,
+  fonts,
+  FullCourseModel,
+  sizes,
+  strings,
+  Tags,
+} from '@constants';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { useCourse } from '@hooks';
@@ -57,7 +64,7 @@ export const PublishCourseScreen = () => {
       <KBackButton />
       <KSpacer h={sizes.s20} />
       <Text center bodyL medium white50>
-        Publishing course
+        {strings.publishCourse.title}
       </Text>
       <KSpacer />
       <TextInput
@@ -79,11 +86,13 @@ export const PublishCourseScreen = () => {
         multiline
       />
       <KSpacer h={5} />
-      <KSectionDescription description="Customize the course title using the above input. After publishing you won't be able to change it again." />
+      <KSectionDescription
+        description={strings.publishCourse.titleDescription}
+      />
       <KSpacer h={sizes.s20} />
       <KSectionDescription
-        title="Steps:"
-        description="These are the main steps of the course, the sub-steps are not included here"
+        title={strings.publishCourse.stepsTitle}
+        description={strings.publishCourse.stepsDescription}
         isEditable={false}
       />
       <KSpacer h={5} />
@@ -109,8 +118,8 @@ export const PublishCourseScreen = () => {
       </View>
       <KSpacer h={sizes.s20} />
       <KSectionDescription
-        title="Description:"
-        description="Give a short description about the course. After publishing you won't be able to change it again."
+        title={strings.publishCourse.descriptionTitle}
+        description={strings.publishCourse.descriptionDescription}
       />
       <KSpacer h={5} />
       <TextInput
@@ -131,8 +140,8 @@ export const PublishCourseScreen = () => {
       />
       <KSpacer h={sizes.s20} />
       <KSectionDescription
-        title="Tags:"
-        description="Select at least one tag that suits this course. After publishing you won't be able to change it again."
+        title={strings.publishCourse.tagsTitle}
+        description={strings.publishCourse.tagsDescription}
       />
       <KSpacer h={5} />
       <View
@@ -175,7 +184,7 @@ export const PublishCourseScreen = () => {
             fullCourse.details.description?.length === 0 ||
             fullCourse.details.title?.length === 0
           }
-          title="Publish"
+          title={strings.publishCourse.publish}
           onPress={() => {
             changePublishDetails({
               courseId: fullCourse.details.id,
@@ -198,7 +207,7 @@ export const PublishCourseScreen = () => {
           white50
           style={{ paddingHorizontal: sizes.s16 }}
           center>
-          You need to provide a description for the course
+          {strings.publishCourse.descriptionNeeded}
         </Text>
       )}
       {(!fullCourse.details.tags || fullCourse.details.tags?.length === 0) && (
@@ -208,7 +217,7 @@ export const PublishCourseScreen = () => {
           white50
           style={{ paddingHorizontal: sizes.s16 }}
           center>
-          You need to select at least one tag suiting this course
+          {strings.publishCourse.tagsNeeded}
         </Text>
       )}
       {fullCourse.details.title.length === 0 && (
@@ -218,7 +227,7 @@ export const PublishCourseScreen = () => {
           white50
           style={{ paddingHorizontal: sizes.s16 }}
           center>
-          You can&#39;t leave the title empty.
+          {strings.publishCourse.tagsNeeded}
         </Text>
       )}
       <KSpacer h={sizes.s60} />

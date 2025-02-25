@@ -1,6 +1,6 @@
 import { View, Text } from '@defaults';
 import { TouchableOpacity, useWindowDimensions } from 'react-native';
-import { colors, sizes, Tags } from '@constants';
+import { colors, sizes, strings, Tags } from '@constants';
 import { KSpacer } from '@components';
 import { KDiscoverCourseBackground } from './KDiscoverCourseBackground';
 
@@ -85,7 +85,7 @@ export const KDiscoverCourseCard = ({ ...props }: DiscoverCourseCardType) => {
             width,
             paddingHorizontal: sizes.s10,
           }}>
-          {props.description || 'No description provided.'}
+          {props.description || strings.discover.card.noDescription}
         </Text>
         <KSpacer h={10} />
         <View row paddingH={sizes.s10} gap={2} centerH>
@@ -93,7 +93,7 @@ export const KDiscoverCourseCard = ({ ...props }: DiscoverCourseCardType) => {
             {props.numberOfSteps.toString()}
           </Text>
           <Text bodyXS white80 medium>
-            steps
+            {strings.discover.card.steps}
           </Text>
         </View>
       </View>
