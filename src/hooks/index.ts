@@ -4,3 +4,4 @@ export * from './useCourse';
 export * from './userDiscoverCourse';
 export * from './useStep';
 export * from './useResource';
+export * from './useError';

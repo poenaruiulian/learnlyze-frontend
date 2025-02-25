@@ -1,12 +1,12 @@
 import React, { useEffect, useReducer } from 'react';
-import { useRoot } from '@hooks';
+import { useError } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
 import { ErrorCodes } from '@constants';
 import { KModal } from '@components';
 import { AuthNavigationType } from '../navigation/type';
 
 export const ErrorHandler = ({ children }: { children: React.ReactNode }) => {
-  const { hasError, setHasError, error, setError } = useRoot();
+  const { hasError, setHasError, error, setError } = useError();
   const { goBack } = useNavigation<AuthNavigationType>();
 
   const [isModalVisible, toggleModalVisible] = useReducer(s => !s, false);

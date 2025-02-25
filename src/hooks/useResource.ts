@@ -1,7 +1,10 @@
 import { useMutation } from '@apollo/client';
 import { REPLACE_RESOURCE } from '@constants';
+import { useError } from './useError';
 
 export const useResource = () => {
+  const { handleError } = useError();
+
   const [replaceResourceMutation] = useMutation(REPLACE_RESOURCE);
 
   const replaceResource = async ({
@@ -13,7 +16,11 @@ export const useResource = () => {
     resourceId: number;
     feedback: string;
   }) =>
-    replaceResourceMutation({ variables: { stepId, resourceId, feedback } });
+    handleError(
+      await replaceResourceMutation({
+        variables: { stepId, resourceId, feedback },
+      })
+    );
 
   return {
     replaceResource,
