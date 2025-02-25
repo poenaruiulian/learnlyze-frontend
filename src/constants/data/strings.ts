@@ -58,18 +58,34 @@ export const strings = {
   course: {
     header: {
       date: 'Started on ',
+      published: 'Published on ',
     },
     step: {
+      title: 'Read lesson',
+      description: 'Press to discover all the information towards this lesson',
       resources: 'resources',
       subSteps: 'sub-steps',
       complete: 'Complete step',
       uncomplete: 'Uncomplete step',
       feedback: 'Give feedback',
+      giveFeedback: 'Give your feedback towards this step',
+      createSubSteps: 'Create sub-steps',
     },
     resource: {
       useful: 'I find this useful',
       useless: "I don't find this useful",
     },
+    modal: {
+      description: '🥳 Congrats on finishing the course! Next steps:',
+      completeDescription:
+        'By completing the course you will still have access to the information, but the course will be un-changeable.',
+      complete: 'Complete',
+      publishDescription:
+        'By publishing the course you will share this knowledge to the community. The course will be automatically completed and un-changeable.',
+      publish: 'Publish',
+    },
+    complete: 'Complete',
+    publish: 'Publish',
   },
   loading: {
     message: 'We are prepping your course. Take your time and pop some bubbles',
@@ -83,5 +99,40 @@ export const strings = {
     noCommunityDescription:
       'Check the Discover page to explore new things to learn from the community',
     studying: 'Studying',
+  },
+  courseDetails: {
+    stepsTitle: 'Steps:',
+    stepsDescription:
+      'These are the main steps of the course, press to reveal the sub-steps of the course',
+    descriptionTitle: 'Description:',
+    tagsTitle: 'Tags:',
+    enroll: 'Enroll',
+    cantEnrollToPublished: "You can't enroll to a course you've published.",
+    cantEnrollToEnrolled:
+      "You can't enroll to a course you've already enrolled.",
+  },
+  publishCourse: {
+    title: 'Publishing course',
+    titleDescription:
+      "Customize the course title using the above input. After publishing you won't be able to change it again.",
+    stepsTitle: 'Steps:',
+    stepsDescription:
+      'These are the main steps of the course, the sub-steps are not included here',
+    descriptionTitle: 'Description:',
+    descriptionDescription:
+      "Give a short description about the course. After publishing you won't be able to change it again.",
+    tagsTitle: 'Tags:',
+    tagsDescription:
+      "Select at least one tag that suits this course. After publishing you won't be able to change it again.",
+    publish: 'Publish',
+    descriptionNeeded: ' You need to provide a description for the course',
+    tagsNeeded: 'You need to select at least one tag suiting this course',
+    titleNeeded: "You can't leave the title empty.",
+  },
+  discover: {
+    card: {
+      noDescription: 'No description provided.',
+      steps: 'steps',
+    },
   },
 };

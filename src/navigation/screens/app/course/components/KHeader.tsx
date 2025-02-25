@@ -61,7 +61,7 @@ export const KHeader = ({ ...props }: KHeaderProps) => {
         </Text>
         {props.publishDate && (
           <Text bodyXS semiBold tulipTree60>
-            {'Published on '}
+            {strings.course.header.published}
             {moment(props.publishDate).format('DD MMM YYYY')}
           </Text>
         )}

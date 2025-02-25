@@ -1,6 +1,6 @@
 import { KModal, KSpacer } from '@components';
 import { Button, View, Text } from '@defaults';
-import { colors, fonts, sizes } from '@constants';
+import { colors, fonts, sizes, strings } from '@constants';
 import React from 'react';
 import { useWindowDimensions } from 'react-native';
 
@@ -19,17 +19,16 @@ export const KPublishCourseModal = ({ ...props }: KPublishCourseModalProps) => {
     <KModal closeModal={props.onClose} isModalVisible={props.isVisible}>
       <View gap={sizes.s10} width={width - sizes.s64}>
         <Text bodyL white center semiBold>
-          🥳 Congrats on finishing the course! Next steps:
+          {strings.course.modal.description}
         </Text>
         <KSpacer />
         {props.onComplete && (
           <>
             <Text bodyXS white50 center light>
-              By completing the course you will still have access to the
-              information, but the course will be un-changeable.
+              {strings.course.modal.completeDescription}
             </Text>
             <Button
-              title="Complete"
+              title={strings.course.modal.complete}
               onPress={props.onComplete}
               borderRadius={sizes.s20}
               titleStyle={{
@@ -41,12 +40,10 @@ export const KPublishCourseModal = ({ ...props }: KPublishCourseModalProps) => {
         {props.onPublish && (
           <>
             <Text bodyXS white50 center light>
-              By publishing the course you will share this knowledge to the
-              community. The course will be automatically completed and
-              un-changeable.
+              {strings.course.modal.publishDescription}
             </Text>
             <Button
-              title="Publish"
+              title={strings.course.modal.publish}
               onPress={props.onPublish}
               borderRadius={sizes.s20}
               background={colors.fruitSalad}

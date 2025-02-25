@@ -1,4 +1,4 @@
-import { colors, icons, sizes } from '@constants';
+import { colors, icons, sizes, strings } from '@constants';
 import { WebView } from 'react-native-webview';
 import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import { useReducer } from 'react';
@@ -32,11 +32,11 @@ export const KStepDescription = ({ ...props }: KStepDescription) => {
         <View row gap={5} centerH>
           <Icon icon={icons.lesson} color={colors.white80} />
           <Text semiBold bodyM white80>
-            Read lesson
+            {strings.course.step.title}
           </Text>
         </View>
         <Text semiBold bodyS white50>
-          Press to discover all the information towards this lesson
+          {strings.course.step.description}
         </Text>
       </View>
       <KModal
