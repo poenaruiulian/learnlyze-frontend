@@ -8,6 +8,7 @@ import {
   routes,
 } from '@constants';
 import { useStore } from '@store';
+import { useError } from './useError';
 
 export const useRoot = () => {
   const {
@@ -17,13 +18,10 @@ export const useRoot = () => {
     isLogged,
     setIsNewUser,
     isNewUser,
-    hasError,
-    setHasError,
-    error,
-    setError,
     isLoading,
     setIsLoading,
   } = useStore(useShallow((rootInfo: RootInfo) => rootInfo));
+  const { setError, setHasError } = useError();
 
   const login = async (loginDto: LoginDtoType): Promise<string | null> => {
     const response = await fetch(routes.auth.login, {
@@ -34,8 +32,6 @@ export const useRoot = () => {
 
     if (!response.ok) {
       const errorData = await response.json();
-
-      console.log(errorData);
 
       setError(errorData);
       setHasError(true);
@@ -95,11 +91,6 @@ export const useRoot = () => {
 
     isNewUser,
     setIsNewUser,
-
-    hasError,
-    setHasError,
-    error,
-    setError,
 
     isLoading,
     setIsLoading,

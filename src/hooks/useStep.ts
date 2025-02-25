@@ -5,8 +5,11 @@ import {
   StepModel,
 } from '@constants';
 import { useMutation } from '@apollo/client';
+import { useError } from './useError';
 
 export const useStep = () => {
+  const { handleError } = useError();
+
   const [breakStepMutation] = useMutation(BRAKE_STEP);
   const [changeStepStateMutation] = useMutation(CHANGE_STEP_STATE);
 
@@ -16,7 +19,12 @@ export const useStep = () => {
   }: {
     courseId: CourseModel['id'];
     stepId: StepModel['id'];
-  }) => changeStepStateMutation({ variables: { courseId, stepId } });
+  }) =>
+    handleError(
+      await changeStepStateMutation({
+        variables: { courseId, stepId },
+      })
+    );
 
   const breakStep = async ({
     stepId,
@@ -24,7 +32,12 @@ export const useStep = () => {
   }: {
     stepId: number;
     feedback: string;
-  }) => breakStepMutation({ variables: { stepId, feedback } });
+  }) =>
+    handleError(
+      await breakStepMutation({
+        variables: { stepId, feedback },
+      })
+    );
 
   return {
     changeStepState,

@@ -1,7 +1,7 @@
 import { View } from '@defaults';
 import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
-import { useCourse, useDiscoverCourses, useRoot } from '@hooks';
+import { useCourse, useDiscoverCourses, useError, useRoot } from '@hooks';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { FlatList, useWindowDimensions } from 'react-native';
 import { ErrorCodes, sizes, Tags } from '@constants';
@@ -24,7 +24,8 @@ export const DiscoverScreen = () => {
       tags: selectedTag ? [selectedTag] : null,
       search,
     });
-  const { setIsLoading, setError, setHasError } = useRoot();
+  const { setIsLoading } = useRoot();
+  const { setError, setHasError } = useError();
   const { width } = useWindowDimensions();
   const { getCourseById } = useCourse();
 
