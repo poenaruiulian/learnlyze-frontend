@@ -5,7 +5,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import { images } from '@images';
-import { colors, sizes } from '@constants';
+import { colors, sizes, strings } from '@constants';
 import { useNavigation } from '@react-navigation/native';
 import { AppNavigationType } from '../../../../../type';
 
@@ -34,10 +34,10 @@ export const KNewCourseCard = () => {
         }}
         onPress={handleNavigation}>
         <Text bodyXL semiBold white style={{ width: '70%' }}>
-          Ready for something new?
+          {strings.home.newCourseTitle}
         </Text>
         <Text body medium white50 style={{ width: '70%' }}>
-          Generate a new course and master your desired skill
+          {strings.home.newCourseDescription}
         </Text>
       </TouchableOpacity>
     </ImageBackground>

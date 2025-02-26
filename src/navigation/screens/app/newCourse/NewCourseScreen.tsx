@@ -4,7 +4,7 @@ import { images } from '@images';
 import { sizes, strings } from '@constants';
 import { useCourse, useRoot } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { KTextInput, KLoadingCourse } from './components';
 import { AppNavigationType } from '../../../type';
 
@@ -16,25 +16,28 @@ export const NewCourseScreen = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleNewCourseGeneration = (description: string) => {
-    setIsLoading(true);
-    generateNewCourse(description).then(fullCourse => {
-      setIsLoading(false);
+  const handleNewCourseGeneration = useCallback(
+    (description: string) => {
+      setIsLoading(true);
+      generateNewCourse(description).then(fullCourse => {
+        setIsLoading(false);
 
-      if (!fullCourse) {
-        return;
-      }
+        if (!fullCourse) {
+          return;
+        }
 
-      setIsNewUser(false);
-      reset({
-        index: 0,
-        routes: [
-          { name: 'Tab' },
-          { name: 'CourseScreen', params: { fullCourse } },
-        ],
+        setIsNewUser(false);
+        reset({
+          index: 0,
+          routes: [
+            { name: 'Tab' },
+            { name: 'CourseScreen', params: { fullCourse } },
+          ],
+        });
       });
-    });
-  };
+    },
+    [generateNewCourse, reset, setIsNewUser]
+  );
 
   return (
     <KContainer

@@ -32,6 +32,7 @@ export const strings = {
       title: 'Check your email',
       description:
         'Confirm your email by writing the code you received. Don’t worry, this step is required just on creating the account ',
+      error: 'The codes are not the same. Check your email for the code.',
     },
   },
   inputPlaceholder: {
@@ -106,6 +107,8 @@ export const strings = {
       'Continue learning and all your completed courses will appear here. You can disable this section from settings.',
     studying: 'Studying',
     completedCourses: 'Completed',
+    newCourseTitle: 'Ready for something new?',
+    newCourseDescription: 'Generate a new course and master your desired skill',
   },
   courseDetails: {
     stepsTitle: 'Steps:',
