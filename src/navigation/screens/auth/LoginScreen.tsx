@@ -1,6 +1,6 @@
 import { Button, Text, View } from '@defaults';
 import { useRoot } from '@hooks';
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { colors, LoginDtoType, sizes, strings } from '@constants';
 import { useNavigation } from '@react-navigation/native';
 import { KContainer, KSpacer, KTextInput } from '@components';
@@ -20,6 +20,13 @@ export const LoginScreen = () => {
     email: '',
     password: '',
   });
+
+  const handleLogin = useCallback(() => {
+    impactAsync(ImpactFeedbackStyle.Medium).then(() => {
+      setIsNewUser(false);
+      login(loginDto);
+    });
+  }, [login, loginDto, setIsNewUser]);
 
   return (
     <KContainer isScrollable={false} backgroundImage={images.authBackground}>
@@ -62,12 +69,7 @@ export const LoginScreen = () => {
         <KSpacer h={sizes.s20} />
         <Button
           title={strings.auth.buttonTitle}
-          onPress={() => {
-            impactAsync(ImpactFeedbackStyle.Medium).then(() => {
-              setIsNewUser(false);
-              login(loginDto).then();
-            });
-          }}
+          onPress={handleLogin}
           titleStyle={{
             color: colors.white80,
           }}

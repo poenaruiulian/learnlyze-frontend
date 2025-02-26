@@ -9,7 +9,7 @@ import {
   strings,
 } from '@constants';
 import { Icon, Text } from '@defaults';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Linking, TouchableOpacity } from 'react-native';
 import { useRoot, useResource } from '@hooks';
 
@@ -19,7 +19,21 @@ export const KResource = ({ ...props }: ResourceModel & { stepId: number }) => {
   const { replaceResource } = useResource();
   const { setIsLoading } = useRoot();
 
-  const unusefulItem = {
+  const handleOnPress = useCallback(() => {
+    setIsLoading(true);
+    replaceResource({
+      resourceId: props.id,
+      feedback: strings.course.resource.useless,
+      stepId: props.stepId,
+    })
+      .then(() => setIsLoading(false))
+      .catch(err => {
+        console.log(err);
+        setIsLoading(false);
+      });
+  }, [props.id, props.stepId, replaceResource, setIsLoading]);
+
+  const replaceResourceItem = {
     background: colors.auChico60,
     text: strings.course.resource.useless,
     style: {
@@ -27,19 +41,7 @@ export const KResource = ({ ...props }: ResourceModel & { stepId: number }) => {
       ...fonts.bodyXS,
       borderRadius: 0,
     },
-    onPress: () => {
-      setIsLoading(true);
-      replaceResource({
-        resourceId: props.id,
-        feedback: strings.course.resource.useless,
-        stepId: props.stepId,
-      })
-        .then(() => setIsLoading(false))
-        .catch(err => {
-          console.log(err);
-          setIsLoading(false);
-        });
-    },
+    onPress: handleOnPress,
   };
 
   const onPressResource = async () =>
@@ -48,7 +50,7 @@ export const KResource = ({ ...props }: ResourceModel & { stepId: number }) => {
 
   return (
     <Drawer
-      rightItems={[unusefulItem]}
+      rightItems={[replaceResourceItem]}
       fullSwipeRight={false}
       onSwipeableWillOpen={() => setIsFeedbackOpen(true)}
       onSwipeableWillClose={() => setIsFeedbackOpen(false)}

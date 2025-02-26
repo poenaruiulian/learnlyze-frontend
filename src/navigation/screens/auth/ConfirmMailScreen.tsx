@@ -1,5 +1,5 @@
 import { Button, Text, View } from '@defaults';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { useWindowDimensions } from 'react-native';
 import { useRoot } from '@hooks';
@@ -21,6 +21,18 @@ export const ConfirmMailScreen = () => {
 
   const [inputCode, setInputCode] = useState('');
   const [shouldShowError, setShouldShowError] = useState(false);
+
+  const handleRegister = useCallback(() => {
+    if (inputCode === params.code) {
+      impactAsync(ImpactFeedbackStyle.Medium).then(() =>
+        register(params.registerDto).then(() => setIsNewUser(true))
+      );
+    } else {
+      notificationAsync(NotificationFeedbackType.Error).then(() =>
+        setShouldShowError(true)
+      );
+    }
+  }, [inputCode, params.code, params.registerDto, register, setIsNewUser]);
 
   return (
     <KContainer isScrollable={false}>
@@ -72,7 +84,7 @@ export const ConfirmMailScreen = () => {
                 tulipTree
                 center
                 style={{ paddingHorizontal: sizes.s10 }}>
-                The codes are not the same. Check your email for the code.
+                {strings.auth.confirmMail.error}
               </Text>
             </>
           )}
@@ -80,18 +92,8 @@ export const ConfirmMailScreen = () => {
         <KSpacer h={sizes.s40} />
         <View paddingH={width / 4.5}>
           <Button
-            title="Register"
-            onPress={() => {
-              if (inputCode === params.code) {
-                impactAsync(ImpactFeedbackStyle.Medium).then(() =>
-                  register(params.registerDto).then(() => setIsNewUser(true))
-                );
-              } else {
-                notificationAsync(NotificationFeedbackType.Error).then(() =>
-                  setShouldShowError(true)
-                );
-              }
-            }}
+            title={strings.auth.register.title}
+            onPress={handleRegister}
             titleStyle={{ color: colors.white80 }}
             disabled={inputCode.length !== 6}
           />

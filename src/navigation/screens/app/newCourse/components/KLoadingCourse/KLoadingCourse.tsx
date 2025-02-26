@@ -3,7 +3,7 @@ import { useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { colors, sizes, strings } from '@constants';
-import { KSpacer } from '../../../../../../components/custom/KSpacer';
+import { KSpacer } from '@components';
 import { KBubble } from './KBubble';
 
 export const KLoadingCourse = () => {
@@ -33,8 +33,8 @@ export const KLoadingCourse = () => {
       style={{
         position: 'absolute',
         backgroundColor: colors.biscay,
-        paddingTop: top,
       }}
+      paddingT={top}
       width={width}
       height={height}>
       {bubbles}

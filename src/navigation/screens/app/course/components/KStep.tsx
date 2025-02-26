@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useCallback, useReducer, useState } from 'react';
 import { Button, Text, View } from '@defaults';
 import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import { colors, fonts, sizes, strings } from '@constants';
@@ -52,7 +52,7 @@ export const KStep = ({ ...props }: KStepType) => {
       impactAsync(ImpactFeedbackStyle.Soft).then(() => setGivingFeedback(true)),
   };
 
-  const handleSubSteps = async () => {
+  const handleSubSteps = useCallback(async () => {
     setIsLoading(true);
     toggleIsModalVisible();
     setGivingFeedback(false);
@@ -64,7 +64,7 @@ export const KStep = ({ ...props }: KStepType) => {
         console.log(err);
         setIsLoading(false);
       });
-  };
+  }, [breakStep, feedback, props.stepId, setIsLoading]);
 
   const transform = {
     transform: [

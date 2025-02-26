@@ -4,6 +4,7 @@ import { KSpacer } from '@components';
 import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { useMemo } from 'react';
 import { AppNavigationType } from '../../../../../type';
 
 type LastAccessedCourseCardProps = {
@@ -22,6 +23,11 @@ export const KLastAccessedCourseCard = ({
   const completed =
     completedSteps && steps ? Math.floor((completedSteps * 100) / steps) : 0;
   const uncompleted = 100 - completed;
+
+  const title = useMemo(
+    () => course.steps.find(step => !step.details.completed)?.details.title,
+    [course.steps]
+  );
 
   const handleNavigation = () => {
     navigate('CourseScreen', { fullCourse: course });
@@ -59,7 +65,7 @@ export const KLastAccessedCourseCard = ({
           </View>
           <KSpacer />
           <Text bodyXL tulipTree semiBold>
-            {course.steps.find(step => !step.details.completed)?.details.title}
+            {title}
           </Text>
         </View>
       </TouchableOpacity>

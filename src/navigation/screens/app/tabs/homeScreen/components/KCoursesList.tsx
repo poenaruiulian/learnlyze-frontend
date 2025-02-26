@@ -4,7 +4,7 @@ import { useCourse } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
 import { Text, View } from '@defaults';
 import { KSpacer } from '@components';
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useCallback, useRef, useState } from 'react';
 import { KCourseCard } from './KCourseCard';
 import { AppNavigationType } from '../../../../../type';
 import { KNoCourseCard } from './KNoCourseCard';
@@ -22,11 +22,14 @@ export const KCoursesList = ({ ...props }: CoursesListProps) => {
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const flatListRef = useRef(null);
 
-  const handleCourseNavigation = (id: number) => {
-    getCourseById(id).then(
-      fullCourse => fullCourse && navigate('CourseScreen', { fullCourse })
-    );
-  };
+  const handleCourseNavigation = useCallback(
+    (id: number) => {
+      getCourseById(id).then(
+        fullCourse => fullCourse && navigate('CourseScreen', { fullCourse })
+      );
+    },
+    [getCourseById, navigate]
+  );
 
   const onContentSizeChange = (contentWidth: number) => {
     setScrollEnabled(contentWidth > width);

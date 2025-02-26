@@ -39,6 +39,25 @@ export const RegisterScreen = () => {
     }, [])
   );
 
+  const handleSendEmail = useCallback(() => {
+    const isEmailValid = verifyEmail(registerDto.email);
+    const isPasswordValid = verifyPassword(registerDto.password);
+    if (!isEmailValid) {
+      console.log('ERROR:', strings.inputWarnings.invalidEmail);
+    } else if (!isPasswordValid) {
+      console.log('ERROR:', strings.inputWarnings.invalidPassword);
+    } else {
+      impactAsync(ImpactFeedbackStyle.Medium).then(() =>
+        sendEmail({ email: registerDto.email, code }).then(() =>
+          navigate('ConfirmMailScreen', {
+            registerDto,
+            code,
+          })
+        )
+      );
+    }
+  }, [code, navigate, registerDto]);
+
   return (
     <KContainer isScrollable={false} backgroundImage={images.authBackground}>
       <View centerH>
@@ -121,24 +140,7 @@ export const RegisterScreen = () => {
         <KSpacer h={sizes.s20} />
         <Button
           title={strings.auth.buttonTitle}
-          onPress={() => {
-            const isEmailValid = verifyEmail(registerDto.email);
-            const isPasswordValid = verifyPassword(registerDto.password);
-            if (!isEmailValid) {
-              console.log('ERROR:', strings.inputWarnings.invalidEmail);
-            } else if (!isPasswordValid) {
-              console.log('ERROR:', strings.inputWarnings.invalidPassword);
-            } else {
-              impactAsync(ImpactFeedbackStyle.Medium).then(() =>
-                sendEmail({ email: registerDto.email, code }).then(() =>
-                  navigate('ConfirmMailScreen', {
-                    registerDto,
-                    code,
-                  })
-                )
-              );
-            }
-          }}
+          onPress={handleSendEmail}
           titleStyle={{
             color: colors.white80,
           }}

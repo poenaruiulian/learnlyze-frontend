@@ -15,7 +15,7 @@ import {
   Tags,
 } from '@constants';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useCourse, useUser } from '@hooks';
 import { AppStackParamList } from '../../../type';
 import { KSectionDescription, KStepDetails } from './components';
@@ -28,6 +28,32 @@ export const CourseDetailsScreen = () => {
   const { user } = useUser();
 
   const [fullCourse] = useState<FullCourseModel>(params.fullCourse);
+
+  const tags = useMemo(
+    () => Object.values(Tags).filter(t => t !== Tags.all),
+    []
+  );
+
+  const isAlreadyEnrolled = useMemo(
+    () =>
+      communityCourses
+        ?.map(course => course.enrolledId)
+        .includes(fullCourse.details.id),
+    [communityCourses, fullCourse.details.id]
+  );
+
+  const enrollButtonDisabled = useMemo(
+    () =>
+      fullCourse.details.user === user?.id ||
+      communityCourses
+        ?.map(course => course.enrolledId)
+        .includes(fullCourse.details.id),
+    [communityCourses, fullCourse.details.id, fullCourse.details.user, user?.id]
+  );
+
+  const handleEnroll = useCallback(() => {
+    enrollCourse({ courseId: fullCourse.details.id }).then(goBack);
+  }, [enrollCourse, fullCourse.details.id, goBack]);
 
   return (
     <KContainer>
@@ -83,42 +109,33 @@ export const CourseDetailsScreen = () => {
         row
         gap={sizes.s10}
         style={{ flexWrap: 'wrap' }}>
-        {Object.values(Tags)
-          .filter(t => t !== Tags.all)
-          .map(tag => (
-            <TouchableOpacity
-              key={tag}
-              style={{
-                paddingHorizontal: sizes.s10,
-                paddingVertical: 5,
-                backgroundColor: fullCourse.details.tags?.includes(tag)
-                  ? colors.white80
-                  : colors.tundora,
-                borderRadius: sizes.s10,
-              }}>
-              <Text
-                white80={!fullCourse.details.tags?.includes(tag)}
-                persianGreen={fullCourse.details.tags?.includes(tag)}
-                body
-                semiBold>
-                {tag[0].toUpperCase() + tag.slice(1)}
-              </Text>
-            </TouchableOpacity>
-          ))}
+        {tags.map(tag => (
+          <TouchableOpacity
+            key={tag}
+            style={{
+              paddingHorizontal: sizes.s10,
+              paddingVertical: 5,
+              backgroundColor: fullCourse.details.tags?.includes(tag)
+                ? colors.white80
+                : colors.tundora,
+              borderRadius: sizes.s10,
+            }}>
+            <Text
+              white80={!fullCourse.details.tags?.includes(tag)}
+              persianGreen={fullCourse.details.tags?.includes(tag)}
+              body
+              semiBold>
+              {tag[0].toUpperCase() + tag.slice(1)}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
       <KSpacer h={sizes.s30} />
       <View width={width} center>
         <Button
-          disabled={
-            fullCourse.details.user === user?.id ||
-            communityCourses
-              ?.map(course => course.enrolledId)
-              .includes(fullCourse.details.id)
-          }
+          disabled={enrollButtonDisabled}
           title={strings.courseDetails.enroll}
-          onPress={() => {
-            enrollCourse({ courseId: fullCourse.details.id }).then(goBack);
-          }}
+          onPress={handleEnroll}
           center
         />
       </View>
@@ -133,9 +150,7 @@ export const CourseDetailsScreen = () => {
           {strings.courseDetails.cantEnrollToPublished}
         </Text>
       )}
-      {communityCourses
-        ?.map(course => course.enrolledId)
-        .includes(fullCourse.details.id) && (
+      {isAlreadyEnrolled && (
         <Text
           bodyXS
           light

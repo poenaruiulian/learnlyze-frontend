@@ -64,6 +64,15 @@ export const DiscoverScreen = () => {
     return [Tags.all, selectedTag].concat(filteredTags).filter(tag => tag);
   }, [selectedTag]);
 
+  const handleOnPressCourse = useCallback(
+    (id: number) =>
+      getCourseById(id).then(
+        fullCourse =>
+          fullCourse && navigate('CourseDetailsScreen', { fullCourse })
+      ),
+    [getCourseById, navigate]
+  );
+
   return (
     <KContainer backgroundImage={images.mainBackground}>
       <KSearchBar currentValue={search} changeCurrentValue={setSearch} />
@@ -83,13 +92,7 @@ export const DiscoverScreen = () => {
                 title={item?.title}
                 numberOfSteps={item?.steps.length}
                 description={item.description}
-                onPress={() =>
-                  getCourseById(item.id).then(
-                    fullCourse =>
-                      fullCourse &&
-                      navigate('CourseDetailsScreen', { fullCourse })
-                  )
-                }
+                onPress={() => handleOnPressCourse(item.id)}
               />
             )}
             style={{ paddingHorizontal: sizes.s20 }}

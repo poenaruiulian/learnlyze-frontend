@@ -15,7 +15,7 @@ import {
   Tags,
 } from '@constants';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useCourse } from '@hooks';
 import { AppStackParamList } from '../../../type';
 import { KSectionDescription } from './components';
@@ -30,34 +30,67 @@ export const PublishCourseScreen = () => {
     params.fullCourse
   );
 
-  const handleEditTitle = (text: string) =>
-    setFullCourse({
-      ...fullCourse,
-      details: { ...fullCourse.details, title: text },
-    });
+  const tags = useMemo(
+    () => Object.values(Tags).filter(t => t !== Tags.all),
+    []
+  );
 
-  const handleEditDescription = (text: string) =>
-    setFullCourse({
-      ...fullCourse,
-      details: { ...fullCourse.details, description: text },
-    });
+  const handleEditTitle = useCallback(
+    (text: string) =>
+      setFullCourse({
+        ...fullCourse,
+        details: { ...fullCourse.details, title: text },
+      }),
+    [fullCourse]
+  );
 
-  const handleEditTags = (tag: string) => {
-    let fullCourseTags = fullCourse.details.tags ?? [];
+  const handleEditDescription = useCallback(
+    (text: string) =>
+      setFullCourse({
+        ...fullCourse,
+        details: { ...fullCourse.details, description: text },
+      }),
+    [fullCourse]
+  );
 
-    if (fullCourseTags) {
-      if (fullCourseTags.includes(tag)) {
-        fullCourseTags = fullCourseTags.filter(t => t !== tag);
-      } else {
-        fullCourseTags = [...fullCourseTags, tag];
+  const handleEditTags = useCallback(
+    (tag: string) => {
+      let fullCourseTags = fullCourse.details.tags ?? [];
+
+      if (fullCourseTags) {
+        if (fullCourseTags.includes(tag)) {
+          fullCourseTags = fullCourseTags.filter(t => t !== tag);
+        } else {
+          fullCourseTags = [...fullCourseTags, tag];
+        }
       }
-    }
 
-    setFullCourse(prev => ({
-      ...prev,
-      details: { ...prev.details, tags: fullCourseTags },
-    }));
-  };
+      setFullCourse(prev => ({
+        ...prev,
+        details: { ...prev.details, tags: fullCourseTags },
+      }));
+    },
+    [fullCourse.details.tags]
+  );
+
+  const handlePublishing = useCallback(() => {
+    changePublishDetails({
+      courseId: fullCourse.details.id,
+      description: fullCourse.details.description,
+      title: fullCourse.details.title,
+      tags: fullCourse.details.tags,
+    }).then(() =>
+      publishCourse({ courseId: fullCourse.details.id }).then(goBack)
+    );
+  }, [
+    changePublishDetails,
+    fullCourse.details.description,
+    fullCourse.details.id,
+    fullCourse.details.tags,
+    fullCourse.details.title,
+    goBack,
+    publishCourse,
+  ]);
 
   return (
     <KContainer>
@@ -150,29 +183,27 @@ export const PublishCourseScreen = () => {
         row
         gap={sizes.s10}
         style={{ flexWrap: 'wrap' }}>
-        {Object.values(Tags)
-          .filter(t => t !== Tags.all)
-          .map(tag => (
-            <TouchableOpacity
-              key={tag}
-              onPress={() => handleEditTags(tag)}
-              style={{
-                paddingHorizontal: sizes.s10,
-                paddingVertical: 5,
-                backgroundColor: fullCourse.details.tags?.includes(tag)
-                  ? colors.white80
-                  : colors.tundora,
-                borderRadius: sizes.s10,
-              }}>
-              <Text
-                white80={!fullCourse.details.tags?.includes(tag)}
-                persianGreen={fullCourse.details.tags?.includes(tag)}
-                body
-                semiBold>
-                {tag[0].toUpperCase() + tag.slice(1)}
-              </Text>
-            </TouchableOpacity>
-          ))}
+        {tags.map(tag => (
+          <TouchableOpacity
+            key={tag}
+            onPress={() => handleEditTags(tag)}
+            style={{
+              paddingHorizontal: sizes.s10,
+              paddingVertical: 5,
+              backgroundColor: fullCourse.details.tags?.includes(tag)
+                ? colors.white80
+                : colors.tundora,
+              borderRadius: sizes.s10,
+            }}>
+            <Text
+              white80={!fullCourse.details.tags?.includes(tag)}
+              persianGreen={fullCourse.details.tags?.includes(tag)}
+              body
+              semiBold>
+              {tag[0].toUpperCase() + tag.slice(1)}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
       <KSpacer h={sizes.s30} />
       <View width={width} center>
@@ -185,16 +216,7 @@ export const PublishCourseScreen = () => {
             fullCourse.details.title?.length === 0
           }
           title={strings.publishCourse.publish}
-          onPress={() => {
-            changePublishDetails({
-              courseId: fullCourse.details.id,
-              description: fullCourse.details.description,
-              title: fullCourse.details.title,
-              tags: fullCourse.details.tags,
-            }).then(() =>
-              publishCourse({ courseId: fullCourse.details.id }).then(goBack)
-            );
-          }}
+          onPress={handlePublishing}
           center
         />
       </View>

@@ -10,7 +10,6 @@ type CourseCardProps = {
   steps?: number;
   completed?: number;
   onPress: () => void;
-  noCourse?: boolean;
 };
 
 export const KCourseCard = ({ ...props }: CourseCardProps) => {
@@ -22,11 +21,7 @@ export const KCourseCard = ({ ...props }: CourseCardProps) => {
 
   return (
     <ImageBackground
-      source={
-        props.noCourse
-          ? images.noCoursesCardBackground
-          : images.defaultCardBackground
-      }
+      source={images.defaultCardBackground}
       resizeMode="contain"
       style={{
         width: 255,
@@ -39,75 +34,61 @@ export const KCourseCard = ({ ...props }: CourseCardProps) => {
           padding={sizes.s10}
           style={{
             backgroundColor: colors.biscay60,
-            justifyContent: props.noCourse ? 'center' : 'space-between',
+            justifyContent: 'space-between',
           }}>
-          {props.noCourse ? (
-            <>
-              <Text bodyM semiBold white>
-                {strings.home.noCommunityTitle}
+          <Text semiBold white body>
+            {props.name}
+          </Text>
+          <View>
+            <View row gap={3} centerH>
+              <Text semiBold bodyL persianGreen style={{ lineHeight: 18 }}>
+                {props?.completed?.toString()}
               </Text>
-              <KSpacer h={5} />
-              <Text bodyXS white50 medium>
-                {strings.home.noCommunityDescription}
+              <Text
+                semiBold
+                bodyS
+                white50
+                style={{
+                  lineHeight: 18,
+                }}>
+                {strings.home.ofXSteps(props.steps ?? 0)}
               </Text>
-            </>
-          ) : (
-            <>
-              <Text semiBold white body>
-                {props.name}
+              <Text semiBold bodyS persianGreen style={{ lineHeight: 18 }}>
+                {strings.home.completed}
               </Text>
-              <View>
-                <View row gap={3} centerH>
-                  <Text semiBold bodyL persianGreen style={{ lineHeight: 18 }}>
-                    {props?.completed?.toString()}
-                  </Text>
-                  <Text
-                    semiBold
-                    bodyS
-                    white50
-                    style={{
-                      lineHeight: 18,
-                    }}>
-                    {strings.home.ofXSteps(props.steps ?? 0)}
-                  </Text>
-                  <Text semiBold bodyS persianGreen style={{ lineHeight: 18 }}>
-                    {strings.home.completed}
-                  </Text>
-                </View>
-                <KSpacer h={5} />
-                <View>
-                  <Text
-                    style={{
-                      position: 'absolute',
-                      zIndex: 1,
-                      alignSelf: 'center',
-                    }}
-                    white50
-                    bold
-                    bodyS>
-                    {`${completed}%`}
-                  </Text>
-                  <LinearGradient
-                    colors={
-                      uncompleted === 0
-                        ? [colors.persianGreen, colors.persianGreen]
-                        : completed === 0
-                          ? [colors.tulipTree, colors.tulipTree]
-                          : [colors.tulipTree, colors.persianGreen]
-                    }
-                    style={{
-                      width: '100%',
-                      height: 20,
-                      borderRadius: 6,
-                    }}
-                    locations={[completed / 100, uncompleted / 100]}
-                    start={{ x: 0, y: 0.75 }}
-                    end={{ x: 1, y: 0.25 }}
-                  />
-                </View>
-              </View>
-            </>
-          )}
+            </View>
+            <KSpacer h={5} />
+            <View>
+              <Text
+                style={{
+                  position: 'absolute',
+                  zIndex: 1,
+                  alignSelf: 'center',
+                }}
+                white50
+                bold
+                bodyS>
+                {`${completed}%`}
+              </Text>
+              <LinearGradient
+                colors={
+                  uncompleted === 0
+                    ? [colors.persianGreen, colors.persianGreen]
+                    : completed === 0
+                      ? [colors.tulipTree, colors.tulipTree]
+                      : [colors.tulipTree, colors.persianGreen]
+                }
+                style={{
+                  width: '100%',
+                  height: 20,
+                  borderRadius: 6,
+                }}
+                locations={[completed / 100, uncompleted / 100]}
+                start={{ x: 0, y: 0.75 }}
+                end={{ x: 1, y: 0.25 }}
+              />
+            </View>
+          </View>
         </View>
       </TouchableOpacity>
     </ImageBackground>

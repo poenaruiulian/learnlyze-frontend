@@ -1,7 +1,7 @@
 import { Button, View } from '@defaults';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { colors, sizes, strings } from '@constants';
 import { useWindowDimensions } from 'react-native';
 import { useCourse, useStep, useResource } from '@hooks';
@@ -63,17 +63,20 @@ export const CourseScreen = () => {
 
   const isCoursePublished = !!fullCourse.details.postedDate;
 
-  const handleCompleteCourse = () =>
-    completeCourse({ courseId: fullCourse.details.id }).then(() =>
-      setIsVisible(false)
-    );
+  const handleCompleteCourse = useCallback(
+    () =>
+      completeCourse({ courseId: fullCourse.details.id }).then(() =>
+        setIsVisible(false)
+      ),
+    [completeCourse, fullCourse.details.id]
+  );
 
-  const handlePublishCourse = () => {
+  const handlePublishCourse = useCallback(() => {
     completeCourse({ courseId: fullCourse.details.id }).then(() => {
       navigate('PublishCourse', { fullCourse });
       setIsVisible(false);
     });
-  };
+  }, [completeCourse, fullCourse, navigate]);
 
   return (
     <KContainer
