@@ -1,7 +1,13 @@
 import { useCourse, useRoot } from '@hooks';
 import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
-import { CourseModel, FullCourseModel, sizes, strings } from '@constants';
+import {
+  CourseModel,
+  CoursesListsEnum,
+  FullCourseModel,
+  sizes,
+  strings,
+} from '@constants';
 import React, { useCallback, useEffect, useState } from 'react';
 import moment from 'moment/moment';
 import { useFocusEffect } from '@react-navigation/native';
@@ -68,14 +74,20 @@ export const HomeScreen = () => {
       <KCoursesList
         label={strings.home.courses}
         courses={reverse(sortBy(courses?.slice(), course => course.id))}
+        type={CoursesListsEnum.courses}
       />
       <KSpacer h={sizes.s20} />
       <KCoursesList
         label={strings.home.savedFromCommunity}
         courses={communityCourses}
+        type={CoursesListsEnum.community}
       />
       <KSpacer h={sizes.s20} />
-      <KCoursesList label="Completed courses" courses={completedCourses} />
+      <KCoursesList
+        label={strings.home.completedCourses}
+        courses={completedCourses}
+        type={CoursesListsEnum.completed}
+      />
       <KSpacer h={sizes.s70} />
     </KContainer>
   );
