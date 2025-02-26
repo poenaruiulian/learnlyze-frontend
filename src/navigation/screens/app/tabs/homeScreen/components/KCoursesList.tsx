@@ -1,21 +1,22 @@
-import { CourseModel, sizes } from '@constants';
+import { CourseModel, CoursesListsEnum, sizes } from '@constants';
 import { FlatList, useWindowDimensions } from 'react-native';
 import { useCourse } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text } from '@defaults';
+import { Text, View } from '@defaults';
 import { KSpacer } from '@components';
 import { Fragment, useRef, useState } from 'react';
 import { KCourseCard } from './KCourseCard';
-import { AppNavigationType, TabNavigationType } from '../../../../../type';
+import { AppNavigationType } from '../../../../../type';
+import { KNoCourseCard } from './KNoCourseCard';
 
 type CoursesListProps = {
   label: string;
   courses: CourseModel[];
+  type?: CoursesListsEnum;
 };
 export const KCoursesList = ({ ...props }: CoursesListProps) => {
   const { getCourseById } = useCourse();
-  const { navigate: appNavigate } = useNavigation<AppNavigationType>();
-  const { navigate: tabNavigate } = useNavigation<TabNavigationType>();
+  const { navigate } = useNavigation<AppNavigationType>();
   const { width } = useWindowDimensions();
 
   const [scrollEnabled, setScrollEnabled] = useState(true);
@@ -23,11 +24,9 @@ export const KCoursesList = ({ ...props }: CoursesListProps) => {
 
   const handleCourseNavigation = (id: number) => {
     getCourseById(id).then(
-      fullCourse => fullCourse && appNavigate('CourseScreen', { fullCourse })
+      fullCourse => fullCourse && navigate('CourseScreen', { fullCourse })
     );
   };
-
-  const handleDiscoverNavigation = () => tabNavigate('DiscoverScreen');
 
   const onContentSizeChange = (contentWidth: number) => {
     setScrollEnabled(contentWidth > width);
@@ -64,7 +63,7 @@ export const KCoursesList = ({ ...props }: CoursesListProps) => {
         ListEmptyComponent={
           <>
             <KSpacer w={sizes.s16} />
-            <KCourseCard noCourse onPress={handleDiscoverNavigation} />
+            <KNoCourseCard type={props.type ?? CoursesListsEnum.courses} />
           </>
         }
       />

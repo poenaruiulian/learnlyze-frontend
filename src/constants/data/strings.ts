@@ -97,8 +97,15 @@ export const strings = {
     completed: 'completed',
     noCommunityTitle: 'Looks that there are no community courses saved',
     noCommunityDescription:
-      'Check the Discover page to explore new things to learn from the community',
+      'Check the Discover page to explore new things to learn from the community. All the enrolled courses will then appear here.',
+    noCoursesTitle: 'No generated courses',
+    noCoursesDescription:
+      'There are no new courses generated from which you can learn. Generated a new course and it will appear here.',
+    noCompletedTitle: 'No course completed',
+    noCompletedDescription:
+      'Continue learning and all your completed courses will appear here. You can disable this section from settings.',
     studying: 'Studying',
+    completedCourses: 'Completed',
   },
   courseDetails: {
     stepsTitle: 'Steps:',
