@@ -43,6 +43,7 @@ export const KStep = ({ ...props }: KStepType) => {
   const modalFunctions = {
     closeModal: () => {
       toggleIsModalVisible();
+      setGivingFeedback(false);
     },
     handleStepState: () => {
       props.handleStepState();
