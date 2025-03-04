@@ -20,7 +20,9 @@ export const KStepDetails = ({ step }: { step: FullStep }) => {
         padding={sizes.s10}
         style={{
           backgroundColor:
-            step.subSteps.length === 0 ? colors.biscay80 : colors.eastBay,
+            step.subSteps && step.subSteps.length !== 0
+              ? colors.eastBay
+              : colors.biscay80,
         }}>
         <Text bodyM medium white80 center>
           {step.details.title}

@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/CourseDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/CourseDetailsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/components/KStepDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/components/KStepDetails.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,7 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "80-issue-6-disabled-buttons-after-completing-course",
+    "git-widget-placeholder": "81-issue-10-sub-step-of-a-sub-step-error",
     "last_opened_file_path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/src/navigation/screens/app/courseDetails",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -125,7 +126,7 @@
       <workItem from="1740499865304" duration="3121000" />
       <workItem from="1740553862516" duration="5679000" />
       <workItem from="1741099049234" duration="19000" />
-      <workItem from="1741103026505" duration="925000" />
+      <workItem from="1741103026505" duration="1531000" />
     </task>
     <servers />
   </component>

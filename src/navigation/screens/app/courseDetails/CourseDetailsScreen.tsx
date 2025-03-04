@@ -1,11 +1,6 @@
 import { KBackButton, KContainer, KSpacer } from '@components';
 import { Button, Text, View } from '@defaults';
-import {
-  FlatList,
-  TextInput,
-  TouchableOpacity,
-  useWindowDimensions,
-} from 'react-native';
+import { FlatList, TextInput, useWindowDimensions } from 'react-native';
 import {
   colors,
   fonts,
@@ -110,7 +105,7 @@ export const CourseDetailsScreen = () => {
         gap={sizes.s10}
         style={{ flexWrap: 'wrap' }}>
         {tags.map(tag => (
-          <TouchableOpacity
+          <View
             key={tag}
             style={{
               paddingHorizontal: sizes.s10,
@@ -127,7 +122,7 @@ export const CourseDetailsScreen = () => {
               semiBold>
               {tag[0].toUpperCase() + tag.slice(1)}
             </Text>
-          </TouchableOpacity>
+          </View>
         ))}
       </View>
       <KSpacer h={sizes.s30} />
