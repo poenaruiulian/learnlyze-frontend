@@ -1,7 +1,7 @@
 import { Button, View } from '@defaults';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { colors, sizes, strings } from '@constants';
 import { useWindowDimensions } from 'react-native';
 import { useCourse, useStep, useResource } from '@hooks';
@@ -26,6 +26,10 @@ export const CourseScreen = () => {
 
   useEffect(() => {
     accessCourse({ courseId: fullCourse.details.id });
+    setIsVisible(
+      fullCourse.details.completedSteps === fullCourse.steps?.length &&
+        !fullCourse.details.postedDate
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -47,21 +51,15 @@ export const CourseScreen = () => {
     publishCourse,
   ]);
 
-  useEffect(() => {
-    setIsVisible(
-      fullCourse.details.completedSteps === fullCourse.steps?.length &&
-        !fullCourse.details.postedDate
-    );
-  }, [
-    fullCourse.details.completedSteps,
-    fullCourse.details.postedDate,
-    fullCourse.steps?.length,
-  ]);
+  const isCourseCompletable = useMemo(
+    () => fullCourse.details.completedSteps === fullCourse.steps?.length,
+    [fullCourse.details.completedSteps, fullCourse.steps?.length]
+  );
 
-  const isCourseCompletable =
-    fullCourse.details.completedSteps === fullCourse.steps?.length;
-
-  const isCoursePublished = !!fullCourse.details.postedDate;
+  const isCoursePublished = useMemo(
+    () => !!fullCourse.details.postedDate,
+    [fullCourse.details.postedDate]
+  );
 
   const handleCompleteCourse = useCallback(
     () =>
