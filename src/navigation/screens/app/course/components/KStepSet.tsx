@@ -89,7 +89,6 @@ export const KStepSet = ({
             />
           </View>
         ))}
-
       <KSpacer />
     </View>
   ));
