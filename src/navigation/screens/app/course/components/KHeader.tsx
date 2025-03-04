@@ -6,7 +6,12 @@ import moment from 'moment/moment';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 
-type KHeaderProps = { title: string; date: string; publishDate?: string };
+type KHeaderProps = {
+  title: string;
+  date: string;
+  publishDate?: string;
+  enrolled?: boolean;
+};
 
 export const KHeader = ({ ...props }: KHeaderProps) => {
   const { width } = useWindowDimensions();
@@ -63,6 +68,11 @@ export const KHeader = ({ ...props }: KHeaderProps) => {
           <Text bodyXS semiBold tulipTree60>
             {strings.course.header.published}
             {moment(props.publishDate).format('DD MMM YYYY')}
+          </Text>
+        )}
+        {(props.enrolled ?? false) && (
+          <Text bodyXS semiBold tulipTree60>
+            {strings.course.header.fromCommunity}
           </Text>
         )}
       </View>

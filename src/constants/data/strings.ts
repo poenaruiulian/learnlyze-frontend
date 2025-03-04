@@ -60,6 +60,7 @@ export const strings = {
     header: {
       date: 'Started on ',
       published: 'Published on ',
+      fromCommunity: 'From community',
     },
     step: {
       title: 'Read lesson',

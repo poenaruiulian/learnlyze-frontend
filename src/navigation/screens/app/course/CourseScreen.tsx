@@ -28,7 +28,8 @@ export const CourseScreen = () => {
     accessCourse({ courseId: fullCourse.details.id });
     setIsVisible(
       fullCourse.details.completedSteps === fullCourse.steps?.length &&
-        !fullCourse.details.postedDate
+        !fullCourse.details.postedDate &&
+        !fullCourse.details.enrolledId
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -52,13 +53,26 @@ export const CourseScreen = () => {
   ]);
 
   const isCourseCompletable = useMemo(
-    () => fullCourse.details.completedSteps === fullCourse.steps?.length,
-    [fullCourse.details.completedSteps, fullCourse.steps?.length]
+    () =>
+      !fullCourse.details.completed &&
+      fullCourse.details.completedSteps === fullCourse.steps?.length,
+    [
+      fullCourse.details.completed,
+      fullCourse.details.completedSteps,
+      fullCourse.steps?.length,
+    ]
   );
 
-  const isCoursePublished = useMemo(
-    () => !!fullCourse.details.postedDate,
-    [fullCourse.details.postedDate]
+  const isCoursePublishable = useMemo(
+    () =>
+      !fullCourse.details.completed &&
+      !fullCourse.details.postedDate &&
+      !fullCourse.details.enrolledId,
+    [
+      fullCourse.details.completed,
+      fullCourse.details.enrolledId,
+      fullCourse.details.postedDate,
+    ]
   );
 
   const handleCompleteCourse = useCallback(
@@ -85,6 +99,7 @@ export const CourseScreen = () => {
         title={fullCourse.details.title}
         date={fullCourse.details.startedAt}
         publishDate={fullCourse.details.postedDate}
+        enrolled
       />
       <KSpacer h={sizes.s30} />
       <View flex center>
@@ -94,7 +109,7 @@ export const CourseScreen = () => {
           width={width}
         />
       </View>
-      {!fullCourse.details.completed && isCourseCompletable && (
+      {isCourseCompletable && (
         <>
           <KSpacer />
           <View width={width} center>
@@ -106,7 +121,7 @@ export const CourseScreen = () => {
           </View>
         </>
       )}
-      {!isCoursePublished && fullCourse.details.completed && (
+      {isCoursePublishable && (
         <>
           <KSpacer />
           <View width={width} center>
@@ -127,7 +142,7 @@ export const CourseScreen = () => {
         onComplete={
           !fullCourse.details.completed ? handleCompleteCourse : undefined
         }
-        onPublish={!isCoursePublished ? handlePublishCourse : undefined}
+        onPublish={isCoursePublishable ? handlePublishCourse : undefined}
       />
       <KSpacer h={sizes.s60} />
     </KContainer>
