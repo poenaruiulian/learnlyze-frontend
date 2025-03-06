@@ -12,7 +12,7 @@ import {
   PUBLISH_COURSE,
   ENROLL_COURSE,
 } from '@constants';
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import { useError } from './useError';
 
 export const useCourse = () => {
@@ -38,85 +38,101 @@ export const useCourse = () => {
     refetch: refetchCommunityCourses,
   } = useQuery(GET_ALL_COMMUNITY_COURSES);
 
-  const refetchCourses = async () => {
+  const refetchCourses = useCallback(async () => {
     await refetch();
     await refetchCommunityCourses();
-  };
+  }, [refetch, refetchCommunityCourses]);
 
-  const isLoading = areCoursesLoading || areCommunityCoursesLoading;
+  const isLoading = useMemo(
+    () => areCoursesLoading || areCommunityCoursesLoading,
+    [areCoursesLoading, areCommunityCoursesLoading]
+  );
 
-  // Current user courses (that are not from the community)
-  const courses: CourseModel[] = useMemo(() => data && data.getAll, [data]);
-
-  // Current user courses from which he enrolled
-  const communityCourses: CourseModel[] = useMemo(
-    () => dataCommunity && dataCommunity.getAllCommunity,
+  const courses = useMemo(() => data?.getAll || [], [data]);
+  const communityCourses = useMemo(
+    () => dataCommunity?.getAllCommunity || [],
     [dataCommunity]
   );
 
-  const getCourseById = async (
-    courseId: CourseModel['id']
-  ): Promise<FullCourseModel | null> => {
-    const response = handleError(
-      await getCourseByIdMutation({ variables: { courseId } })
-    );
+  const getCourseById = useCallback(
+    async (courseId: CourseModel['id']): Promise<FullCourseModel | null> => {
+      const response = handleError(
+        await getCourseByIdMutation({ variables: { courseId } })
+      );
+      return response ? response.data.getFullById : null;
+    },
+    [getCourseByIdMutation, handleError]
+  );
 
-    return response ? response.data.getFullById : null;
-  };
+  const generateNewCourse = useCallback(
+    async (description: string): Promise<FullCourseModel | null> => {
+      const response = handleError(
+        await generateNewCourseMutation({ variables: { description } })
+      );
+      return response ? response.data.generate : null;
+    },
+    [generateNewCourseMutation, handleError]
+  );
 
-  const generateNewCourse = async (
-    description: string
-  ): Promise<FullCourseModel | null> => {
-    const response = handleError(
-      await generateNewCourseMutation({
-        variables: { description },
-      })
-    );
+  const changePublishDetails = useCallback(
+    async (variables: {
+      courseId: number;
+      title?: string;
+      description?: string;
+      tags?: string[];
+    }) =>
+      handleError(
+        await changePublishDetailsMutation({ variables }).catch(err => err)
+      ),
+    [changePublishDetailsMutation, handleError]
+  );
 
-    return response ? response.data.generate : null;
-  };
+  const accessCourse = useCallback(
+    async ({ courseId }: { courseId: number }) =>
+      handleError(
+        await accessCourseMutation({ variables: { courseId } }).catch(
+          err => err
+        )
+      ),
+    [accessCourseMutation, handleError]
+  );
 
-  const changePublishDetails = async (variables: {
-    courseId: number;
-    title?: string;
-    description?: string;
-    tags?: string[];
-  }) =>
-    handleError(
-      await changePublishDetailsMutation({ variables }).catch(err => err)
-    );
+  const completeCourse = useCallback(
+    async ({ courseId }: { courseId: number }) =>
+      handleError(
+        await completeCourseMutation({ variables: { courseId } }).catch(
+          err => err
+        )
+      ),
+    [completeCourseMutation, handleError]
+  );
 
-  const accessCourse = async ({ courseId }: { courseId: number }) =>
-    handleError(
-      await accessCourseMutation({ variables: { courseId } }).catch(err => err)
-    );
+  const publishCourse = useCallback(
+    async ({ courseId }: { courseId: number }) =>
+      handleError(
+        await publishCourseMutation({ variables: { courseId } }).catch(
+          err => err
+        )
+      ),
+    [publishCourseMutation, handleError]
+  );
 
-  const completeCourse = async ({ courseId }: { courseId: number }) =>
-    handleError(
-      await completeCourseMutation({ variables: { courseId } }).catch(
-        err => err
-      )
-    );
-
-  const publishCourse = async ({ courseId }: { courseId: number }) =>
-    handleError(
-      await publishCourseMutation({ variables: { courseId } }).catch(err => err)
-    );
-
-  const enrollCourse = async ({ courseId }: { courseId: number }) =>
-    handleError(
-      await enrollCourseMutation({ variables: { courseId } }).catch(err => err)
-    );
+  const enrollCourse = useCallback(
+    async ({ courseId }: { courseId: number }) =>
+      handleError(
+        await enrollCourseMutation({ variables: { courseId } }).catch(
+          err => err
+        )
+      ),
+    [enrollCourseMutation, handleError]
+  );
 
   return {
     courses,
     communityCourses,
-
     isLoading,
-
     getCourseById,
     refetchCourses,
-
     generateNewCourse,
     accessCourse,
     changePublishDetails,
