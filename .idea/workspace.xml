@@ -7,11 +7,8 @@
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useCourse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCourse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useError.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useError.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useResource.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useResource.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useStep.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useStep.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +43,7 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "62-issue-17-legal-and-unethical-issue-handling",
+    "git-widget-placeholder": "89-issue-21-memory-optimization",
     "last_opened_file_path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/src/navigation/screens/app/courseDetails",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -131,13 +128,13 @@
       <workItem from="1740553862516" duration="5679000" />
       <workItem from="1741099049234" duration="19000" />
       <workItem from="1741103026505" duration="3123000" />
-      <workItem from="1741156036785" duration="597000" />
-      <workItem from="1741272220041" duration="3000" />
-      <workItem from="1741272305036" duration="3770000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
