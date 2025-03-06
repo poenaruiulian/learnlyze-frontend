@@ -65,7 +65,7 @@ export const CourseScreen = () => {
 
   const isCoursePublishable = useMemo(
     () =>
-      !fullCourse.details.completed &&
+      fullCourse.details.completed &&
       !fullCourse.details.postedDate &&
       !fullCourse.details.enrolledId,
     [
@@ -121,7 +121,7 @@ export const CourseScreen = () => {
           </View>
         </>
       )}
-      {isCoursePublishable && (
+      {isCoursePublishable && !isCourseCompletable && (
         <>
           <KSpacer />
           <View width={width} center>

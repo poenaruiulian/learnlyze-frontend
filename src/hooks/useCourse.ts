@@ -81,19 +81,32 @@ export const useCourse = () => {
     title?: string;
     description?: string;
     tags?: string[];
-  }) => handleError(await changePublishDetailsMutation({ variables }));
+  }) =>
+    handleError(
+      await changePublishDetailsMutation({ variables }).catch(err => err)
+    );
 
   const accessCourse = async ({ courseId }: { courseId: number }) =>
-    handleError(await accessCourseMutation({ variables: { courseId } }));
+    handleError(
+      await accessCourseMutation({ variables: { courseId } }).catch(err => err)
+    );
 
   const completeCourse = async ({ courseId }: { courseId: number }) =>
-    handleError(await completeCourseMutation({ variables: { courseId } }));
+    handleError(
+      await completeCourseMutation({ variables: { courseId } }).catch(
+        err => err
+      )
+    );
 
   const publishCourse = async ({ courseId }: { courseId: number }) =>
-    handleError(await publishCourseMutation({ variables: { courseId } }));
+    handleError(
+      await publishCourseMutation({ variables: { courseId } }).catch(err => err)
+    );
 
   const enrollCourse = async ({ courseId }: { courseId: number }) =>
-    handleError(await enrollCourseMutation({ variables: { courseId } }));
+    handleError(
+      await enrollCourseMutation({ variables: { courseId } }).catch(err => err)
+    );
 
   return {
     courses,

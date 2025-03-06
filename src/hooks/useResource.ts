@@ -19,7 +19,7 @@ export const useResource = () => {
     handleError(
       await replaceResourceMutation({
         variables: { stepId, resourceId, feedback },
-      })
+      }).catch(err => err)
     );
 
   return {
