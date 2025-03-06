@@ -23,7 +23,7 @@ export const useStep = () => {
     handleError(
       await changeStepStateMutation({
         variables: { courseId, stepId },
-      })
+      }).catch(err => err)
     );
 
   const breakStep = async ({
@@ -36,7 +36,7 @@ export const useStep = () => {
     handleError(
       await breakStepMutation({
         variables: { stepId, feedback },
-      })
+      }).catch(err => err)
     );
 
   return {

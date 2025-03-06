@@ -57,14 +57,9 @@ export const KStep = ({ ...props }: KStepType) => {
     setIsLoading(true);
     toggleIsModalVisible();
     setGivingFeedback(false);
-    await breakStep({ stepId: props.stepId, feedback })
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-        setIsLoading(false);
-      });
+    await breakStep({ stepId: props.stepId, feedback }).then(() => {
+      setIsLoading(false);
+    });
   }, [breakStep, feedback, props.stepId, setIsLoading]);
 
   const transform = {
