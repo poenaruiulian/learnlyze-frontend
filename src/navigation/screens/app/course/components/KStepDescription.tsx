@@ -1,10 +1,15 @@
 import { colors, icons, sizes, strings } from '@constants';
 import { WebView } from 'react-native-webview';
-import { TouchableOpacity, useWindowDimensions } from 'react-native';
-import { useReducer } from 'react';
+import {
+  ActivityIndicator,
+  TouchableOpacity,
+  useWindowDimensions,
+} from 'react-native';
+import { useReducer, useState } from 'react';
 import { KModal, KSpacer } from '@components';
 import { View, Text, Icon } from '@defaults';
 import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
+import { debounce } from 'lodash-es';
 
 type KStepDescription = {
   stepId: number;
@@ -12,6 +17,7 @@ type KStepDescription = {
 };
 export const KStepDescription = ({ ...props }: KStepDescription) => {
   const [isFullScreen, toggleFullScreen] = useReducer(s => !s, false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { height, width } = useWindowDimensions();
 
@@ -45,6 +51,11 @@ export const KStepDescription = ({ ...props }: KStepDescription) => {
         style={{
           height: height / 1.5,
         }}>
+        {isLoading && (
+          <View flex center>
+            <ActivityIndicator color={colors.tulipTree} size={sizes.s20} />
+          </View>
+        )}
         <WebView
           originWhitelist={['*']}
           style={{
@@ -91,6 +102,8 @@ export const KStepDescription = ({ ...props }: KStepDescription) => {
           pointerEvents="auto"
           scrollEnabled={false}
           showsVerticalScrollIndicator={false}
+          onLoadStart={() => debounce(() => setIsLoading(true), 500)}
+          onLoadEnd={() => setIsLoading(false)}
         />
       </KModal>
     </TouchableOpacity>

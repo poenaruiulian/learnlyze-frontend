@@ -2,7 +2,7 @@ import { View } from '@defaults';
 import { KContainer, KSpacer } from '@components';
 import { images } from '@images';
 import { useCourse, useDiscoverCourses, useError, useRoot } from '@hooks';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, useWindowDimensions } from 'react-native';
 import { ErrorCodes, sizes, Tags } from '@constants';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
@@ -56,14 +56,6 @@ export const DiscoverScreen = () => {
     []
   );
 
-  const tags = useMemo(() => {
-    const filteredTags = Object.values(Tags)
-      .map(tag => (tag !== Tags.all && tag !== selectedTag ? tag : null))
-      .filter(tag => tag);
-
-    return [Tags.all, selectedTag].concat(filteredTags).filter(tag => tag);
-  }, [selectedTag]);
-
   const handleOnPressCourse = useCallback(
     (id: number) =>
       getCourseById(id).then(
@@ -77,7 +69,7 @@ export const DiscoverScreen = () => {
     <KContainer backgroundImage={images.mainBackground}>
       <KSearchBar currentValue={search} changeCurrentValue={setSearch} />
       <KSpacer />
-      <KTagsList onTagPress={onTagPress} tags={tags} />
+      <KTagsList onTagPress={onTagPress} tags={Object.values(Tags)} />
       <KSpacer h={sizes.s30} />
       {courses?.length !== 0 ? (
         <View style={{ flexShrink: 1, width }}>

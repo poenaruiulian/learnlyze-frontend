@@ -27,6 +27,7 @@ const GET_ALL_COMMUNITY_COURSES = gql`
       steps
       lastAccessed
       enrolledId
+      completed
     }
   }
 `;
