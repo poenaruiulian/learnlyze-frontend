@@ -131,6 +131,16 @@ export const KStep = ({ ...props }: KStepType) => {
         <View gap={sizes.s10} width={width - sizes.s64}>
           {givingFeedback ? (
             <View centerH>
+              <Text
+                bodyXS
+                white50
+                center
+                style={{
+                  paddingBottom: sizes.s10,
+                  paddingHorizontal: sizes.s10,
+                }}>
+                {strings.course.step.feedbackDeeperExplanation}
+              </Text>
               <KTextInput
                 placeholder={strings.course.step.giveFeedback}
                 value={feedback}
@@ -156,28 +166,38 @@ export const KStep = ({ ...props }: KStepType) => {
                 : strings.course.step.complete,
               strings.course.step.feedback,
             ].map((title, index) => (
-              <Button
-                key={title}
-                title={title}
-                onPress={() => {
-                  if (index === 0) {
-                    modalFunctions.handleStepState();
-                  } else {
-                    modalFunctions.handleFeedbackGiving();
+              <View key={title}>
+                <Button
+                  title={title}
+                  onPress={() => {
+                    if (index === 0) {
+                      modalFunctions.handleStepState();
+                    } else {
+                      modalFunctions.handleFeedbackGiving();
+                    }
+                  }}
+                  borderRadius={sizes.s20}
+                  background={
+                    index === 0
+                      ? props.isCompleted
+                        ? colors.nevada
+                        : colors.fruitSalad
+                      : null
                   }
-                }}
-                borderRadius={sizes.s20}
-                background={
-                  index === 0
-                    ? props.isCompleted
-                      ? colors.nevada
-                      : colors.fruitSalad
-                    : null
-                }
-                titleStyle={{
-                  ...fonts.bodyM,
-                }}
-              />
+                  titleStyle={{
+                    ...fonts.bodyM,
+                  }}
+                />
+                {index === 1 && (
+                  <Text
+                    bodyXS
+                    white50
+                    center
+                    style={{ paddingTop: 5, paddingHorizontal: sizes.s10 }}>
+                    {strings.course.step.feedbackExplanation}
+                  </Text>
+                )}
+              </View>
             ))
           )}
         </View>

@@ -48,7 +48,12 @@ export const KStepSet = ({
   );
 
   return sortedSteps.map(step => (
-    <View flex key={step.details.id} width={width - sizes.s32} centerV>
+    <View
+      key={step.details.id}
+      width={width - sizes.s32}
+      style={{
+        flexShrink: 1,
+      }}>
       <KStep
         stepId={step.details.id}
         title={step.details.title}

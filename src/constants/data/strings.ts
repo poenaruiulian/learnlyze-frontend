@@ -70,6 +70,10 @@ export const strings = {
       complete: 'Complete step',
       uncomplete: 'Uncomplete step',
       feedback: 'Give feedback',
+      feedbackExplanation:
+        'Create a set of sub-steps based on the given feedback.',
+      feedbackDeeperExplanation:
+        'You can provide optional feedback on the selected step to help refine its sub-steps for better learning. Sub-steps will be created regardless.',
       giveFeedback: 'Give your feedback towards this step',
       createSubSteps: 'Create sub-steps',
     },
