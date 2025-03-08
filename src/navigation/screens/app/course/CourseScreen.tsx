@@ -99,10 +99,10 @@ export const CourseScreen = () => {
         title={fullCourse.details.title}
         date={fullCourse.details.startedAt}
         publishDate={fullCourse.details.postedDate}
-        enrolled
+        enrolled={!!fullCourse.details.enrolledId}
       />
       <KSpacer h={sizes.s30} />
-      <View flex center>
+      <View flex centerH>
         <KStepSet
           fullCourse={fullCourse}
           steps={fullCourse.steps}

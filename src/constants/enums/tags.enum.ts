@@ -11,4 +11,5 @@ export const Tags = {
   coding: 'coding',
   art: 'art',
   writing: 'writing',
+  other: 'other',
 };

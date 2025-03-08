@@ -24,9 +24,6 @@ export const KPublishCourseModal = ({ ...props }: KPublishCourseModalProps) => {
         <KSpacer />
         {props.onComplete && (
           <>
-            <Text bodyXS white50 center light>
-              {strings.course.modal.completeDescription}
-            </Text>
             <Button
               title={strings.course.modal.complete}
               onPress={props.onComplete}
@@ -35,13 +32,13 @@ export const KPublishCourseModal = ({ ...props }: KPublishCourseModalProps) => {
                 ...fonts.bodyM,
               }}
             />
+            <Text bodyXS white50 center light>
+              {strings.course.modal.completeDescription}
+            </Text>
           </>
         )}
         {props.onPublish && (
           <>
-            <Text bodyXS white50 center light>
-              {strings.course.modal.publishDescription}
-            </Text>
             <Button
               title={strings.course.modal.publish}
               onPress={props.onPublish}
@@ -51,6 +48,9 @@ export const KPublishCourseModal = ({ ...props }: KPublishCourseModalProps) => {
                 ...fonts.bodyM,
               }}
             />
+            <Text bodyXS white50 center light>
+              {strings.course.modal.publishDescription}
+            </Text>
           </>
         )}
       </View>

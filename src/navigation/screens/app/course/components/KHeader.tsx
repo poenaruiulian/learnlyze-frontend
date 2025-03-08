@@ -29,8 +29,9 @@ export const KHeader = ({ ...props }: KHeaderProps) => {
       width={width + sizes.s40}
       center
       row
-      flex
       style={{
+        flexShrink: 1,
+        minHeight: 120,
         backgroundColor: colors.biscay30,
         alignSelf: 'center',
         borderBottomLeftRadius: borderRadiusRound,
