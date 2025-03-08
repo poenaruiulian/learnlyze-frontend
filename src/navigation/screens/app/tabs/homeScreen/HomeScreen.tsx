@@ -37,11 +37,19 @@ export const HomeScreen = () => {
     const sortedCourse = courses
       ?.concat(communityCourses)
       ?.slice()
+      .filter(course => !course.completed)
       .sort((course1, course2) =>
         moment(course1.lastAccessed).isBefore(course2.lastAccessed) ? 1 : -1
       );
 
     const lastAccessed = sortedCourse?.[0];
+
+    console.log(lastAccessed);
+
+    if (!lastAccessed) {
+      setLastAccessedCourse(null);
+      return;
+    }
 
     getCourseById(lastAccessed?.id).then(course =>
       setLastAccessedCourse(course)
@@ -55,7 +63,15 @@ export const HomeScreen = () => {
         setIsLoading(isLoading);
         getLastAccessedCourse();
       });
-    }, [isLoading, getLastAccessedCourse, refetchCourses, setIsLoading])
+      // eslint-disable-next-line
+    }, [
+      isLoading,
+      getLastAccessedCourse,
+      refetchCourses,
+      setIsLoading,
+      fetchedCourses,
+      communityCourses,
+    ])
   );
 
   useEffect(() => {
@@ -68,9 +84,11 @@ export const HomeScreen = () => {
       <KNewCourseCard />
       <KSpacer h={sizes.s20} />
       {lastAccessedCourse && (
-        <KLastAccessedCourseCard course={lastAccessedCourse} />
+        <>
+          <KLastAccessedCourseCard course={lastAccessedCourse} />
+          <KSpacer h={sizes.s20} />
+        </>
       )}
-      <KSpacer h={sizes.s20} />
       <KCoursesList
         label={strings.home.courses}
         courses={reverse(sortBy(courses?.slice(), course => course.id))}

@@ -48,7 +48,7 @@ export const useCourse = () => {
     [areCoursesLoading, areCommunityCoursesLoading]
   );
 
-  const courses = useMemo(() => data?.getAll || [], [data]);
+  const courses: CourseModel[] = useMemo(() => data?.getAll || [], [data]);
   const communityCourses = useMemo(
     () => dataCommunity?.getAllCommunity || [],
     [dataCommunity]
