@@ -41,19 +41,13 @@ export const KCourseCard = ({ ...props }: CourseCardProps) => {
           </Text>
           <View>
             <View row gap={3} centerH>
-              <Text semiBold bodyL persianGreen style={{ lineHeight: 18 }}>
+              <Text semiBold bodyL persianGreen>
                 {props?.completed?.toString()}
               </Text>
-              <Text
-                semiBold
-                bodyS
-                white50
-                style={{
-                  lineHeight: 18,
-                }}>
+              <Text semiBold bodyS white50>
                 {strings.home.ofXSteps(props.steps ?? 0)}
               </Text>
-              <Text semiBold bodyS persianGreen style={{ lineHeight: 18 }}>
+              <Text semiBold bodyS persianGreen>
                 {strings.home.completed}
               </Text>
             </View>

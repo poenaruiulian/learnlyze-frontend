@@ -44,8 +44,6 @@ export const HomeScreen = () => {
 
     const lastAccessed = sortedCourse?.[0];
 
-    console.log(lastAccessed);
-
     if (!lastAccessed) {
       setLastAccessedCourse(null);
       return;
@@ -91,19 +89,25 @@ export const HomeScreen = () => {
       )}
       <KCoursesList
         label={strings.home.courses}
-        courses={reverse(sortBy(courses?.slice(), course => course.id))}
+        courses={reverse(
+          sortBy(courses?.slice(), course => course.lastAccessed)
+        )}
         type={CoursesListsEnum.courses}
       />
       <KSpacer h={sizes.s20} />
       <KCoursesList
         label={strings.home.savedFromCommunity}
-        courses={communityCourses}
+        courses={reverse(
+          sortBy(communityCourses?.slice(), course => course.lastAccessed)
+        )}
         type={CoursesListsEnum.community}
       />
       <KSpacer h={sizes.s20} />
       <KCoursesList
         label={strings.home.completedCourses}
-        courses={completedCourses}
+        courses={reverse(
+          sortBy(completedCourses?.slice(), course => course.lastAccessed)
+        )}
         type={CoursesListsEnum.completed}
       />
       <KSpacer h={sizes.s70} />
