@@ -20,6 +20,10 @@ export const useRoot = () => {
     isNewUser,
     isLoading,
     setIsLoading,
+    haptics,
+    toggleHaptics,
+    completedSection,
+    toggleCompletedSection,
   } = useStore(useShallow((rootInfo: RootInfo) => rootInfo));
   const { setError, setHasError } = useError();
 
@@ -98,5 +102,11 @@ export const useRoot = () => {
     login,
     register,
     logout,
+
+    completedSection,
+    toggleCompletedSection,
+
+    haptics,
+    toggleHaptics,
   };
 };

@@ -18,7 +18,7 @@ import {
   KNewCourseCard,
 } from './components';
 
-export const HomeScreen = () => {
+export const Home = () => {
   const {
     courses: fetchedCourses,
     communityCourses,
@@ -26,7 +26,7 @@ export const HomeScreen = () => {
     getCourseById,
     refetchCourses,
   } = useCourse();
-  const { setIsLoading } = useRoot();
+  const { setIsLoading, completedSection } = useRoot();
 
   const [lastAccessedCourse, setLastAccessedCourse] =
     useState<FullCourseModel | null>(null);
@@ -102,14 +102,18 @@ export const HomeScreen = () => {
         )}
         type={CoursesListsEnum.community}
       />
-      <KSpacer h={sizes.s20} />
-      <KCoursesList
-        label={strings.home.completedCourses}
-        courses={reverse(
-          sortBy(completedCourses?.slice(), course => course.lastAccessed)
-        )}
-        type={CoursesListsEnum.completed}
-      />
+      {completedSection && (
+        <>
+          <KSpacer h={sizes.s20} />
+          <KCoursesList
+            label={strings.home.completedCourses}
+            courses={reverse(
+              sortBy(completedCourses?.slice(), course => course.lastAccessed)
+            )}
+            type={CoursesListsEnum.completed}
+          />
+        </>
+      )}
       <KSpacer h={sizes.s70} />
     </KContainer>
   );

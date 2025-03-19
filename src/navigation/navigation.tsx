@@ -10,12 +10,12 @@ import {
   ConfirmMailScreen,
   CourseDetailsScreen,
   CourseScreen,
-  DiscoverScreen,
-  HomeScreen,
+  Discover,
+  Home,
   LoginScreen,
   NewCourseScreen,
   OnboardingScreen,
-  ProfileScreen,
+  Profile,
   PublishCourseScreen,
   RegisterScreen,
 } from './screens';
@@ -37,9 +37,9 @@ const BottomTab = () => {
   const getTabBar = (props: BottomTabBarProps) => <KTabBar {...props} />;
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }} tabBar={getTabBar}>
-      <Tab.Screen name="HomeScreen" component={HomeScreen} />
-      <Tab.Screen name="DiscoverScreen" component={DiscoverScreen} />
-      <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Tab.Screen name="HomeScreen" component={Home} />
+      <Tab.Screen name="DiscoverScreen" component={Discover} />
+      <Tab.Screen name="ProfileScreen" component={Profile} />
     </Tab.Navigator>
   );
 };

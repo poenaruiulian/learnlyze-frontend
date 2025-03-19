@@ -14,7 +14,7 @@ import {
 } from './components';
 import { AppNavigationType } from '../../../../type';
 
-export const DiscoverScreen = () => {
+export const Discover = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [search, setSearch] = useState<string | null>(null);
   const { navigate } = useNavigation<AppNavigationType>();

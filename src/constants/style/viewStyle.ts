@@ -29,6 +29,7 @@ export interface ViewStyleInterface {
   row?: boolean;
   gap?: number;
   borderRadius?: number;
+  spread?: boolean;
 }
 
 export const handleViewStyle = (
@@ -42,6 +43,7 @@ export const handleViewStyle = (
   props.rightH && { alignItems: 'flex-end' },
   props.topV && { justifyContent: 'flex-start' },
   props.bottomV && { justifyContent: 'flex-end' },
+  props.spread && { justifyContent: 'space-between' },
   props.top ? { paddingTop: props.top } : undefined,
   props.bottom ? { paddingBottom: props.bottom } : undefined,
   props.padding ? { padding: props.padding } : undefined,
