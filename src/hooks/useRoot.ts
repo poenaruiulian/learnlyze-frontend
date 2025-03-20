@@ -101,7 +101,9 @@ export const useRoot = () => {
 
   return {
     isLogged,
+
     token,
+    setToken,
 
     isNewUser,
     setIsNewUser,

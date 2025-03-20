@@ -151,6 +151,10 @@ export const strings = {
     },
   },
   profile: {
+    firstName: 'Firstname',
+    lastName: 'Lastname',
+    email: 'Email',
+    apply: 'Apply changes',
     finishedCourse: {
       title: 'Finished courses',
       description:
