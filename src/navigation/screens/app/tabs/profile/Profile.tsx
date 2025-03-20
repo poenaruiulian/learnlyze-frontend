@@ -6,6 +6,7 @@ import { useRoot, useUser } from '@hooks';
 import { colors, sizes, strings, UserModel, verifyEmail } from '@constants';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { KSwitcher } from './components';
+import ProfileIcon from './components/ProfileIcon';
 
 export const Profile = () => {
   const {
@@ -69,6 +70,7 @@ export const Profile = () => {
 
   return (
     <KContainer backgroundImage={images.mainBackground}>
+      <ProfileIcon style={{ alignSelf: 'center' }} />
       <KSpacer h={sizes.s30} />
       {shallowUser && (
         <View width={width} paddingH={sizes.s10}>
@@ -116,21 +118,21 @@ export const Profile = () => {
           />
         </View>
       )}
-      <KSpacer h={sizes.s50} />
+      <KSpacer h={sizes.s60} />
       <KSwitcher
         title={strings.profile.haptics.title}
         description={strings.profile.haptics.description}
         active={haptics}
         onSwitch={toggleHaptics}
       />
-      <KSpacer h={20} />
+      <KSpacer h={sizes.s20} />
       <KSwitcher
         title={strings.profile.finishedCourse.title}
         description={strings.profile.finishedCourse.description}
         active={completedSection}
         onSwitch={toggleCompletedSection}
       />
-      <KSpacer h={sizes.s50} />
+      <KSpacer h={sizes.s60} />
       <View width={inputWidth} center>
         <Button
           title="Log out"
@@ -139,6 +141,7 @@ export const Profile = () => {
           titleStyle={{ color: colors.white50 }}
         />
       </View>
+      <KSpacer h={sizes.s90} />
     </KContainer>
   );
 };
