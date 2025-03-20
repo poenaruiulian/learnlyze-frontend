@@ -10,3 +10,11 @@ export const GET_CURRENT_USER = gql`
     }
   }
 `;
+
+export const UPDATE_CURRENT_USER = gql`
+  mutation ($newEmail: String, $firstName: String, $lastName: String) {
+    update(newEmail: $newEmail, firstName: $firstName, lastName: $lastName) {
+      access_token
+    }
+  }
+`;
