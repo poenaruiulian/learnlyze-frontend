@@ -7,7 +7,6 @@ import { KContainer, KSpacer } from '@components';
 import { colors, sizes, strings } from '@constants';
 import { OtpInput } from 'react-native-otp-entry';
 import {
-  impactAsync,
   ImpactFeedbackStyle,
   notificationAsync,
   NotificationFeedbackType,
@@ -15,7 +14,7 @@ import {
 import { ConfirmMailScreenRouteType } from '../../type';
 
 export const ConfirmMailScreen = () => {
-  const { register, setIsNewUser } = useRoot();
+  const { register, setIsNewUser, impactAsync } = useRoot();
   const { width } = useWindowDimensions();
   const { params } = useRoute<ConfirmMailScreenRouteType>();
 
@@ -32,7 +31,14 @@ export const ConfirmMailScreen = () => {
         setShouldShowError(true)
       );
     }
-  }, [inputCode, params.code, params.registerDto, register, setIsNewUser]);
+  }, [
+    impactAsync,
+    inputCode,
+    params.code,
+    params.registerDto,
+    register,
+    setIsNewUser,
+  ]);
 
   return (
     <KContainer isScrollable={false}>

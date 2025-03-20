@@ -17,4 +17,10 @@ export type RootInfo = {
 
   isLoading: boolean;
   setIsLoading: (value: boolean) => void;
+
+  haptics: boolean;
+  toggleHaptics: () => void;
+
+  completedSection: boolean;
+  toggleCompletedSection: () => void;
 };

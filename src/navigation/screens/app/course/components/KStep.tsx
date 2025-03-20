@@ -4,7 +4,7 @@ import { TouchableOpacity, useWindowDimensions } from 'react-native';
 import { colors, fonts, sizes, strings } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { KModal, KSpacer, KTextInput } from '@components';
-import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
+import { ImpactFeedbackStyle } from 'expo-haptics';
 import { useRoot, useStep } from '@hooks';
 
 type KStepType = {
@@ -25,7 +25,7 @@ export const KStep = ({ ...props }: KStepType) => {
   const [feedback, setFeedback] = useState('');
 
   const { breakStep } = useStep();
-  const { setIsLoading } = useRoot();
+  const { setIsLoading, impactAsync } = useRoot();
 
   const { width } = useWindowDimensions();
 

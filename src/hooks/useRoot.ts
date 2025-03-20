@@ -8,6 +8,10 @@ import {
   routes,
 } from '@constants';
 import { useStore } from '@store';
+import {
+  impactAsync as impactAsyncExpo,
+  ImpactFeedbackStyle,
+} from 'expo-haptics';
 import { useError } from './useError';
 
 export const useRoot = () => {
@@ -20,6 +24,10 @@ export const useRoot = () => {
     isNewUser,
     isLoading,
     setIsLoading,
+    haptics,
+    toggleHaptics,
+    completedSection,
+    toggleCompletedSection,
   } = useStore(useShallow((rootInfo: RootInfo) => rootInfo));
   const { setError, setHasError } = useError();
 
@@ -85,6 +93,12 @@ export const useRoot = () => {
     setIsNewUser(true);
   };
 
+  const impactAsync = async (feedback: ImpactFeedbackStyle) => {
+    if (haptics) {
+      await impactAsyncExpo(feedback);
+    }
+  };
+
   return {
     isLogged,
     token,
@@ -98,5 +112,12 @@ export const useRoot = () => {
     login,
     register,
     logout,
+
+    completedSection,
+    toggleCompletedSection,
+
+    haptics,
+    toggleHaptics,
+    impactAsync,
   };
 };

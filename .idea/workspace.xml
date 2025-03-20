@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useRoot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useRoot.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStep.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStepDescription.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStepDescription.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KLoadingCourse/KBubble.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/newCourse/components/KLoadingCourse/KBubble.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile/components/KSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile/components/KSwitcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/ConfirmMailScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/ConfirmMailScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/LoginScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/LoginScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/RegisterScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/RegisterScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/auth/onboarding/OnboardingScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript JSX File" />
         <option value="tsconfig.json" />
         <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -41,7 +49,7 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "94-issue-8-completed-course-not-on-studying",
+    "git-widget-placeholder": "76-handle-settings",
     "last_opened_file_path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/src/navigation/screens/app/courseDetails",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -62,11 +70,11 @@
       <recent name="$PROJECT_DIR$/assets/images/backgrounds/onboarding" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile" />
       <recent name="$PROJECT_DIR$/src/navigation/screens/app/courseDetails" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen/components/DiscoverCourseCard" />
       <recent name="$PROJECT_DIR$/src/navigation/screens/app/tabs/discoverScreen" />
-      <recent name="$PROJECT_DIR$/assets/images/cards" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -127,6 +135,7 @@
       <workItem from="1741099049234" duration="19000" />
       <workItem from="1741103026505" duration="3123000" />
       <workItem from="1741470342532" duration="2860000" />
+      <workItem from="1742399570840" duration="6272000" />
     </task>
     <servers />
   </component>

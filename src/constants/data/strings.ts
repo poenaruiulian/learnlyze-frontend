@@ -150,4 +150,16 @@ export const strings = {
       steps: 'steps',
     },
   },
+  profile: {
+    finishedCourse: {
+      title: 'Finished courses',
+      description:
+        'By default we present the finished course on the home page, but you can choose to hide them',
+    },
+    haptics: {
+      title: 'Haptics',
+      description:
+        'By default the haptics are enabled in the app, you can disable them using the toggle button ',
+    },
+  },
 };

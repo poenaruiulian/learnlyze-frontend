@@ -28,4 +28,11 @@ export const createRootSlice: StateCreator<RootInfo> = set => ({
     set(() => ({
       isLoading: value,
     })),
+
+  haptics: true,
+  toggleHaptics: () => set((state: RootInfo) => ({ haptics: !state.haptics })),
+
+  completedSection: true,
+  toggleCompletedSection: () =>
+    set((state: RootInfo) => ({ completedSection: !state.completedSection })),
 });
