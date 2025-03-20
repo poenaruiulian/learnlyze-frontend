@@ -7,7 +7,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { TouchableOpacity } from 'react-native';
-import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
+import { ImpactFeedbackStyle } from 'expo-haptics';
+import { useRoot } from '@hooks';
 
 type BubbleBoundaryType = {
   topLimit: number;
@@ -26,6 +27,7 @@ export const KBubble = ({
   onPress: () => void;
 }) => {
   const { topLimit, bottomLimit, leftLimit, rightLimit } = boundary;
+  const { impactAsync } = useRoot();
 
   const bubbleSize = sizes.s80;
 

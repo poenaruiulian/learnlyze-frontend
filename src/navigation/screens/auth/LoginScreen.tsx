@@ -6,13 +6,13 @@ import { useNavigation } from '@react-navigation/native';
 import { KContainer, KSpacer, KTextInput } from '@components';
 import { TextInput, TouchableOpacity } from 'react-native';
 import { images } from '@images';
-import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
+import { ImpactFeedbackStyle } from 'expo-haptics';
 import { AuthNavigationType } from '../../type';
 
 export const LoginScreen = () => {
   const { navigate } = useNavigation<AuthNavigationType>();
 
-  const { login, setIsNewUser } = useRoot();
+  const { login, setIsNewUser, impactAsync } = useRoot();
 
   const passwordRef = useRef<TextInput>(null);
 
@@ -26,7 +26,7 @@ export const LoginScreen = () => {
       setIsNewUser(false);
       login(loginDto);
     });
-  }, [login, loginDto, setIsNewUser]);
+  }, [impactAsync, login, loginDto, setIsNewUser]);
 
   return (
     <KContainer isScrollable={false} backgroundImage={images.authBackground}>

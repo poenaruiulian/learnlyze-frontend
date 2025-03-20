@@ -14,11 +14,13 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { KContainer, KSpacer, KTextInput } from '@components';
 import { images } from '@images';
 import { TextInput, TouchableOpacity } from 'react-native';
-import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
+import { ImpactFeedbackStyle } from 'expo-haptics';
+import { useRoot } from '@hooks';
 import { AuthNavigationType } from '../../type';
 
 export const RegisterScreen = () => {
   const { navigate } = useNavigation<AuthNavigationType>();
+  const { impactAsync } = useRoot();
 
   const lastNameRef = useRef<TextInput>(null);
   const firstNameRef = useRef<TextInput>(null);
@@ -56,7 +58,7 @@ export const RegisterScreen = () => {
         )
       );
     }
-  }, [code, navigate, registerDto]);
+  }, [code, impactAsync, navigate, registerDto]);
 
   return (
     <KContainer isScrollable={false} backgroundImage={images.authBackground}>

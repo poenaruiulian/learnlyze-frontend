@@ -4,13 +4,15 @@ import { images } from '@images';
 import { colors, strings } from '@constants';
 import { View } from '@defaults';
 import { useNavigation } from '@react-navigation/native';
-import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
+import { ImpactFeedbackStyle } from 'expo-haptics';
+import { useRoot } from '@hooks';
 import { KCarouselPageOnboardingScreen } from './components';
 import { AuthNavigationType } from '../../../type';
 
 export const OnboardingScreen = () => {
   const { width, height } = useWindowDimensions();
   const { navigate } = useNavigation<AuthNavigationType>();
+  const { impactAsync } = useRoot();
 
   const data = [
     {

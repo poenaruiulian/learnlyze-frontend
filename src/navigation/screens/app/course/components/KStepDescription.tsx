@@ -8,8 +8,9 @@ import {
 import { useReducer, useState } from 'react';
 import { KModal, KSpacer } from '@components';
 import { View, Text, Icon } from '@defaults';
-import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics';
+import { ImpactFeedbackStyle } from 'expo-haptics';
 import { debounce } from 'lodash-es';
+import { useRoot } from '@hooks';
 
 type KStepDescription = {
   stepId: number;
@@ -19,6 +20,7 @@ export const KStepDescription = ({ ...props }: KStepDescription) => {
   const [isFullScreen, toggleFullScreen] = useReducer(s => !s, false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { impactAsync } = useRoot();
   const { height, width } = useWindowDimensions();
 
   return (

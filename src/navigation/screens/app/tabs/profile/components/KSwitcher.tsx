@@ -1,6 +1,8 @@
 import { Text, View } from '@defaults';
 import { Switch, useWindowDimensions } from 'react-native';
 import { sizes } from '@constants';
+import { useRoot } from '@hooks';
+import { ImpactFeedbackStyle } from 'expo-haptics';
 
 type KSwitcherType = {
   title: string;
@@ -11,6 +13,7 @@ type KSwitcherType = {
 
 export const KSwitcher = ({ ...props }: KSwitcherType) => {
   const { width } = useWindowDimensions();
+  const { impactAsync } = useRoot();
 
   const componentWidth = width - sizes.s20;
 
@@ -29,7 +32,12 @@ export const KSwitcher = ({ ...props }: KSwitcherType) => {
           {props.description}
         </Text>
       </View>
-      <Switch value={props.active} onValueChange={props.onSwitch} />
+      <Switch
+        value={props.active}
+        onValueChange={() =>
+          impactAsync(ImpactFeedbackStyle.Soft).then(props.onSwitch)
+        }
+      />
     </View>
   );
 };
