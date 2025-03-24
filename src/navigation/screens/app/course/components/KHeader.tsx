@@ -11,6 +11,7 @@ type KHeaderProps = {
   date: string;
   publishDate?: string;
   enrolled?: boolean;
+  numberOfEnrollments?: number;
 };
 
 export const KHeader = ({ ...props }: KHeaderProps) => {
@@ -71,9 +72,16 @@ export const KHeader = ({ ...props }: KHeaderProps) => {
             {moment(props.publishDate).format('DD MMM YYYY')}
           </Text>
         )}
+        <KSpacer h={3} />
         {(props.enrolled ?? false) && (
           <Text bodyXS semiBold tulipTree60>
             {strings.course.header.fromCommunity}
+          </Text>
+        )}
+        <KSpacer h={3} />
+        {props.numberOfEnrollments !== undefined && (
+          <Text bodyXS semiBold tulipTree60>
+            Enrollments: {props.numberOfEnrollments.toString()}
           </Text>
         )}
       </View>

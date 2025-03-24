@@ -62,6 +62,7 @@ const GET_COURSE_BY_ID = gql`
         completedSteps
         completed
         enrolledId
+        numberOfEnrollments
       }
       steps {
         details {

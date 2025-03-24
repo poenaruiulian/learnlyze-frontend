@@ -1,8 +1,16 @@
-import { KBackButton, KContainer, KSpacer } from '@components';
+import {
+  KBackButton,
+  KContainer,
+  KCourseDetailsCard,
+  KSpacer,
+  KStepsResourcesDetails,
+} from '@components';
 import { Button, Text, View } from '@defaults';
 import { FlatList, TextInput, useWindowDimensions } from 'react-native';
 import {
   colors,
+  computeTotalStepsResources,
+  CourseModel,
   fonts,
   FullCourseModel,
   sizes,
@@ -10,7 +18,7 @@ import {
   Tags,
 } from '@constants';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useCourse, useUser } from '@hooks';
 import { AppStackParamList } from '../../../type';
 import { KSectionDescription, KStepDetails } from './components';
@@ -23,6 +31,10 @@ export const CourseDetailsScreen = () => {
   const { user } = useUser();
 
   const [fullCourse] = useState<FullCourseModel>(params.fullCourse);
+  const [totals, setTotals] = useState<{
+    steps: number;
+    resources: number;
+  } | null>(null);
 
   const tags = useMemo(
     () => Object.values(Tags).filter(t => t !== Tags.all),
@@ -32,7 +44,7 @@ export const CourseDetailsScreen = () => {
   const isAlreadyEnrolled = useMemo(
     () =>
       communityCourses
-        ?.map(course => course.enrolledId)
+        ?.map((course: CourseModel) => course.enrolledId)
         .includes(fullCourse.details.id),
     [communityCourses, fullCourse.details.id]
   );
@@ -41,7 +53,7 @@ export const CourseDetailsScreen = () => {
     () =>
       fullCourse.details.user === user?.id ||
       communityCourses
-        ?.map(course => course.enrolledId)
+        ?.map((course: CourseModel) => course.enrolledId)
         .includes(fullCourse.details.id),
     [communityCourses, fullCourse.details.id, fullCourse.details.user, user?.id]
   );
@@ -49,6 +61,20 @@ export const CourseDetailsScreen = () => {
   const handleEnroll = useCallback(() => {
     enrollCourse({ courseId: fullCourse.details.id }).then(goBack);
   }, [enrollCourse, fullCourse.details.id, goBack]);
+
+  useEffect(() => {
+    console.log(fullCourse.steps);
+    if (
+      fullCourse.steps !== undefined &&
+      fullCourse.steps.length !== undefined
+    ) {
+      const response = computeTotalStepsResources(fullCourse.steps);
+      setTotals({
+        ...response,
+        steps: response.steps + fullCourse.steps.length,
+      });
+    }
+  }, [fullCourse.steps]);
 
   return (
     <KContainer>
@@ -58,6 +84,20 @@ export const CourseDetailsScreen = () => {
       <Text center heading tulipTree style={{ paddingHorizontal: sizes.s16 }}>
         {fullCourse.details.title}
       </Text>
+      {fullCourse.details.numberOfEnrollments !== undefined && (
+        <>
+          <KSpacer h={sizes.s20} />
+          <KCourseDetailsCard
+            value={fullCourse.details.numberOfEnrollments}
+            description="users enrolled to this course"
+          />
+        </>
+      )}
+      <KSpacer h={sizes.s20} />
+      <KStepsResourcesDetails
+        steps={totals?.steps ?? 0}
+        resources={totals?.resources ?? 0}
+      />
       <KSpacer h={sizes.s20} />
       <KSectionDescription
         title={strings.courseDetails.stepsTitle}
