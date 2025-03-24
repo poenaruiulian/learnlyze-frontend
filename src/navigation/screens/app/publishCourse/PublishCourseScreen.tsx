@@ -1,4 +1,9 @@
-import { KBackButton, KContainer, KSpacer } from '@components';
+import {
+  KBackButton,
+  KContainer,
+  KSpacer,
+  KStepsResourcesDetails,
+} from '@components';
 import { Button, Text, View } from '@defaults';
 import {
   FlatList,
@@ -8,6 +13,7 @@ import {
 } from 'react-native';
 import {
   colors,
+  computeTotalStepsResources,
   fonts,
   FullCourseModel,
   sizes,
@@ -15,7 +21,7 @@ import {
   Tags,
 } from '@constants';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useCourse } from '@hooks';
 import { AppStackParamList } from '../../../type';
 import { KSectionDescription } from './components';
@@ -29,6 +35,10 @@ export const PublishCourseScreen = () => {
   const [fullCourse, setFullCourse] = useState<FullCourseModel>(
     params.fullCourse
   );
+  const [totals, setTotals] = useState<{
+    steps: number;
+    resources: number;
+  } | null>(null);
 
   const tags = useMemo(
     () => Object.values(Tags).filter(t => t !== Tags.all),
@@ -92,6 +102,11 @@ export const PublishCourseScreen = () => {
     publishCourse,
   ]);
 
+  useEffect(() => {
+    const response = computeTotalStepsResources(fullCourse.steps);
+    setTotals({ ...response, steps: response.steps + fullCourse.steps.length });
+  }, [fullCourse.steps]);
+
   return (
     <KContainer>
       <KBackButton />
@@ -121,6 +136,11 @@ export const PublishCourseScreen = () => {
       <KSpacer h={5} />
       <KSectionDescription
         description={strings.publishCourse.titleDescription}
+      />
+      <KSpacer h={sizes.s20} />
+      <KStepsResourcesDetails
+        steps={totals?.steps ?? 0}
+        resources={totals?.resources ?? 0}
       />
       <KSpacer h={sizes.s20} />
       <KSectionDescription

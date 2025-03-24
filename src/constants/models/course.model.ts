@@ -11,6 +11,7 @@ export type CourseModel = {
   lastAccessed: string;
   completed?: boolean;
   enrolledId?: number;
+  numberOfEnrollments?: number;
 };
 
 export type StepModel = {

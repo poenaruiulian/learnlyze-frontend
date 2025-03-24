@@ -100,6 +100,7 @@ export const CourseScreen = () => {
         date={fullCourse.details.startedAt}
         publishDate={fullCourse.details.postedDate}
         enrolled={!!fullCourse.details.enrolledId}
+        numberOfEnrollments={fullCourse.details.numberOfEnrollments}
       />
       <KSpacer h={sizes.s30} />
       <View flex centerH>

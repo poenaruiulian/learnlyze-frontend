@@ -26,7 +26,10 @@ export const KStepSet = ({
   }, [accessCourse, fullCourse.details.id]);
 
   const sortedSteps = useMemo(
-    () => steps.sort((s1, s2) => s1.details.priority - s2.details.priority),
+    () =>
+      steps.sort(
+        (s1, s2) => (s1?.details.priority ?? 0) - (s2?.details.priority ?? 0)
+      ),
     [steps]
   );
 
@@ -47,54 +50,59 @@ export const KStepSet = ({
     [extendedStep]
   );
 
-  return sortedSteps.map(step => (
-    <View
-      key={step.details.id}
-      width={width - sizes.s32}
-      style={{
-        flexShrink: 1,
-      }}>
-      <KStep
-        stepId={step.details.id}
-        title={step.details.title}
-        resources={step.resources.length}
-        onPress={() => handleStepOnPress(step.details.id)}
-        isFocused={extendedStep.includes(step.details.id)}
-        isCompleted={step.details.completed && !fullCourse.details.completed}
-        handleStepState={() => handleCompleteStep(step)}
-        subSteps={step.subSteps?.length}
-        isCourseCompleted={fullCourse.details.completed}
-      />
-      {extendedStep.includes(step.details.id) &&
-        (!step.details.hasChild ? (
-          <>
-            <KStepDescription
-              stepId={step.details.id}
-              description={step.details.description}
-            />
-            <KSpacer />
-            <View height={step.resources.length * sizes.s50} rightH topV>
-              {step.resources.map((resource, index) => (
-                <KResource
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={index}
+  return sortedSteps.map(
+    step =>
+      step && (
+        <View
+          key={step.details.id}
+          width={width - sizes.s32}
+          style={{
+            flexShrink: 1,
+          }}>
+          <KStep
+            stepId={step.details.id}
+            title={step.details.title}
+            resources={step.resources.length}
+            onPress={() => handleStepOnPress(step.details.id)}
+            isFocused={extendedStep.includes(step.details.id)}
+            isCompleted={
+              step.details.completed && !fullCourse.details.completed
+            }
+            handleStepState={() => handleCompleteStep(step)}
+            subSteps={step.subSteps?.length}
+            isCourseCompleted={fullCourse.details.completed}
+          />
+          {extendedStep.includes(step.details.id) &&
+            (!step.details.hasChild ? (
+              <>
+                <KStepDescription
                   stepId={step.details.id}
-                  {...resource}
+                  description={step.details.description}
                 />
-              ))}
-            </View>
-          </>
-        ) : (
-          <View rightH>
-            <KSpacer />
-            <KStepSet
-              fullCourse={fullCourse}
-              steps={step.subSteps}
-              width={width - sizes.s32}
-            />
-          </View>
-        ))}
-      <KSpacer />
-    </View>
-  ));
+                <KSpacer />
+                <View height={step.resources.length * sizes.s50} rightH topV>
+                  {step.resources.map((resource, index) => (
+                    <KResource
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={index}
+                      stepId={step.details.id}
+                      {...resource}
+                    />
+                  ))}
+                </View>
+              </>
+            ) : (
+              <View rightH>
+                <KSpacer />
+                <KStepSet
+                  fullCourse={fullCourse}
+                  steps={step.subSteps}
+                  width={width - sizes.s32}
+                />
+              </View>
+            ))}
+          <KSpacer />
+        </View>
+      )
+  );
 };
