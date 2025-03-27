@@ -3,14 +3,15 @@ import { FlatList, useWindowDimensions } from 'react-native';
 import { useCourse } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
 import { Text, View } from '@defaults';
-import { KSpacer } from '@components';
 import { Fragment, useCallback, useRef, useState } from 'react';
 import { KCourseCard } from './KCourseCard';
-import { AppNavigationType } from '../../../../../type';
 import { KNoCourseCard } from './KNoCourseCard';
+import { AppNavigationType } from '../../navigation/type';
+import { KSpacer } from './KSpacer';
 
 type CoursesListProps = {
   label: string;
+  description?: string;
   courses: CourseModel[];
   type?: CoursesListsEnum;
 };
@@ -40,6 +41,14 @@ export const KCoursesList = ({ ...props }: CoursesListProps) => {
       <Text white80 bodyXL bold style={{ marginHorizontal: sizes.s16 }}>
         {props.label}
       </Text>
+      {props.description && (
+        <>
+          <KSpacer h={5} />
+          <Text white50 bodyS semiBold style={{ marginHorizontal: sizes.s16 }}>
+            {props.description}
+          </Text>
+        </>
+      )}
       <KSpacer />
       <FlatList
         ref={flatListRef}

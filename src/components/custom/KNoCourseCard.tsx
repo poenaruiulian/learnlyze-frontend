@@ -6,10 +6,10 @@ import {
 import { Text, View } from '@defaults';
 import { images } from '@images';
 import { colors, CoursesListsEnum, sizes, strings } from '@constants';
-import { KSpacer } from '@components';
 import { useNavigation } from '@react-navigation/native';
 import { useCourse } from '@hooks';
-import { AppNavigationType, TabNavigationType } from '../../../../../type';
+import { AppNavigationType, TabNavigationType } from '../../navigation/type';
+import { KSpacer } from './KSpacer';
 
 type CourseCardProps = {
   type: CoursesListsEnum;
@@ -48,14 +48,18 @@ export const KNoCourseCard = ({ ...props }: CourseCardProps) => {
       ? strings.home.noCoursesTitle
       : CoursesListsEnum.community === props.type
         ? strings.home.noCommunityTitle
-        : strings.home.noCompletedTitle;
+        : CoursesListsEnum.top === props.type
+          ? strings.home.noTopTitle
+          : strings.home.noCompletedTitle;
 
   const description =
     CoursesListsEnum.courses === props.type
       ? strings.home.noCoursesDescription
       : CoursesListsEnum.community === props.type
         ? strings.home.noCommunityDescription
-        : strings.home.noCompletedDescription;
+        : CoursesListsEnum.top === props.type
+          ? strings.home.noTopDescription
+          : strings.home.noCompletedDescription;
 
   return (
     <ImageBackground
@@ -68,7 +72,10 @@ export const KNoCourseCard = ({ ...props }: CourseCardProps) => {
         width: width - sizes.s32,
         height: 130,
       }}>
-      <TouchableOpacity style={{ flex: 1 }} onPress={onPress}>
+      <TouchableOpacity
+        disabled={CoursesListsEnum.top === props.type}
+        style={{ flex: 1 }}
+        onPress={onPress}>
         <View
           flex
           borderRadius={sizes.s10}

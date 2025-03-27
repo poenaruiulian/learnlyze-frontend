@@ -63,7 +63,6 @@ export const CourseDetailsScreen = () => {
   }, [enrollCourse, fullCourse.details.id, goBack]);
 
   useEffect(() => {
-    console.log(fullCourse.steps);
     if (
       fullCourse.steps !== undefined &&
       fullCourse.steps.length !== undefined

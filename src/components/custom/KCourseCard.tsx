@@ -3,7 +3,7 @@ import { Text, View } from '@defaults';
 import { images } from '@images';
 import { colors, sizes, strings } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
-import { KSpacer } from '@components';
+import { KSpacer } from './KSpacer';
 
 type CourseCardProps = {
   name?: string;

@@ -49,8 +49,14 @@ export const KLastAccessedCourseCard = ({
           padding={sizes.s10}
           borderRadius={sizes.s10}
           style={{ backgroundColor: colors.biscay60 }}>
-          <View row gap={sizes.s10} centerH>
-            <Text semiBold bodyS white50>
+          <View row gap={sizes.s10} centerH width={width - sizes.s32}>
+            <Text
+              semiBold
+              bodyS
+              white50
+              ellipsizeMode="tail"
+              numberOfLines={1}
+              style={{ width: (width - sizes.s32) * 0.7 }}>
               {course.details.title}
             </Text>
             <KSpacer
