@@ -5,3 +5,6 @@ export * from './KModal';
 export * from './KBackButton';
 export * from './KCourseDetailsCard';
 export * from './KStepsResourcesDetails';
+export * from './KCoursesList';
+export * from './KNoCourseCard';
+export * from './KCourseCard';

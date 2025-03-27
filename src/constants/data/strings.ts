@@ -110,6 +110,8 @@ export const strings = {
     noCompletedTitle: 'No course completed',
     noCompletedDescription:
       'Continue learning and all your completed courses will appear here. You can disable this section from settings.',
+    noTopTitle: 'No top courses',
+    noTopDescription: "Users haven't enrolled to any of your courses yet.",
     studying: 'Studying',
     completedCourses: 'Completed',
     newCourseTitle: 'Ready for something new?',
@@ -165,5 +167,8 @@ export const strings = {
       description:
         'By default the haptics are enabled in the app, you can disable them using the toggle button ',
     },
+    topCourses: 'Top courses',
+    topCoursesDescription:
+      'Below will appear the top courses based on the number of enrollments.',
   },
 };

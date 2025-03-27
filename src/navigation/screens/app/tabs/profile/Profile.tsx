@@ -1,12 +1,19 @@
 import { Text, View, Button } from '@defaults';
-import { KContainer, KSpacer, KTextInput } from '@components';
+import { KContainer, KCoursesList, KSpacer, KTextInput } from '@components';
 import { images } from '@images';
 import { useWindowDimensions } from 'react-native';
-import { useRoot, useUser } from '@hooks';
-import { colors, sizes, strings, UserModel, verifyEmail } from '@constants';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { KSwitcher } from './components';
-import ProfileIcon from './components/ProfileIcon';
+import { useCourse, useRoot, useUser } from '@hooks';
+import {
+  colors,
+  CourseModel,
+  CoursesListsEnum,
+  sizes,
+  strings,
+  UserModel,
+  verifyEmail,
+} from '@constants';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { KSwitcher, ProfileIcon } from './components';
 
 export const Profile = () => {
   const {
@@ -18,12 +25,26 @@ export const Profile = () => {
   } = useRoot();
   const { width } = useWindowDimensions();
   const { user, update, refetch } = useUser();
+  const { courses } = useCourse();
 
   const [shallowUser, setShallowUser] = useState<UserModel | null>(null);
+  const [topCourses, setTopCourses] = useState<CourseModel[]>([]);
 
   useEffect(() => {
     setShallowUser(user);
   }, [user]);
+
+  useEffect(() => {
+    setTopCourses(() =>
+      courses
+        .sort(
+          (c1, c2) =>
+            (c1.numberOfEnrollments ?? 0) - (c2.numberOfEnrollments ?? 0)
+        )
+        .filter(c => c.postedDate && (c.numberOfEnrollments ?? 0) !== 0)
+        .slice(3)
+    );
+  }, [courses]);
 
   const inputWidth = width - sizes.s20;
 
@@ -118,7 +139,14 @@ export const Profile = () => {
           />
         </View>
       )}
-      <KSpacer h={sizes.s60} />
+      <KSpacer h={sizes.s30} />
+      <KCoursesList
+        label={strings.profile.topCourses}
+        description={strings.profile.topCoursesDescription}
+        courses={topCourses}
+        type={CoursesListsEnum.top}
+      />
+      <KSpacer h={sizes.s30} />
       <KSwitcher
         title={strings.profile.haptics.title}
         description={strings.profile.haptics.description}

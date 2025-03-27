@@ -1,5 +1,5 @@
 import { useCourse, useRoot } from '@hooks';
-import { KContainer, KSpacer } from '@components';
+import { KContainer, KCoursesList, KSpacer } from '@components';
 import { images } from '@images';
 import {
   CourseModel,
@@ -12,11 +12,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import moment from 'moment/moment';
 import { useFocusEffect } from '@react-navigation/native';
 import { reverse, sortBy } from 'lodash-es';
-import {
-  KCoursesList,
-  KLastAccessedCourseCard,
-  KNewCourseCard,
-} from './components';
+import { KLastAccessedCourseCard, KNewCourseCard } from './components';
 
 export const Home = () => {
   const {

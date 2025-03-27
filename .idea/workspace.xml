@@ -5,21 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/custom/KCourseDetailsCard/KCourseDetailsCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/custom/KCourseDetailsCard/KCourseDetailsCardBackground.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/custom/KCourseDetailsCard/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/custom/KStepsResourcesDetails.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constants/helpers/computeTotalStepsResources.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/custom/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/helpers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/helpers/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/models/course.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/models/course.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/CourseScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStepSet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/course/components/KStepSet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/CourseDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/CourseDetailsScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/PublishCourseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/publishCourse/PublishCourseScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/data/strings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/strings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/enums/coursesLists.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/enums/coursesLists.enum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/home/components/KCourseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KCourseCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/home/components/KCoursesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KCoursesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/home/components/KNoCourseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/custom/KNoCourseCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/home/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/home/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile/components/ProfileIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile/components/ProfileIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile/components/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +53,7 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;79-add-the-number-of-steps-and-resources&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;78-handle-the-analytics-of-enrollment&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/src/navigation/screens/app/courseDetails&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -77,11 +74,11 @@
       <recent name="$PROJECT_DIR$/assets/images/backgrounds/onboarding" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/custom" />
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/custom/KCourseDetailsCard" />
       <recent name="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/components" />
       <recent name="$PROJECT_DIR$/assets/images" />
-      <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/src/navigation/screens/app/tabs/profile" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -144,7 +141,10 @@
       <workItem from="1741470342532" duration="2860000" />
       <workItem from="1742399570840" duration="11041000" />
       <workItem from="1742455536602" duration="431000" />
-      <workItem from="1742801742569" duration="9849000" />
+      <workItem from="1742801742569" duration="10679000" />
+      <workItem from="1742836967603" duration="598000" />
+      <workItem from="1743087497554" duration="18000" />
+      <workItem from="1743090513176" duration="1384000" />
     </task>
     <servers />
   </component>
