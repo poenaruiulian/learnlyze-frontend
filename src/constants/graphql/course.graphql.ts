@@ -37,12 +37,14 @@ const GET_DISCOVER = gql`
     getDiscover(tags: $tags, search: $search) {
       id
       title
+      description
       tags
       startedAt
       lastAccessed
       completedSteps
       steps
       lastAccessed
+      numberOfEnrollments
     }
   }
 `;

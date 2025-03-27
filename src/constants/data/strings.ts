@@ -153,8 +153,8 @@ export const strings = {
     },
   },
   profile: {
-    firstName: 'Firstname',
-    lastName: 'Lastname',
+    firstName: 'First name',
+    lastName: 'Last name',
     email: 'Email',
     apply: 'Apply changes',
     finishedCourse: {
