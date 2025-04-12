@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d6274150-1b89-4720-8963-3af4fd74e76a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/data/strings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/data/strings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/enums/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/enums/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/graphql/course.graphql.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/CourseDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/CourseDetailsScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discover/Discover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/discover/Discover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/navigation/screens/app/tabs/home/components/KLastAccessedCourseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/navigation/screens/app/tabs/home/components/KLastAccessedCourseCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/adaptive-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/backgrounds/onboarding/onboardingThirdSlideBg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/splash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,25 +43,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;78-handle-the-analytics-of-enrollment&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/src/navigation/screens/app/courseDetails&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "105-handle-icons-and-logo-for-the-app",
+    "last_opened_file_path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/src/navigation/screens/app/courseDetails",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/prettier",
+    "settings.editor.selected.configurable": "editor.preferences.gutterIcons",
+    "ts.external.directory.path": "/Users/iulianpoenaru/learnlyze/learnlyze-frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/navigation/screens/app/courseDetails" />
@@ -69,11 +70,11 @@
       <recent name="$PROJECT_DIR$/assets/images/backgrounds/onboarding" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/custom" />
-      <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/components/custom/KCourseDetailsCard" />
-      <recent name="$PROJECT_DIR$/src/navigation/screens/app/courseDetails/components" />
+      <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/assets/fonts" />
+      <recent name="$PROJECT_DIR$/assets/images/backgrounds/onboarding" />
+      <recent name="$PROJECT_DIR$/src/components/custom" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -140,6 +141,7 @@
       <workItem from="1742836967603" duration="598000" />
       <workItem from="1743087497554" duration="18000" />
       <workItem from="1743090513176" duration="4754000" />
+      <workItem from="1744369607636" duration="2172000" />
     </task>
     <servers />
   </component>
