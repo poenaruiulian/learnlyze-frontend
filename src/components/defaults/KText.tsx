@@ -1,13 +1,13 @@
-import React from 'react';
-import { Text, TextStyle } from 'react-native';
 import {
   ColorInterface,
-  handleColor,
   FontsInterface,
+  handleColor,
   handleFonts,
-  TextStyleInterface,
   handleTextStyle,
+  TextStyleInterface,
 } from '@constants';
+import React from 'react';
+import { Text, TextStyle } from 'react-native';
 
 export interface TextProps
   extends ColorInterface,

@@ -1,12 +1,13 @@
-import { Text, View } from '@defaults';
 import { KBackButton, KContainer, KSpacer } from '@components';
-import { images } from '@images';
 import { sizes, strings } from '@constants';
+import { Text, View } from '@defaults';
 import { useCourse, useRoot } from '@hooks';
+import { images } from '@images';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
-import { KTextInput, KLoadingCourse } from './components';
+
 import { AppNavigationType } from '../../../type';
+import { KLoadingCourse, KTextInput } from './components';
 
 export const NewCourseScreen = () => {
   const { isNewUser, setIsNewUser } = useRoot();

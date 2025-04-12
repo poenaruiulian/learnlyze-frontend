@@ -1,6 +1,6 @@
-import { View, ViewProps } from 'react-native';
-import React from 'react';
 import { handleViewStyle, ViewStyleInterface } from '@constants';
+import React from 'react';
+import { View, ViewProps } from 'react-native';
 
 export interface KViewProps extends ViewStyleInterface, ViewProps {
   children?: React.ReactNode;

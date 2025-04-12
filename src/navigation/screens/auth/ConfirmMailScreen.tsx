@@ -1,16 +1,17 @@
-import { Button, Text, View } from '@defaults';
-import React, { useCallback, useState } from 'react';
-import { useRoute } from '@react-navigation/native';
-import { useWindowDimensions } from 'react-native';
-import { useRoot } from '@hooks';
 import { KContainer, KSpacer } from '@components';
 import { colors, sizes, strings } from '@constants';
-import { OtpInput } from 'react-native-otp-entry';
+import { Button, Text, View } from '@defaults';
+import { useRoot } from '@hooks';
+import { useRoute } from '@react-navigation/native';
 import {
   ImpactFeedbackStyle,
   notificationAsync,
   NotificationFeedbackType,
 } from 'expo-haptics';
+import React, { useCallback, useState } from 'react';
+import { useWindowDimensions } from 'react-native';
+import { OtpInput } from 'react-native-otp-entry';
+
 import { ConfirmMailScreenRouteType } from '../../type';
 
 export const ConfirmMailScreen = () => {

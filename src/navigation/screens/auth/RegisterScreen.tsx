@@ -1,5 +1,4 @@
-import { Button, Text, View } from '@defaults';
-import { useCallback, useRef, useState } from 'react';
+import { KContainer, KSpacer, KTextInput } from '@components';
 import {
   colors,
   generateSecurityCode,
@@ -10,12 +9,14 @@ import {
   verifyEmail,
   verifyPassword,
 } from '@constants';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import { KContainer, KSpacer, KTextInput } from '@components';
-import { images } from '@images';
-import { TextInput, TouchableOpacity } from 'react-native';
-import { ImpactFeedbackStyle } from 'expo-haptics';
+import { Button, Text, View } from '@defaults';
 import { useRoot } from '@hooks';
+import { images } from '@images';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { ImpactFeedbackStyle } from 'expo-haptics';
+import { useCallback, useRef, useState } from 'react';
+import { TextInput, TouchableOpacity } from 'react-native';
+
 import { AuthNavigationType } from '../../type';
 
 export const RegisterScreen = () => {

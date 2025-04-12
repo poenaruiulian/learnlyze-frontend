@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
 import {
   ApolloClient,
-  InMemoryCache,
+  ApolloLink,
   ApolloProvider,
   HttpLink,
-  ApolloLink,
+  InMemoryCache,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { useRoot } from '@hooks';
 import { routes } from '@constants';
+import { useRoot } from '@hooks';
+import React, { useEffect, useState } from 'react';
 
 const createApolloClient = (token: string | null) => {
   const httpLink = new HttpLink({

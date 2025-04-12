@@ -1,6 +1,6 @@
-import { Icon, Text, View } from '@defaults';
-import { colors, icons, sizes } from '@constants';
 import { KSpacer } from '@components';
+import { colors, icons, sizes } from '@constants';
+import { Icon, Text, View } from '@defaults';
 import { useWindowDimensions } from 'react-native';
 
 type KSectionDescriptionProps = {

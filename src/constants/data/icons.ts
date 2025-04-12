@@ -1,11 +1,11 @@
+import { faEdit, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 import {
-  faArrowUp,
-  faLink,
   faArrowLeft,
+  faArrowUp,
   faBookOpen,
+  faLink,
   faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
-import { faEdit, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 
 export const iconDefinitions: Record<string, IconDefinition> = {
   arrowUp: faArrowUp,

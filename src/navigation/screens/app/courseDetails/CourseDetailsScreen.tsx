@@ -5,8 +5,6 @@ import {
   KSpacer,
   KStepsResourcesDetails,
 } from '@components';
-import { Button, Text, View } from '@defaults';
-import { FlatList, TextInput, useWindowDimensions } from 'react-native';
 import {
   colors,
   computeTotalStepsResources,
@@ -17,9 +15,12 @@ import {
   strings,
   Tags,
 } from '@constants';
+import { Button, Text, View } from '@defaults';
+import { useCourse, useUser } from '@hooks';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useCourse, useUser } from '@hooks';
+import { FlatList, TextInput, useWindowDimensions } from 'react-native';
+
 import { AppStackParamList } from '../../../type';
 import { KSectionDescription, KStepDetails } from './components';
 

@@ -1,8 +1,4 @@
-import { Text, View, Button } from '@defaults';
 import { KContainer, KCoursesList, KSpacer, KTextInput } from '@components';
-import { images } from '@images';
-import { useWindowDimensions } from 'react-native';
-import { useCourse, useRoot, useUser } from '@hooks';
 import {
   colors,
   CourseModel,
@@ -12,7 +8,12 @@ import {
   UserModel,
   verifyEmail,
 } from '@constants';
+import { Button, Text, View } from '@defaults';
+import { useCourse, useRoot, useUser } from '@hooks';
+import { images } from '@images';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useWindowDimensions } from 'react-native';
+
 import { KSwitcher, ProfileIcon } from './components';
 
 export const Profile = () => {

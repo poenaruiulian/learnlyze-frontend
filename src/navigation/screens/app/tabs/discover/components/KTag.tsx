@@ -1,6 +1,6 @@
-import { TouchableOpacity } from 'react-native';
-import { Text } from '@defaults';
 import { colors, sizes } from '@constants';
+import { Text } from '@defaults';
+import { TouchableOpacity } from 'react-native';
 
 type TagProps = {
   name: string;

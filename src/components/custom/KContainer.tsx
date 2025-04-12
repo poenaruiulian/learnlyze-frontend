@@ -1,3 +1,5 @@
+import { colors, sizes } from '@constants';
+import { images } from '@images';
 import React from 'react';
 import {
   ImageBackground,
@@ -6,9 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors, sizes } from '@constants';
 import { ImageSource } from 'react-native-vector-icons/Icon';
-import { images } from '@images';
 
 type KContainerProps = {
   children: React.ReactNode;

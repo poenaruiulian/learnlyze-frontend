@@ -1,13 +1,14 @@
+import { colors, CoursesListsEnum, sizes, strings } from '@constants';
+import { Text, View } from '@defaults';
+import { useCourse } from '@hooks';
+import { images } from '@images';
+import { useNavigation } from '@react-navigation/native';
 import {
   ImageBackground,
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
-import { Text, View } from '@defaults';
-import { images } from '@images';
-import { colors, CoursesListsEnum, sizes, strings } from '@constants';
-import { useNavigation } from '@react-navigation/native';
-import { useCourse } from '@hooks';
+
 import { AppNavigationType, TabNavigationType } from '../../navigation/type';
 import { KSpacer } from './KSpacer';
 

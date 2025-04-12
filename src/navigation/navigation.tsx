@@ -1,11 +1,13 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useRoot } from '@hooks';
 import {
   BottomTabBarProps,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { useRoot } from '@hooks';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ErrorHandler } from '@wrappers';
+
+import { KTabBar } from './components';
 import {
   ConfirmMailScreen,
   CourseDetailsScreen,
@@ -19,7 +21,6 @@ import {
   PublishCourseScreen,
   RegisterScreen,
 } from './screens';
-import { KTabBar } from './components';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

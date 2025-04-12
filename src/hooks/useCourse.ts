@@ -13,9 +13,10 @@ import {
   GET_COURSE_BY_ID,
   PUBLISH_COURSE,
 } from '@constants';
-import { useCallback, useMemo } from 'react';
 import { useStore } from '@store';
+import { useCallback, useMemo } from 'react';
 import { useShallow } from 'zustand/react/shallow';
+
 import { useError } from './useError';
 
 export const useCourse = () => {

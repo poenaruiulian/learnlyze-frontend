@@ -1,8 +1,9 @@
-import { ImageBackground, TouchableOpacity } from 'react-native';
+import { colors, sizes, strings } from '@constants';
 import { Text, View } from '@defaults';
 import { images } from '@images';
-import { colors, sizes, strings } from '@constants';
 import { LinearGradient } from 'expo-linear-gradient';
+import { ImageBackground, TouchableOpacity } from 'react-native';
+
 import { KSpacer } from './KSpacer';
 
 type CourseCardProps = {

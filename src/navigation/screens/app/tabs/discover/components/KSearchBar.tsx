@@ -1,7 +1,7 @@
-import { Icon, View } from '@defaults';
-import { TextInput, useWindowDimensions } from 'react-native';
 import { colors, fonts, icons, sizes } from '@constants';
+import { Icon, View } from '@defaults';
 import { useEffect, useState } from 'react';
+import { TextInput, useWindowDimensions } from 'react-native';
 
 type SearchBarProps = {
   currentValue: string | null;

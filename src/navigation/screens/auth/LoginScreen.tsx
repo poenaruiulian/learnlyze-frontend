@@ -1,12 +1,13 @@
+import { KContainer, KSpacer, KTextInput } from '@components';
+import { colors, LoginDtoType, sizes, strings } from '@constants';
 import { Button, Text, View } from '@defaults';
 import { useRoot } from '@hooks';
-import { useCallback, useRef, useState } from 'react';
-import { colors, LoginDtoType, sizes, strings } from '@constants';
-import { useNavigation } from '@react-navigation/native';
-import { KContainer, KSpacer, KTextInput } from '@components';
-import { TextInput, TouchableOpacity } from 'react-native';
 import { images } from '@images';
+import { useNavigation } from '@react-navigation/native';
 import { ImpactFeedbackStyle } from 'expo-haptics';
+import { useCallback, useRef, useState } from 'react';
+import { TextInput, TouchableOpacity } from 'react-native';
+
 import { AuthNavigationType } from '../../type';
 
 export const LoginScreen = () => {

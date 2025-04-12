@@ -1,8 +1,9 @@
-import { FlatList, useWindowDimensions } from 'react-native';
-import { useState } from 'react';
-import { View } from '@defaults';
 import { KSpacer } from '@components';
 import { sizes } from '@constants';
+import { View } from '@defaults';
+import { useState } from 'react';
+import { FlatList, useWindowDimensions } from 'react-native';
+
 import { KTag } from './KTag';
 
 type TagsListProps = {

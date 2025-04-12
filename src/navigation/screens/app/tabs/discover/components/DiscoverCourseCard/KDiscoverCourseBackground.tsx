@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Svg, {
-  SvgProps,
-  G,
-  Path,
   Circle,
-  Defs,
-  LinearGradient,
-  Stop,
   ClipPath,
+  Defs,
+  G,
+  LinearGradient,
+  Path,
   Rect,
+  Stop,
+  SvgProps,
 } from 'react-native-svg';
 
 export const KDiscoverCourseBackground = (

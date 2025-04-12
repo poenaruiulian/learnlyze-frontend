@@ -1,4 +1,3 @@
-import Drawer from 'react-native-ui-lib/drawer';
 import {
   colors,
   fonts,
@@ -9,9 +8,10 @@ import {
   strings,
 } from '@constants';
 import { Icon, Text } from '@defaults';
+import { useResource, useRoot } from '@hooks';
 import { useCallback, useState } from 'react';
 import { Linking, TouchableOpacity } from 'react-native';
-import { useRoot, useResource } from '@hooks';
+import Drawer from 'react-native-ui-lib/drawer';
 
 export const KResource = ({ ...props }: ResourceModel & { stepId: number }) => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
