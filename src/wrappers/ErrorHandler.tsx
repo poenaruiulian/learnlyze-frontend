@@ -1,8 +1,9 @@
-import React, { useEffect, useReducer } from 'react';
+import { KModal } from '@components';
+import { ErrorCodes } from '@constants';
 import { useError } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
-import { ErrorCodes } from '@constants';
-import { KModal } from '@components';
+import React, { useEffect, useReducer } from 'react';
+
 import { AuthNavigationType } from '../navigation/type';
 
 export const ErrorHandler = ({ children }: { children: React.ReactNode }) => {

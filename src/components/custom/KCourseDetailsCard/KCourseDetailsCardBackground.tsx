@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Svg, {
-  SvgProps,
-  G,
-  Ellipse,
-  Path,
-  Defs,
-  LinearGradient,
-  Stop,
   ClipPath,
+  Defs,
+  Ellipse,
+  G,
+  LinearGradient,
+  Path,
   Rect,
+  Stop,
+  SvgProps,
 } from 'react-native-svg';
 
 export const KCourseDetailsCardBackground = (props: SvgProps) => (

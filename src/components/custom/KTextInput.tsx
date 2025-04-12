@@ -1,7 +1,8 @@
-import { View, Text } from '@defaults';
-import { TextInput, useWindowDimensions, ViewStyle } from 'react-native';
-import { Ref, useState } from 'react';
 import { colors, fonts, sizes } from '@constants';
+import { Text, View } from '@defaults';
+import { Ref, useState } from 'react';
+import { TextInput, useWindowDimensions, ViewStyle } from 'react-native';
+
 import { KSpacer } from './KSpacer';
 
 type KTextInputProps = {

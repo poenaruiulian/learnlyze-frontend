@@ -1,2 +1,2 @@
-export * from './strings';
 export * from './icons';
+export * from './strings';

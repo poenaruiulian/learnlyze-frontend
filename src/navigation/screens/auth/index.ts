@@ -1,5 +1,4 @@
-export * from './onboarding';
-
-export * from './LoginScreen';
-export * from './RegisterScreen';
 export * from './ConfirmMailScreen';
+export * from './LoginScreen';
+export * from './onboarding';
+export * from './RegisterScreen';

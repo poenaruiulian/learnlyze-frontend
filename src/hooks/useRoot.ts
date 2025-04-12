@@ -1,4 +1,3 @@
-import { useShallow } from 'zustand/react/shallow';
 import {
   headers,
   LoginDtoType,
@@ -12,6 +11,8 @@ import {
   impactAsync as impactAsyncExpo,
   ImpactFeedbackStyle,
 } from 'expo-haptics';
+import { useShallow } from 'zustand/react/shallow';
+
 import { useError } from './useError';
 
 export const useRoot = () => {

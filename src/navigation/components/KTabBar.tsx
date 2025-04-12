@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
-import { Pressable, useWindowDimensions } from 'react-native';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-} from 'react-native-reanimated';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, sizes } from '@constants';
 import { View } from '@defaults';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import React, { useEffect } from 'react';
+import { Pressable, useWindowDimensions } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import { KTabBarIcon } from './KTabBarIcon';
 
 export const KTabBar = ({

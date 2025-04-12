@@ -1,5 +1,6 @@
-import { TextStyle, TouchableOpacity } from 'react-native';
 import { colors, handleViewStyle, sizes, ViewStyleInterface } from '@constants';
+import { TextStyle, TouchableOpacity } from 'react-native';
+
 import { KText } from './KText';
 
 interface KButtonProps extends ViewStyleInterface {

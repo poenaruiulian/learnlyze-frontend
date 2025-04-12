@@ -1,8 +1,9 @@
 import { useMutation } from '@apollo/client';
 import { CourseInfo, REPLACE_RESOURCE } from '@constants';
-import { useCallback } from 'react';
 import { useStore } from '@store';
+import { useCallback } from 'react';
 import { useShallow } from 'zustand/react/shallow';
+
 import { useError } from './useError';
 
 export const useResource = () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Svg, { SvgProps, Circle, Path } from 'react-native-svg';
+import Svg, { Circle, Path, SvgProps } from 'react-native-svg';
 
 export const NoCoursesFound = (props: SvgProps) => (
   <Svg width={272} height={190} fill="none" {...props}>

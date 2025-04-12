@@ -1,3 +1,4 @@
+import { useMutation } from '@apollo/client';
 import {
   BRAKE_STEP,
   CHANGE_STEP_STATE,
@@ -5,10 +6,10 @@ import {
   CourseModel,
   StepModel,
 } from '@constants';
-import { useMutation } from '@apollo/client';
-import { useCallback } from 'react';
 import { useStore } from '@store';
+import { useCallback } from 'react';
 import { useShallow } from 'zustand/react/shallow';
+
 import { useError } from './useError';
 
 export const useStep = () => {

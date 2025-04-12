@@ -1,12 +1,13 @@
 import { CourseModel, CoursesListsEnum, sizes } from '@constants';
-import { FlatList, useWindowDimensions } from 'react-native';
+import { Text, View } from '@defaults';
 import { useCourse } from '@hooks';
 import { useNavigation } from '@react-navigation/native';
-import { Text, View } from '@defaults';
 import { Fragment, useCallback, useRef, useState } from 'react';
+import { FlatList, useWindowDimensions } from 'react-native';
+
+import { AppNavigationType } from '../../navigation/type';
 import { KCourseCard } from './KCourseCard';
 import { KNoCourseCard } from './KNoCourseCard';
-import { AppNavigationType } from '../../navigation/type';
 import { KSpacer } from './KSpacer';
 
 type CoursesListProps = {

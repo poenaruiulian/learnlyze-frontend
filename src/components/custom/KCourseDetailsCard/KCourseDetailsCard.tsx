@@ -1,4 +1,5 @@
-import { View, Text } from '@defaults';
+import { Text, View } from '@defaults';
+
 import { KCourseDetailsCardBackground } from './KCourseDetailsCardBackground';
 
 type KCourseDetailsCardType = {

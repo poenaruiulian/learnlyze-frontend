@@ -1,6 +1,6 @@
 import { KModal, KSpacer } from '@components';
-import { Button, View, Text } from '@defaults';
 import { colors, fonts, sizes, strings } from '@constants';
+import { Button, Text, View } from '@defaults';
 import React from 'react';
 import { useWindowDimensions } from 'react-native';
 

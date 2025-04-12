@@ -1,5 +1,5 @@
-import { StateCreator } from 'zustand';
 import { RootInfo } from '@constants';
+import { StateCreator } from 'zustand';
 
 export const createRootSlice: StateCreator<RootInfo> = set => ({
   isLogged: false,

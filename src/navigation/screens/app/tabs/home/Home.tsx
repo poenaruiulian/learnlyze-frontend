@@ -1,6 +1,4 @@
-import { useCourse, useRoot } from '@hooks';
 import { KContainer, KCoursesList, KSpacer } from '@components';
-import { images } from '@images';
 import {
   CourseModel,
   CoursesListsEnum,
@@ -8,10 +6,13 @@ import {
   sizes,
   strings,
 } from '@constants';
-import React, { useCallback, useEffect, useState } from 'react';
-import moment from 'moment/moment';
+import { useCourse, useRoot } from '@hooks';
+import { images } from '@images';
 import { useFocusEffect } from '@react-navigation/native';
 import { reverse, sortBy } from 'lodash-es';
+import moment from 'moment/moment';
+import React, { useCallback, useEffect, useState } from 'react';
+
 import { KLastAccessedCourseCard, KNewCourseCard } from './components';
 
 export const Home = () => {

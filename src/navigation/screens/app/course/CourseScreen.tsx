@@ -1,12 +1,13 @@
-import { Button, View } from '@defaults';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { colors, CourseInfo, sizes, strings } from '@constants';
-import { useWindowDimensions } from 'react-native';
+import { Button, View } from '@defaults';
 import { useCourse } from '@hooks';
-import { useShallow } from 'zustand/react/shallow';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { useStore } from '@store';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useWindowDimensions } from 'react-native';
+import { useShallow } from 'zustand/react/shallow';
+
 import { AppNavigationType, AppStackParamList } from '../../../type';
 import { KHeader, KPublishCourseModal, KStepSet } from './components';
 
