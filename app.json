@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "learnlyze-frontend",
-    "slug": "learnlyze-frontend",
+    "name": "Learnlyze",
+    "slug": "learnlyze",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,7 +18,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#1A2C5B"
-      }
+      },
+      "package": "com.iulianpoenaru.learnlyze"
     },
     "web": {
       "favicon": "./assets/icon.png"
@@ -26,6 +27,12 @@
     "plugins": [
       "expo-font"
     ],
-    "newArchEnabled": true
+    "newArchEnabled": true,
+    "extra": {
+      "eas": {
+        "projectId": "e97b3cfb-1271-4e55-9296-d20dbf62da3e"
+      }
+    },
+    "owner": "iulianpoenaru"
   }
 }

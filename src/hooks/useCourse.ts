@@ -1,22 +1,28 @@
 import { useMutation, useQuery } from '@apollo/client';
 import {
-  CourseModel,
-  FullCourseModel,
   ACCESS_COURSE,
-  GENERATE_NEW_COURSE,
-  GET_ALL_COURSES,
-  GET_COURSE_BY_ID,
-  GET_ALL_COMMUNITY_COURSES,
   CHANGE_PUBLISH_DETAILS,
   COMPLETE_COURSE,
-  PUBLISH_COURSE,
+  CourseInfo,
+  CourseModel,
   ENROLL_COURSE,
+  FullCourseModel,
+  GENERATE_NEW_COURSE,
+  GET_ALL_COMMUNITY_COURSES,
+  GET_ALL_COURSES,
+  GET_COURSE_BY_ID,
+  PUBLISH_COURSE,
 } from '@constants';
-import { useMemo, useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
+import { useStore } from '@store';
+import { useShallow } from 'zustand/react/shallow';
 import { useError } from './useError';
 
 export const useCourse = () => {
   const { handleError } = useError();
+  const { setShouldReload } = useStore(
+    useShallow((courseInfo: CourseInfo) => courseInfo)
+  );
 
   const [getCourseByIdMutation] = useMutation(GET_COURSE_BY_ID);
   const [generateNewCourseMutation] = useMutation(GENERATE_NEW_COURSE);
@@ -98,23 +104,27 @@ export const useCourse = () => {
   );
 
   const completeCourse = useCallback(
-    async ({ courseId }: { courseId: number }) =>
+    async ({ courseId }: { courseId: number }) => {
       handleError(
         await completeCourseMutation({ variables: { courseId } }).catch(
           err => err
         )
-      ),
-    [completeCourseMutation, handleError]
+      );
+      setShouldReload(true);
+    },
+    [completeCourseMutation, handleError, setShouldReload]
   );
 
   const publishCourse = useCallback(
-    async ({ courseId }: { courseId: number }) =>
+    async ({ courseId }: { courseId: number }) => {
       handleError(
         await publishCourseMutation({ variables: { courseId } }).catch(
           err => err
         )
-      ),
-    [publishCourseMutation, handleError]
+      );
+      setShouldReload(true);
+    },
+    [handleError, publishCourseMutation, setShouldReload]
   );
 
   const enrollCourse = useCallback(

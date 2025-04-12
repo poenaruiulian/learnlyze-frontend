@@ -5,3 +5,4 @@ export * from './graphql';
 export * from './helpers';
 export * from './data';
 export * from './enums';
+export * from './env';

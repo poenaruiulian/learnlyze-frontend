@@ -1,4 +1,8 @@
-const MAIN = 'http://localhost:3000';
+import { mainRoute } from '../env';
+
+console.log(mainRoute);
+
+const MAIN = mainRoute ?? 'http://localhost:3000';
 const AUTH = `${MAIN}/auth`;
 
 export const routes = {
