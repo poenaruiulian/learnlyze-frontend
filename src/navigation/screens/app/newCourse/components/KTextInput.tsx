@@ -1,7 +1,7 @@
-import { Icon, View } from '@defaults';
-import { TextInput, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
 import { colors, fonts, icons, sizes } from '@constants';
+import { Icon, View } from '@defaults';
+import { useState } from 'react';
+import { TextInput, TouchableOpacity } from 'react-native';
 
 type KTextInput = {
   onGenerateCourse: (value: string) => void;

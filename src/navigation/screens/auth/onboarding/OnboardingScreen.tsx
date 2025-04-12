@@ -1,13 +1,14 @@
-import { useWindowDimensions } from 'react-native';
-import Carousel from 'react-native-reanimated-carousel';
-import { images } from '@images';
 import { colors, strings } from '@constants';
 import { View } from '@defaults';
+import { useRoot } from '@hooks';
+import { images } from '@images';
 import { useNavigation } from '@react-navigation/native';
 import { ImpactFeedbackStyle } from 'expo-haptics';
-import { useRoot } from '@hooks';
-import { KCarouselPageOnboardingScreen } from './components';
+import { useWindowDimensions } from 'react-native';
+import Carousel from 'react-native-reanimated-carousel';
+
 import { AuthNavigationType } from '../../../type';
+import { KCarouselPageOnboardingScreen } from './components';
 
 export const OnboardingScreen = () => {
   const { width, height } = useWindowDimensions();

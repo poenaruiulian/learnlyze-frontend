@@ -1,16 +1,16 @@
+import { KModal, KSpacer } from '@components';
 import { colors, icons, sizes, strings } from '@constants';
-import { WebView } from 'react-native-webview';
+import { Icon, Text, View } from '@defaults';
+import { useRoot } from '@hooks';
+import { ImpactFeedbackStyle } from 'expo-haptics';
+import { debounce } from 'lodash-es';
+import { useReducer, useState } from 'react';
 import {
   ActivityIndicator,
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
-import { useReducer, useState } from 'react';
-import { KModal, KSpacer } from '@components';
-import { View, Text, Icon } from '@defaults';
-import { ImpactFeedbackStyle } from 'expo-haptics';
-import { debounce } from 'lodash-es';
-import { useRoot } from '@hooks';
+import { WebView } from 'react-native-webview';
 
 type KStepDescription = {
   stepId: number;

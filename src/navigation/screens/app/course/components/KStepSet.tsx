@@ -1,11 +1,12 @@
+import { KSpacer } from '@components';
 import { FullCourseModel, FullStep, sizes, StepModel } from '@constants';
+import { View } from '@defaults';
 import { useCourse, useStep } from '@hooks';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { View } from '@defaults';
-import { KSpacer } from '@components';
+
+import { KResource } from './KResource';
 import { KStep } from './KStep';
 import { KStepDescription } from './KStepDescription';
-import { KResource } from './KResource';
 
 export const KStepSet = ({
   fullCourse,

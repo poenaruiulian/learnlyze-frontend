@@ -1,10 +1,10 @@
-import { colors, icons, sizes, strings } from '@constants';
-import { TouchableOpacity, useWindowDimensions } from 'react-native';
-import { Icon, Text, View } from '@defaults';
 import { KSpacer } from '@components';
-import moment from 'moment/moment';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { colors, icons, sizes, strings } from '@constants';
+import { Icon, Text, View } from '@defaults';
 import { useNavigation } from '@react-navigation/native';
+import moment from 'moment/moment';
+import { TouchableOpacity, useWindowDimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type KHeaderProps = {
   title: string;

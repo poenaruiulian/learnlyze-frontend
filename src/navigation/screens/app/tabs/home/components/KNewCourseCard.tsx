@@ -1,12 +1,13 @@
+import { colors, sizes, strings } from '@constants';
 import { Text } from '@defaults';
+import { images } from '@images';
+import { useNavigation } from '@react-navigation/native';
 import {
   ImageBackground,
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
-import { images } from '@images';
-import { colors, sizes, strings } from '@constants';
-import { useNavigation } from '@react-navigation/native';
+
 import { AppNavigationType } from '../../../../../type';
 
 export const KNewCourseCard = () => {

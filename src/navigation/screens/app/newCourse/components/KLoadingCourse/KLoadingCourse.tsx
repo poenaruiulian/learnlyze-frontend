@@ -1,9 +1,10 @@
-import { View, Text } from '@defaults';
+import { KSpacer } from '@components';
+import { colors, sizes, strings } from '@constants';
+import { Text, View } from '@defaults';
+import { useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useState } from 'react';
-import { colors, sizes, strings } from '@constants';
-import { KSpacer } from '@components';
+
 import { KBubble } from './KBubble';
 
 export const KLoadingCourse = () => {

@@ -1,11 +1,11 @@
-import React, { useCallback, useReducer, useState } from 'react';
-import { Button, Text, View } from '@defaults';
-import { TouchableOpacity, useWindowDimensions } from 'react-native';
-import { colors, fonts, sizes, strings } from '@constants';
-import { LinearGradient } from 'expo-linear-gradient';
 import { KModal, KSpacer, KTextInput } from '@components';
-import { ImpactFeedbackStyle } from 'expo-haptics';
+import { colors, fonts, sizes, strings } from '@constants';
+import { Button, Text, View } from '@defaults';
 import { useRoot, useStep } from '@hooks';
+import { ImpactFeedbackStyle } from 'expo-haptics';
+import { LinearGradient } from 'expo-linear-gradient';
+import React, { useCallback, useReducer, useState } from 'react';
+import { TouchableOpacity, useWindowDimensions } from 'react-native';
 
 type KStepType = {
   stepId: number;

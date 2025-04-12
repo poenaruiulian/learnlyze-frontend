@@ -1,3 +1,3 @@
-export * from './routes';
-export * from './methods';
 export * from './headers';
+export * from './methods';
+export * from './routes';

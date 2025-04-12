@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from '@apollo/client';
-import { UserModel, GET_CURRENT_USER, UPDATE_CURRENT_USER } from '@constants';
+import { GET_CURRENT_USER, UPDATE_CURRENT_USER, UserModel } from '@constants';
 import { useCallback } from 'react';
+
 import { useError } from './useError';
 import { useRoot } from './useRoot';
 

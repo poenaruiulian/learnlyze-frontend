@@ -1,8 +1,8 @@
-import { useStore } from '@store';
-import { useShallow } from 'zustand/react/shallow';
-import { ErrorModel, GenericError, RootInfo } from '@constants';
 import { FetchResult } from '@apollo/client';
+import { ErrorModel, GenericError, RootInfo } from '@constants';
+import { useStore } from '@store';
 import { useCallback } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 
 export const useError = () => {
   const { hasError, setHasError, error, setError } = useStore(

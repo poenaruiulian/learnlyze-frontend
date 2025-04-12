@@ -1,18 +1,19 @@
-import { Text, View } from '@defaults';
 import { KContainer, KSpacer } from '@components';
-import { images } from '@images';
+import { ErrorCodes, sizes, SortEnum, Tags } from '@constants';
+import { Text, View } from '@defaults';
 import { useCourse, useDiscoverCourses, useError, useRoot } from '@hooks';
+import { images } from '@images';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, useWindowDimensions } from 'react-native';
-import { ErrorCodes, sizes, SortEnum, Tags } from '@constants';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
+
+import { AppNavigationType } from '../../../../type';
 import {
   KDiscoverCourseCard,
-  NoCoursesFound,
   KSearchBar,
   KTagsList,
+  NoCoursesFound,
 } from './components';
-import { AppNavigationType } from '../../../../type';
 
 export const Discover = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);

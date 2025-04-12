@@ -1,6 +1,7 @@
+import { sizes } from '@constants';
 import { View } from '@defaults';
 import { useWindowDimensions } from 'react-native';
-import { sizes } from '@constants';
+
 import { KCourseDetailsCard } from './KCourseDetailsCard';
 
 export const KStepsResourcesDetails = ({

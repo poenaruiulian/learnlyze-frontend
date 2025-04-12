@@ -1,8 +1,8 @@
+import { KSpacer } from '@components';
 import { colors, FullStep, sizes } from '@constants';
 import { Text, View } from '@defaults';
-import { FlatList, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
-import { KSpacer } from '@components';
+import { FlatList, TouchableOpacity } from 'react-native';
 
 export const KStepDetails = ({ step }: { step: FullStep }) => {
   const [substepsVisible, setSubstepsVisible] = useState(false);

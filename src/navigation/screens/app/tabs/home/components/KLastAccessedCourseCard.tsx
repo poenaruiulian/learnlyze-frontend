@@ -1,10 +1,11 @@
-import { colors, FullCourseModel, sizes, strings } from '@constants';
-import { View, Text } from '@defaults';
 import { KSpacer } from '@components';
-import { TouchableOpacity, useWindowDimensions } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { colors, FullCourseModel, sizes, strings } from '@constants';
+import { Text, View } from '@defaults';
 import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useMemo } from 'react';
+import { TouchableOpacity, useWindowDimensions } from 'react-native';
+
 import { AppNavigationType } from '../../../../../type';
 
 type LastAccessedCourseCardProps = {

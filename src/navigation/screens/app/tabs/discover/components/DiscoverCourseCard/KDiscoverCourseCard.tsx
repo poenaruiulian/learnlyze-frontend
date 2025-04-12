@@ -1,7 +1,8 @@
-import { View, Text } from '@defaults';
-import { TouchableOpacity, useWindowDimensions } from 'react-native';
-import { colors, sizes, strings, Tags } from '@constants';
 import { KSpacer } from '@components';
+import { colors, sizes, strings, Tags } from '@constants';
+import { Text, View } from '@defaults';
+import { TouchableOpacity, useWindowDimensions } from 'react-native';
+
 import { KDiscoverCourseBackground } from './KDiscoverCourseBackground';
 
 export type DiscoverCourseCardType = {

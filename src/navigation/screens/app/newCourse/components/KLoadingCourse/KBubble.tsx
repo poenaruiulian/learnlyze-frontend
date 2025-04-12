@@ -1,14 +1,14 @@
 import { colors, sizes } from '@constants';
+import { useRoot } from '@hooks';
+import { ImpactFeedbackStyle } from 'expo-haptics';
 import { useEffect, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import { TouchableOpacity } from 'react-native';
-import { ImpactFeedbackStyle } from 'expo-haptics';
-import { useRoot } from '@hooks';
 
 type BubbleBoundaryType = {
   topLimit: number;

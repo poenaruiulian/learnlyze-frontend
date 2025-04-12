@@ -1,5 +1,6 @@
-import { WithApolloClient, WithExpoFonts, WithGestureHandler } from '@wrappers';
 import { Navigation } from '@navigation';
+import { WithApolloClient, WithExpoFonts, WithGestureHandler } from '@wrappers';
+
 import { LoadingHandler } from './src/wrappers/LoadingHandler';
 
 const App = () => (

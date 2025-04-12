@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { colors } from '@constants';
 import { View } from '@defaults';
 import { useRoot } from '@hooks';
+import { ReactNode } from 'react';
 import { ActivityIndicator, useWindowDimensions } from 'react-native';
-import { colors } from '@constants';
 
 export const LoadingHandler = ({ children }: { children: ReactNode }) => {
   const { isLoading } = useRoot();

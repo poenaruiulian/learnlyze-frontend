@@ -1,8 +1,8 @@
-import { Text, View } from '@defaults';
-import { Switch, useWindowDimensions } from 'react-native';
 import { sizes } from '@constants';
+import { Text, View } from '@defaults';
 import { useRoot } from '@hooks';
 import { ImpactFeedbackStyle } from 'expo-haptics';
+import { Switch, useWindowDimensions } from 'react-native';
 
 type KSwitcherType = {
   title: string;

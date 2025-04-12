@@ -1,6 +1,6 @@
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { FullCourseModel, RegisterDtoType } from '@constants';
 import { NavigationProp, RouteProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type AuthStackParamList = {
   LoginScreen: undefined;

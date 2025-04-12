@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { iconDefinitions } from '@constants';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 type KIconProps = {
   size?: number;

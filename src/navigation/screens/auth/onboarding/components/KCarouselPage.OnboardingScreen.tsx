@@ -1,7 +1,7 @@
-import { View, Text, Button } from '@defaults';
-import { ImageSource } from 'react-native-vector-icons/Icon';
 import { KContainer, KSpacer } from '@components';
 import { sizes } from '@constants';
+import { Button, Text, View } from '@defaults';
+import { ImageSource } from 'react-native-vector-icons/Icon';
 
 type KCarouselPageOnboardingScreenType = {
   title: string;

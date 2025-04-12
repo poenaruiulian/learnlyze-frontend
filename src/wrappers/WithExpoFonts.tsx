@@ -1,5 +1,5 @@
-import { FC, ReactNode } from 'react';
 import { useFonts } from 'expo-font';
+import { FC, ReactNode } from 'react';
 
 export const WithExpoFonts: FC<{ children: ReactNode }> = ({ children }) => {
   const [doneLoading] = useFonts({
