@@ -1,10 +1,15 @@
 import { useMutation } from '@apollo/client';
-import { REPLACE_RESOURCE } from '@constants';
+import { CourseInfo, REPLACE_RESOURCE } from '@constants';
 import { useCallback } from 'react';
+import { useStore } from '@store';
+import { useShallow } from 'zustand/react/shallow';
 import { useError } from './useError';
 
 export const useResource = () => {
   const { handleError } = useError();
+  const { setShouldReload } = useStore(
+    useShallow((courseInfo: CourseInfo) => courseInfo)
+  );
 
   const [replaceResourceMutation] = useMutation(REPLACE_RESOURCE);
 
@@ -17,13 +22,15 @@ export const useResource = () => {
       stepId: number;
       resourceId: number;
       feedback: string;
-    }) =>
+    }) => {
       handleError(
         await replaceResourceMutation({
           variables: { stepId, resourceId, feedback },
         }).catch(err => err)
-      ),
-    [replaceResourceMutation, handleError]
+      );
+      setShouldReload(true);
+    },
+    [handleError, replaceResourceMutation, setShouldReload]
   );
 
   return { replaceResource };

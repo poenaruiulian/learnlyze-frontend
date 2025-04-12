@@ -57,15 +57,7 @@ export const Home = () => {
         setIsLoading(isLoading);
         getLastAccessedCourse();
       });
-      // eslint-disable-next-line
-    }, [
-      isLoading,
-      getLastAccessedCourse,
-      refetchCourses,
-      setIsLoading,
-      fetchedCourses,
-      communityCourses,
-    ])
+    }, [getLastAccessedCourse, isLoading, refetchCourses, setIsLoading])
   );
 
   useEffect(() => {

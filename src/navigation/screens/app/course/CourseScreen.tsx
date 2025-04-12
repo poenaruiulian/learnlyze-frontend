@@ -2,24 +2,24 @@ import { Button, View } from '@defaults';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { KContainer, KSpacer } from '@components';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { colors, sizes, strings } from '@constants';
+import { colors, CourseInfo, sizes, strings } from '@constants';
 import { useWindowDimensions } from 'react-native';
-import { useCourse, useStep, useResource } from '@hooks';
+import { useCourse } from '@hooks';
+import { useShallow } from 'zustand/react/shallow';
+import { useStore } from '@store';
 import { AppNavigationType, AppStackParamList } from '../../../type';
 import { KHeader, KPublishCourseModal, KStepSet } from './components';
 
 export const CourseScreen = () => {
   const { params } = useRoute<RouteProp<AppStackParamList, 'CourseScreen'>>();
   const { goBack, navigate } = useNavigation<AppNavigationType>();
+  const { shouldReload, setShouldReload } = useStore(
+    useShallow((courseInfo: CourseInfo) => courseInfo)
+  );
 
   const { width } = useWindowDimensions();
 
-  const { getCourseById, accessCourse, completeCourse, publishCourse } =
-    useCourse();
-
-  const { replaceResource } = useResource();
-
-  const { changeStepState, breakStep } = useStep();
+  const { getCourseById, accessCourse, completeCourse } = useCourse();
 
   const [fullCourse, setFullCourse] = useState(params.fullCourse);
   const [isVisible, setIsVisible] = useState(false);
@@ -35,22 +35,18 @@ export const CourseScreen = () => {
   }, []);
 
   useEffect(() => {
-    getCourseById(fullCourse.details.id).then(response => {
-      if (!response) {
-        goBack();
-        return;
-      }
-
-      setFullCourse(response);
-    });
+    if (shouldReload) {
+      getCourseById(fullCourse.details.id).then(response => {
+        if (!response) {
+          goBack();
+          return;
+        }
+        setFullCourse(response);
+      });
+      setShouldReload(false);
+    }
     // eslint-disable-next-line
-  }, [
-    changeStepState,
-    replaceResource,
-    breakStep,
-    completeCourse,
-    publishCourse,
-  ]);
+  }, [shouldReload]);
 
   const isCourseCompletable = useMemo(
     () =>

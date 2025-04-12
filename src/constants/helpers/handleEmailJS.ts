@@ -1,8 +1,5 @@
 import { headers, methods, routes } from '../endpoints';
-
-const serviceId = process.env.EXPO_PUBLIC_EMAIL_SERVICE_ID;
-const templateId = process.env.EXPO_PUBLIC_EMAIL_TEMPLATE_ID;
-const userId = process.env.EXPO_PUBLIC_EMAIL_PUBLIC_KEY;
+import { serviceId, templateId, userId } from '../env';
 
 const getRandomNumber = () => Math.floor(Math.random() * (9 - 1) + 1);
 export const generateSecurityCode = () =>
